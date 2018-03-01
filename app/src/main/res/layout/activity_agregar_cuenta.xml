@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
+
+    <RelativeLayout
+        android:id="@+id/rl_tituloy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        >
+
+        <ImageButton
+            android:id="@+id/btn_cerrar_ac"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_cerrar_blanco_24dp" />
+    </RelativeLayout >
+
+    <TextView
+        android:id="@+id/cabecera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rl_tituloy"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="Agregar una cuenta"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/c1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/csdd1"
+        android:layout_alignStart="@+id/csdd1"
+        android:layout_below="@+id/imageButton"
+        android:layout_marginTop="33dp"
+        android:gravity="left"
+        android:text="Numero de cuenta:"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/txtNumeroCuenta_ac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/c1"
+        android:layout_alignStart="@+id/c1"
+        android:layout_below="@+id/c1"
+        android:ems="6"
+        android:inputType="number"
+        android:maxLength="6" />
+
+    <TextView
+        android:id="@+id/csdd1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtNumeroCuenta_ac"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="left"
+        android:text="Nombre del titular:"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/txtNombreTitular_ac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/csdd1"
+        android:layout_alignLeft="@+id/csdd1"
+        android:layout_alignRight="@+id/csdd1"
+        android:layout_alignStart="@+id/csdd1"
+        android:layout_below="@+id/csdd1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:maxLength="200" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_below="@+id/txtNombreTitular_ac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/txtNombreTitular_ac"
+        android:layout_alignLeft="@+id/txtNombreTitular_ac"
+        android:layout_alignRight="@+id/txtNombreTitular_ac"
+        android:layout_alignStart="@+id/txtNombreTitular_ac"
+        android:layout_centerVertical="true"
+        android:text="NOTA: Escribe el nombre del titular de la cuenta tal y como aparece en tu recibo."
+        android:textColor="@android:color/holo_blue_dark" />
+
+    <Button
+        android:id="@+id/btnValidarCta_ac"
+        style="@style/Animation.AppCompat.Dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView4"
+        android:layout_alignRight="@+id/textView4"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorAccent"
+        android:text="Agregar"
+        android:layout_marginBottom="45dp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_ac"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnValidarCta_ac"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        style="@style/Animation.AppCompat.Dialog"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_below="@+id/cabecera"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:background="@color/colorAccent"
+        android:src="@drawable/ic_barcode_scan"
+        android:text="Escanear codigo de barras"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light" />
+
+
+    />
+
+    <View
+        android:id="@+id/separador1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignEnd="@+id/csdd1"
+        android:layout_alignLeft="@+id/c1"
+        android:layout_alignRight="@+id/csdd1"
+        android:layout_alignStart="@+id/c1"
+        android:layout_below="@+id/imageButton"
+        android:layout_marginTop="17dp"
+        android:background="@android:color/darker_gray" />
+
+</RelativeLayout>

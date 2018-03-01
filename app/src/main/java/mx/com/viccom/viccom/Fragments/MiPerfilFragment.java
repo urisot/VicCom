@@ -12,10 +12,10 @@ import mx.com.viccom.viccom.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DetReciboFragment extends Fragment {
+public class MiPerfilFragment extends Fragment {
 
 
-    public DetReciboFragment() {
+    public MiPerfilFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class DetReciboFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_det_recibo, container, false);
+        View view = inflater.inflate(R.layout.fragment_mi_perfil, container, false);
         return view;
     }
 
