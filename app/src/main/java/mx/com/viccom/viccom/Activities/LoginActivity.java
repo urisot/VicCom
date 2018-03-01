@@ -3,6 +3,9 @@ package mx.com.viccom.viccom.Activities;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -19,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,327 +30,242 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import mx.com.viccom.viccom.Clases.clsParameter;
+import mx.com.viccom.viccom.Clases.clsUsuarioApp;
 import mx.com.viccom.viccom.R;
+import mx.com.viccom.viccom.Utilities.SendToWCF;
+import mx.com.viccom.viccom.Utilities.StringMD;
+import mx.com.viccom.viccom.Utilities.Util;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends AppCompatActivity  {
 
-    /**
-     * Id to identity READ_CONTACTS permission request.
-     */
-    private static final int REQUEST_READ_CONTACTS = 0;
+    private SharedPreferences prefs;
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
-    private UserLoginTask mAuthTask = null;
-
-    // UI references.
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
+    private EditText txtEmail;
+    private EditText txtPassword;
+    private Switch switchRemember;
+    private Button btnLogin;
+    private CheckedTextView linkRegiste;
+    private CheckedTextView linkResetContrasena;
+    private ProgressBar pbValidamndo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
+        bindUI();
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        setCredentialsIfExist();
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+                MostrarEspera(true);
+                String email = txtEmail.getText().toString();
+                String password = StringMD.getStringMessageDigest(txtEmail.getText().toString() + txtPassword.getText().toString(), StringMD.SHA1).toUpperCase();
+//                String password = editTextPassword.getText().toString();
+
+                ArrayList<String> listToSend = new ArrayList<String>();
+                listToSend.add(email);
+                listToSend.add(password);
+                new ValidarUsrAppHttp().execute(listToSend);
+
+              /*  if (login(email, password)) {
+                    goToMain();
+                    saveOnPreferences(email, password);
+                }*/
             }
         });
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
-    }
-
-    private void populateAutoComplete() {
-        if (!mayRequestContacts()) {
-            return;
-        }
-
-        getLoaderManager().initLoader(0, null, this);
-    }
-
-    private boolean mayRequestContacts() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-                        }
-                    });
-        } else {
-            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-        }
-        return false;
-    }
-
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
+        linkRegiste.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                irARegistro();
             }
+        });
+
+        linkResetContrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+    }
+    private void MostrarEspera(Boolean boolMostrar) {
+        if (boolMostrar){
+            pbValidamndo.setVisibility(View.VISIBLE);
+            btnLogin.setVisibility(View.INVISIBLE);
+        }else{
+            pbValidamndo.setVisibility(View.GONE);
+            btnLogin.setVisibility(View.VISIBLE);
         }
     }
 
 
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
-    private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
+    private void bindUI() {
+        txtEmail = (EditText) findViewById(R.id.txtEmail_log);
+        txtPassword = (EditText) findViewById(R.id.txtContrasena_log);
+        switchRemember = (Switch) findViewById(R.id.swRecuerdame_log);
+        btnLogin = (Button) findViewById(R.id.email_sign_in_button);
+        linkRegiste = (CheckedTextView) findViewById(R.id.linkRegistrarse_log);
+        linkResetContrasena = (CheckedTextView) findViewById(R.id.linkOlvidoContraseña_log);
+        pbValidamndo = (ProgressBar) findViewById(R.id.login_progress);
+    }
+
+    private void setCredentialsIfExist() {
+        String email = Util.getUserMailPrefs(prefs);
+        String password = Util.getUserPassPrefs(prefs);
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+            txtEmail.setText(email);
+            txtPassword.setText(password);
+            switchRemember.setChecked(true);
         }
+    }
 
-        // Reset errors.
-        mEmailView.setError(null);
-        mPasswordView.setError(null);
+    private boolean login(String email, String password) {
+        if (!Util.isValidEmail(email)) {
 
-        // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
-
-        boolean cancel = false;
-        View focusView = null;
-
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }
-
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
-            cancel = true;
-        }
-
-        if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
-            focusView.requestFocus();
+            txtEmail.setError("¡ERROR!: Email invalido.");
+            // Toast.makeText(this, "Email is not valid, please try again", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (!Util.isValidPassword(password)) {
+            txtPassword.setError("¡ERROR!: Email invalido.");
+            //Toast.makeText(this, "Password is not valid, 4 characters or more, please try again", Toast.LENGTH_LONG).show();
+            return false;
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+            return true;
         }
     }
 
-    private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
-    }
-
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
-    }
-
-    /**
-     * Shows the progress UI and hides the login form.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
-
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
-
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+    private void saveOnPreferences(String email, String password) {
+        if (switchRemember.isChecked()) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("email", email);
+            editor.putString("pass", password);
+            editor.apply();
         }
     }
-
-    @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(this,
-                // Retrieve data rows for the device user's 'profile' contact.
-                Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
-
-                // Select only email addresses.
-                ContactsContract.Contacts.Data.MIMETYPE +
-                        " = ?", new String[]{ContactsContract.CommonDataKinds.Email
-                .CONTENT_ITEM_TYPE},
-
-                // Show primary email addresses first. Note that there won't be
-                // a primary email address if the user hasn't specified one.
-                ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<String> emails = new ArrayList<>();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            emails.add(cursor.getString(ProfileQuery.ADDRESS));
-            cursor.moveToNext();
-        }
-
-        addEmailsToAutoComplete(emails);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-
-    }
-
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        mEmailView.setAdapter(adapter);
-    }
-
-
-    private interface ProfileQuery {
-        String[] PROJECTION = {
-                ContactsContract.CommonDataKinds.Email.ADDRESS,
-                ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
-        };
-
-        int ADDRESS = 0;
-        int IS_PRIMARY = 1;
-    }
-
-    /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
-     */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-
-        private final String mEmail;
-        private final String mPassword;
-
-        UserLoginTask(String email, String password) {
-            mEmail = email;
-            mPassword = password;
-        }
+    public class ValidarUsrAppHttp extends AsyncTask<ArrayList<String>,Integer,clsUsuarioApp> {
 
         @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
+        protected clsUsuarioApp doInBackground(ArrayList<String>[] lists) {
+            clsUsuarioApp usuarioApp = new clsUsuarioApp();
+            ArrayList<String> listParametros= lists[0];
             try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
+                String Url ="http://201.144.165.83/apicomapa/ComapaVic_OS.svc/ValidaUsrApp";
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
+                String strMail = listParametros.get(0).toString();
+                String strContrasena = listParametros.get(1).toString();
+
+                ArrayList<clsParameter> Parametros = new ArrayList<clsParameter>();
+                Parametros.add(new clsParameter("cMail", strMail));
+                Parametros.add(new clsParameter("cContrasena", strContrasena));
+
+                String Resultado = SendToWCF.Send_Post(Url, Parametros);
+
+                //Pudo establecer conexion
+                if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErroJSON")) {
+
+                    Gson gson = new GsonBuilder().create();
+                    Resultado = Resultado.replace("\\/","/").replace("\n","");
+                    Resultado = Resultado.substring(22,Resultado.length()-1);
+                    usuarioApp = gson.fromJson(Resultado, clsUsuarioApp.class);
+
+                    //Inserto correctamente el usuario y obtobo el folio consecutivo de registro
+                    if (usuarioApp.getId_usuarioapp().toString().length()>0){
+
+                    }else{
+                        usuarioApp.setId_usuarioapp("");
+                        // usuarioApp.setNombre("No pudo obtener el folio del usuario.");
+                        usuarioApp.setCelular("Error");
+                        usuarioApp.setContrasena("Error");
+                        usuarioApp.setMac_address("Error");
+                        usuarioApp.setFecha_insert("");
+                        usuarioApp.setKey("");
+                    }
+
+
+                } else {
+
+                    usuarioApp.setId_usuarioapp("");
+                    usuarioApp.setNombre("Error de conexión.");
+                    usuarioApp.setCelular("Error");
+                    usuarioApp.setContrasena("Error");
+                    usuarioApp.setMac_address("Error");
+                    usuarioApp.setFecha_insert("");
+                    usuarioApp.setKey("");
+
                 }
+
+            }catch (Exception e) {
+                e.printStackTrace();
+                Log.e("Error", e.toString());
+                usuarioApp.setId_usuarioapp("");
+                usuarioApp.setNombre("Error en el Servicio. "+e.toString());
+                usuarioApp.setCelular("Error");
+                usuarioApp.setContrasena("Error");
+                usuarioApp.setMac_address("Error");
+                usuarioApp.setFecha_insert("");
+                usuarioApp.setKey("");
+
+                return usuarioApp;
             }
 
-            // TODO: register the new account here.
-            return true;
+            return usuarioApp;
         }
 
         @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-            showProgress(false);
+        protected void onPostExecute(clsUsuarioApp usuarioApp) {
+            super.onPostExecute(usuarioApp);
+            MostrarEspera(false);
+            if (usuarioApp.getId_usuarioapp().toString().length()>0){
+                clsUsuarioApp.upgradeUsuarioApp(usuarioApp);
+                String email = txtEmail.getText().toString();
+                String password = txtPassword.getText().toString();//StringMD.getStringMessageDigest(editTextEmail.getText().toString() + editTextPassword.getText().toString(), StringMD.SHA1).toUpperCase();
+                saveOnPreferences(email, password);
+                goToMain();
 
-            if (success) {
-                finish();
-            } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+            }else{
+                Util.customSnackBar(usuarioApp.getNombre(),btnLogin,LoginActivity.this);
             }
-        }
-
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
         }
     }
+
+
+
+    private void goToMain() {
+        Intent intent = new Intent(this, MenuActivity.class);
+        intent.putExtra("EMAIL", txtEmail.getText().toString());
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+    private void irARegistro() {
+
+     /*   Intent intent = new Intent(this, act_RegistroUsuario.class);
+        // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);*/
+    }
+
 }
 

@@ -11,13 +11,7 @@
     tools:context="mx.com.viccom.viccom.Activities.LoginActivity">
 
     <!-- Login progress -->
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
+
 
     <ScrollView
         android:id="@+id/login_form"
@@ -32,10 +26,12 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp">
 
                 <AutoCompleteTextView
-                    android:id="@+id/email"
+                    android:id="@+id/txtEmail_log"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
@@ -47,13 +43,15 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp">
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/txtContrasena_log"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_password"
+                    android:hint="Contraseña"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
@@ -63,14 +61,60 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <Switch
+                android:id="@+id/swRecuerdame_log"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginRight="16dp"
+                android:layout_gravity="right"
+                android:text="Recuerdame"
+                android:textSize="16sp"
+                android:textColor="@android:color/holo_green_light" />
+
             <Button
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/action_sign_in"
+                android:text="Iniciar Sesión"
+                android:textAllCaps="false"
                 android:textStyle="bold" />
+            <ProgressBar
+                android:id="@+id/login_progress"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                />
+
+
+            <CheckedTextView
+                android:id="@+id/linkOlvidoContraseña_log"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:text="¿Olvidó la contraseña?"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+
+            <CheckedTextView
+                android:id="@+id/linkRegistrarse_log"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="56dp"
+                android:layout_marginBottom="24dp"
+                android:text="Registrate"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
 
         </LinearLayout>
     </ScrollView>
