@@ -5,9 +5,85 @@
     tools:context="mx.com.viccom.viccom.Fragments.MiPerfilFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textVieyudfwsa2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Mi cuenta de usuario"
+            android:textSize="18sp"
+         />
+
+        <android.support.design.widget.TextInputLayout
+
+            android:id="@+id/tilMediorIns"
+            android:layout_below="@+id/textVieyudfwsa2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:tag="control">
+
+            <EditText
+                android:id="@+id/etMediorIns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre"
+                android:inputType="number" >
+
+            </EditText>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+
+            android:id="@+id/tilMediorInsfgh"
+            android:layout_below="@+id/tilMediorIns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:tag="control">
+
+            <EditText
+                android:id="@+id/etMediorssIns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E mail"
+                android:inputType="number" >
+
+            </EditText>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <View
+            android:id="@+id/seprador1"
+            android:layout_below="@+id/tilMediorInsfgh"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#efefef"/>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_below="@+id/seprador1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Actualizar" />
+
+
+    </RelativeLayout>
 
 </FrameLayout>

@@ -36,12 +36,14 @@
 
         </activity>
 
-        <activity android:name=".Activities.DetCuentaActivity"
+        <activity
+            android:name=".Activities.DetCuentaActivity"
             android:theme="@style/Theme.MiTemaD">
 
         </activity>
 
-        <activity android:name=".Activities.AgregarCuentaActivity"
+        <activity
+            android:name=".Activities.AgregarCuentaActivity"
             android:theme="@style/Theme.MiTemaD">
 
         </activity>
