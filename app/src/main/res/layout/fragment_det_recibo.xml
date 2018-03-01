@@ -1,13 +1,89 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="mx.com.viccom.viccom.Fragments.DetReciboFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/txtConceptos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Conceptos cobrados"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/ll_cabeceraConceptos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtConceptos"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="10"
+
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:gravity="center_vertical"
+                    android:text="Concepto"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:text="Total"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recConceptos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ll_cabeceraConceptos"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp" />
 
-</FrameLayout>
+    <ProgressBar android:id="@+id/pbCargarConceptos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>

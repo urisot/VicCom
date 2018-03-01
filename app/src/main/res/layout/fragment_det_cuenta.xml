@@ -1,13 +1,242 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="mx.com.viccom.viccom.Fragments.DetCuentaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
+        android:id="@+id/sv_Principal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-</FrameLayout>
+            <TextView
+                android:id="@+id/txt_lusuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Información del Usuario"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtUsuario_det"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_lusuario"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="[725438] Sarha Connors"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/txt_ldireccion"
+                android:layout_below="@+id/txtUsuario_det"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="1dp"
+                android:text="Dirección"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/txtDireccion_det"
+                android:layout_below="@+id/txt_ldireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Francisco Lopez de Oca #4605, Cuauhtemoc, Limite"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:id="@+id/txtColonia_det"
+                android:layout_below="@+id/txtDireccion_det"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="1dp"
+                android:text="Fracc. Nuevo Amanecer"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:id="@+id/txt_lusuariodsfdsf"
+                android:layout_below="@+id/txtColonia_det"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="1dp"
+                android:text="Meses de adeudo"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/txtMesAdeudo_det"
+                android:layout_below="@+id/txt_lusuariodsfdsf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="2"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/txt_lusuariodwerewrsfdsf"
+                android:layout_below="@+id/txtMesAdeudo_det"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="1dp"
+                android:text="Periodo de facturación"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/txtPeriodo_det"
+                android:layout_below="@+id/txt_lusuariodwerewrsfdsf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Marzo 2018"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/txt_lusuariodwweerewrsfdsf"
+                android:layout_below="@+id/txtPeriodo_det"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="1dp"
+                android:text="Fecha limite de pago"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/txtVencimiento_det"
+                android:layout_below="@+id/txt_lusuariodwweerewrsfdsf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="13 de Marzo del 2018"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txt_lusuariodwweerewrdsf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_Usuaridwerewrwsfdsfo"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="1dp"
+                android:text="Tarifa"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtTarifa_det"
+                android:layout_below="@+id/txt_lusuariodwweerewrdsf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="Domestico"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/txgt_lusuariodwweerewrdsf"
+                android:layout_below="@+id/txtTarifa_det"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="1dp"
+                android:text="Consumo facturado"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/txtConsumoFac_det"
+                android:layout_below="@+id/txgt_lusuariodwweerewrdsf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="25 m³ (Promedio)"
+                android:textSize="14sp"/>
+            <!--
+
+                <TextView
+                    android:id="@+id/txgt_lusuariodwwfdeerewrdsf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tjyxt_Usuaridwerwsfdsfo"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="1dp"
+                    android:text="Consumo facturado"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/tjyxt_Usuaridwegferwsfdsfo"
+                    android:layout_below="@+id/txgt_lusuariodwwfdeerewrdsf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="25 m³ (Promedio)"  android:textSize="14sp" />
+    -->
+        </LinearLayout>
+
+    </ScrollView >
+
+</RelativeLayout>
