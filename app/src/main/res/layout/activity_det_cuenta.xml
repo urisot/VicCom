@@ -24,7 +24,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_cerrar_blanco_24dp" />
+            app:srcCompat="@drawable/ic_cerrar_blanco_24dp"
+           />
     </RelativeLayout >
 
     <android.support.design.widget.TabLayout

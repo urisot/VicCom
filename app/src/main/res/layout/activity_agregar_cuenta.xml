@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true">
 
-    <RelativeLayout
+<!--    <RelativeLayout
         android:id="@+id/rl_tituloy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,8 +26,9 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_cerrar_blanco_24dp" />
-    </RelativeLayout >
+            app:srcCompat="@drawable/ic_cerrar_blanco_24dp"
+            />
+    </RelativeLayout >-->
 
     <TextView
         android:id="@+id/cabecera"
@@ -138,7 +139,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:background="@color/colorAccent"
-        android:src="@drawable/ic_barcode_scan"
+        app:srcCompat="@drawable/ic_barcode_scan"
         android:text="Escanear codigo de barras"
         android:textAllCaps="false"
         android:textColor="@android:color/background_light" />

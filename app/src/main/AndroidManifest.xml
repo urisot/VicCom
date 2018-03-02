@@ -22,7 +22,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Activities.LoginActivity"
-            android:label="Iniciar Sesión">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,20 +33,40 @@
         <activity
             android:name=".Activities.MenuActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.DetCuentaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MiTemaD" />
+        <activity
+            android:name=".Activities.AgregarCuentaActivity"
+            android:parentActivityName=".Activities.MenuActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.AgregarFormaPagoActivity"
+            android:parentActivityName=".Activities.MenuActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".Utilities.Picker"
             android:theme="@style/Theme.MiTemaD">
 
         </activity>
 
-        <activity
-            android:name=".Activities.AgregarCuentaActivity"
-            android:theme="@style/Theme.MiTemaD">
-
+        <activity android:name=".Activities.RegistroActivity"
+            android:parentActivityName=".Activities.LoginActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.LoginActivity" />
         </activity>
     </application>
 

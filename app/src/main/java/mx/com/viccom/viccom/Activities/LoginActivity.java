@@ -261,10 +261,9 @@ public class LoginActivity extends AppCompatActivity  {
         startActivity(intent);
     }
     private void irARegistro() {
-
-     /*   Intent intent = new Intent(this, act_RegistroUsuario.class);
+        Intent intent = new Intent(this, RegistroActivity.class);
         // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);*/
+        startActivity(intent);
     }
 
 }

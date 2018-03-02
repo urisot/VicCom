@@ -32,7 +32,7 @@ public class AgregarCuentaActivity extends AppCompatActivity {
     private EditText txtNumCuenta;
     private EditText txtNombreTitular;
     private ProgressBar progressBar_ac;
-    private ImageButton btnCerrar;
+    //private ImageButton btnCerrar;
     private clsUsuarioApp usuarioApp = new clsUsuarioApp();
 
     @Override
@@ -40,10 +40,11 @@ public class AgregarCuentaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_cuenta);
 
+        // Activar flecha ir atrás
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-        /*   String strMail = bundle.getString("USUARIOAPP");
-            usuarioApp = clsUsuarioApp.getUsrAppByMail(strMail);*/
             usuarioApp = bundle.getParcelable("USUARIOAPP");
 
         }
@@ -52,7 +53,7 @@ public class AgregarCuentaActivity extends AppCompatActivity {
         txtNombreTitular =(EditText) findViewById(R.id.txtNombreTitular_ac);
         btnValidarCta =(Button) findViewById(R.id.btnValidarCta_ac);
         progressBar_ac =(ProgressBar) findViewById(R.id.progressBar_ac);
-        btnCerrar =(ImageButton) findViewById(R.id.btn_cerrar_ac);
+       // btnCerrar =(ImageButton) findViewById(R.id.btn_cerrar_ac);
 
 
         URL_WCF = Util.getDireccionWCF();
@@ -86,14 +87,15 @@ public class AgregarCuentaActivity extends AppCompatActivity {
                 }
             }
         });
-        btnCerrar.setOnClickListener(new View.OnClickListener() {
+
+   /*     btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = getIntent();
                 setResult(Util.RESULTADO_CANCEL, intent);
                 finish();
             }
-        });
+        });*/
     }
 
 
@@ -257,114 +259,5 @@ public class AgregarCuentaActivity extends AppCompatActivity {
             super.onCancelled();
         }
     }
-  /*  public void ValidaUsrPadron(final ArrayList<clsParameter> parametros){//2
-        new AsyncTask<Void,Void,clsParameter>(){//3
 
-            @Override
-            protected clsParameter doInBackground(Void... params) {//4
-
-                clsParameter resultado = new clsParameter();
-                String Url = URL_WCF + "getValidaUsrPadron";
-
-                resultado.setParameter_name(SendToWCF.Send_Post(Url, parametros));
-
-                if(!resultado.getParameter_name().equals("ErrorConexion") && !resultado.getParameter_name().equals("ErrorURL") && !resultado.getParameter_name().equals("ErroJSON")){
-
-                    //Log.e("Resultado Verificacion",resultado.getParameter_name());
-                    try {
-                        JSONObject Resultado = new JSONObject(resultado.getParameter_name());
-                        JSONArray Registros = Resultado.getJSONArray("ValidarUsrPswResult");
-
-                        //JSONArray Registros = Resultado.getJSONArray(resultado.getParameter_name());
-
-                        if(Registros.length()!=0){
-                            Log.e("nombre",Registros.getJSONObject(0).getString("nombre"));
-                            Log.e("usuario",Registros.getJSONObject(0).getString("usuario"));
-                            Log.e("valido",Registros.getJSONObject(0).getString("valido"));
-
-                            resultado.setParameter_name("OK");
-                            resultado.setParameter_value(Registros.getJSONObject(0).getString("valido"));
-
-                            return resultado;
-
-                        }else{
-                            MuestraEspera(false);
-                            resultado.setParameter_name("Error");
-                            resultado.setParameter_value("Verifica la contraseña.");
-                        }
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                }else{
-                    resultado.setParameter_name("ErrorNoConectoWCF");
-                    MuestraEspera(false);
-                }
-
-                return resultado;
-            }//4
-
-            @Override
-            protected void onPostExecute(clsParameter result){//4
-                if(result.getParameter_name().equals("OK")){
-
-                    if(result.getParameter_value().equals("SI")){
-
-                        BDManager Manejador = new BDManager(getApplicationContext(),"DBOrdenesTrabajo",null,1);
-                        SQLiteDatabase db = Manejador.getReadableDatabase();
-
-                        if(db!=null){
-                            //db.execSQL("UPDATE OPR_ORDENES SET id_capturo = '" + UsuarioActual.getId_usuario() + "' where id_estatus in (82,9,10);");
-                            OPR_ORDENES.CerrarOrdenesComoNoEjecutadas(UsuarioActual.getId_usuario());
-                            db.execSQL("UPDATE OPR_ORDENES SET id_capturo = '" + UsuarioActual.getId_usuario() + "';");
-                            db.execSQL("UPDATE Opr_Materiales SET id_utilizo = '" + UsuarioActual.getId_usuario() + "';");
-                            db.close();
-                        }
-
-                        // Intent intent = new Intent();
-                        Intent intent = getIntent();
-                        intent.putExtra("Nombre", UsuarioActual.getNombre());
-                        setResult(Rutinas.RESULTADO_OK, intent);
-                        finish();//finishing activity
-
-
-
-                    }else if(result.getParameter_value().equals("NO")){
-                        //customSnackBar("Verifica la contraseña.",btnAcceso);
-                        et_Contrasena.setError("Verifica la contraseña..");
-                        MuestraEspera(false);
-                    }
-
-                    //if(result)
-                    //Intent intento = new Intent(LoginScreen.this,);
-
-                }else if(result.getParameter_name().equals("ErrorNoConectoWCF")){
-
-                    customSnackBar("No se pudo establecer conexion con el servidor",btnAcceso);
-                    MuestraEspera(false);
-
-                }
-                else if(result.getParameter_name().equals("Error")){
-                    customSnackBar(result.getParameter_value(),btnAcceso);
-                    MuestraEspera(false);
-                }
-
-            }//4
-
-        }.execute(null,null,null);//3
-    }//2*/
-
-   /* public void customSnackBar(String Text,View v){//2
-        Snackbar snackbar = Snackbar.make(v, Text, Snackbar.LENGTH_LONG)
-                .setAction(getString(R.string.aceptar), new View.OnClickListener() {//3
-                    @Override
-                    public void onClick(View view) {//4
-
-                    }//4
-                });//3
-        snackbar.setActionTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
-        snackbar.show();
-    }*/
 }

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import mx.com.viccom.viccom.Activities.AgregarFormaPagoActivity;
 import mx.com.viccom.viccom.Clases.clsUsuarioApp;
 import mx.com.viccom.viccom.R;
 import mx.com.viccom.viccom.Utilities.Util;
@@ -51,9 +52,9 @@ public class MisFormasPagoFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-               /* Intent intento = new Intent(getActivity(),act_AgregarFormPago.class);
+                Intent intento = new Intent(getActivity(),AgregarFormaPagoActivity.class);
                 //intento.putExtra("USUARIOAPP",usuarioApp);
-                startActivityForResult(intento, Util.SOLICITUD_AGREGAR_RECIBOS);*/
+                startActivityForResult(intento, Util.SOLICITUD_AGREGAR_RECIBOS);
             }
         });
     }

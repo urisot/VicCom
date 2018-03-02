@@ -3,20 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="mx.com.viccom.viccom.Fragments.MisFormasPagoFragment">
+    tools:context="mx.com.viccom.viccom.Fragments.SelectMetodoPagoFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:id="@+id/textViewsa2"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtSelecciona"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
-            android:text="Mis formas de pago"
+            android:text="Selecciona el metodo de pago"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -24,8 +25,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recMisFormasPAgo"
-            android:layout_below="@+id/textViewsa2"
+            android:id="@+id/recSelectFormaPago"
+            android:layout_below="@+id/txtSelecciona"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
@@ -36,12 +37,5 @@
             android:layout_marginBottom="16dp"/>
 
     </RelativeLayout>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabAgregarFormasPago"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_agregar_blanco_24dp" />
 
 </FrameLayout>

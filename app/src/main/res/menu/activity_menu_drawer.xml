@@ -21,8 +21,18 @@
             android:icon="@drawable/ic_menu_manage"
             android:title="Tools" />-->
     </group>
+    <group
+        android:id="@+id/secondGroup"
+        android:checkableBehavior="single">
 
-    <item android:title="Mas opciones">
+        <item
+            android:id="@+id/opt_Configuracion"
+            android:icon="@drawable/ic_configuracion_24dp"
+            android:title="@string/menu_item_configuracion" />
+    </group>
+
+    <!--<item android:title="Mas opciones">
+
         <menu>
             <item
                 android:id="@+id/opt_Compartir"
@@ -33,6 +43,6 @@
                 android:icon="@drawable/ic_configuracion_24dp"
                 android:title="@string/menu_item_configuracion" />
         </menu>
-    </item>
+    </item>-->
 
 </menu>
