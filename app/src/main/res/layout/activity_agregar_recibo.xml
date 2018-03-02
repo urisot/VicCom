@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mx.com.viccom.viccom.Activities.AgregarReciboActivity">
+
+
+
+    <RelativeLayout
+        android:id="@+id/rl_tituloy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        >
+
+        <ImageButton
+            android:id="@+id/btn_cerrar_ac"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_cerrar_blanco_24dp" />
+    </RelativeLayout >
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_below="@+id/rl_tituloy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/cabecera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/rl_tituloy"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="Agregar una cuenta"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/imageButton"
+                style="@style/Animation.AppCompat.Dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cabecera"
+                android:layout_centerHorizontal="true"
+                android:drawableRight="@drawable/ic_barcode_scan"
+                android:paddingRight="16dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="24dp"
+                android:background="@color/colorAccent"
+                android:text="Escanear codigo de barras"
+                android:textAllCaps="false"
+                android:textColor="@android:color/background_light" />
+
+            <View
+                android:id="@+id/separador1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/darker_gray" />
+            <ImageView
+                android:id="@+id/imgMuestra"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+               android:layout_gravity="center"
+                android:background="@drawable/muestra" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilNumCta"
+                android:layout_below="@+id/textVieyudfwsa2"
+                android:layout_weight="6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_gravity="bottom"
+                android:tag="control">
+                <EditText
+                    android:id="@+id/txtNumeroCuenta_ac"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="6"
+                    android:hint="Numero de cuenta"
+                    android:inputType="number"
+                    android:maxLength="6" />
+            </android.support.design.widget.TextInputLayout>
+
+     <!--       <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="10"
+                    >
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/tilNumCta"
+                        android:layout_below="@+id/textVieyudfwsa2"
+                        android:layout_weight="6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_gravity="bottom"
+                        android:tag="control">
+                        <EditText
+                            android:id="@+id/txtNumeroCuenta_ac"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="6"
+                            android:hint="Numero de cuenta"
+                            android:inputType="number"
+                            android:maxLength="6" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="wrap_content"
+                        />
+
+                    <ImageView
+                        android:id="@+id/imgMuestra"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_weight="4"
+                        android:background="@drawable/muestra" />
+                </TableRow>
+            </TableLayout>-->
+
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilTitular"
+                android:layout_below="@+id/textVieyudfwsa2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:tag="control">
+                <EditText
+                    android:id="@+id/txtNombreTitular_ac"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre del titular"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:maxLength="200" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="NOTA: Escribe el nombre del titular de la cuenta tal y como aparece en tu recibo."
+                android:textColor="@android:color/holo_blue_dark" />
+
+            <Button
+                android:id="@+id/btnValidarCta_ac"
+                style="@style/Animation.AppCompat.Dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp"
+                android:layout_marginRight="24dp"
+                android:background="@color/colorAccent"
+                android:layout_gravity="end"
+                android:text="Agregar"
+                android:textAllCaps="false"
+                android:textColor="@android:color/background_light" />
+
+            <ProgressBar
+                android:id="@+id/progressBar_ac"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-110dp"
+                android:visibility="invisible"
+               />
+
+    </LinearLayout>
+    </ScrollView>
+
+<!--    <RelativeLayout
+        android:id="@+id/rl_tituloFormasPago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        >
+        <LinearLayout
+            android:id="@+id/ll_cabecera"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true"
+            >
+            <ImageButton
+                android:id="@+id/btnAtras_ar"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_chevron_left_black_24dp"
+                android:padding="16dp"
+                />
+            <TextView
+                android:id="@+id/txtContadorPag_ar"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:text="1 de 2"
+                android:textColor="@color/icons"
+                android:gravity="center"
+                />
+            <ImageButton
+                android:id="@+id/btnAdelante_ar"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_chevron_right_black_24dp"
+                android:padding="16dp"
+                />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnCerrar_ar"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_cerrar_blanco_24dp" />
+    </RelativeLayout >
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vPagFormasPag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rl_tituloFormasPago"
+        />-->
+
+
+</RelativeLayout>

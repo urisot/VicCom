@@ -26,22 +26,19 @@ import mx.com.viccom.viccom.R;
 import mx.com.viccom.viccom.Utilities.SendToWCF;
 import mx.com.viccom.viccom.Utilities.Util;
 
-public class AgregarCuentaActivity extends AppCompatActivity {
+public class AgregarReciboActivity extends AppCompatActivity {
     private String URL_WCF = "";
     private Button btnValidarCta;
     private EditText txtNumCuenta;
     private EditText txtNombreTitular;
     private ProgressBar progressBar_ac;
-    //private ImageButton btnCerrar;
+    private ImageButton btnCerrar;
     private clsUsuarioApp usuarioApp = new clsUsuarioApp();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agregar_cuenta);
-
-        // Activar flecha ir atrás
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_agregar_recibo);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -53,7 +50,7 @@ public class AgregarCuentaActivity extends AppCompatActivity {
         txtNombreTitular =(EditText) findViewById(R.id.txtNombreTitular_ac);
         btnValidarCta =(Button) findViewById(R.id.btnValidarCta_ac);
         progressBar_ac =(ProgressBar) findViewById(R.id.progressBar_ac);
-       // btnCerrar =(ImageButton) findViewById(R.id.btn_cerrar_ac);
+        btnCerrar =(ImageButton) findViewById(R.id.btn_cerrar_ac);
 
 
         URL_WCF = Util.getDireccionWCF();
@@ -87,15 +84,14 @@ public class AgregarCuentaActivity extends AppCompatActivity {
                 }
             }
         });
-
-   /*     btnCerrar.setOnClickListener(new View.OnClickListener() {
+        btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = getIntent();
                 setResult(Util.RESULTADO_CANCEL, intent);
                 finish();
             }
-        });*/
+        });
     }
 
 
@@ -186,7 +182,7 @@ public class AgregarCuentaActivity extends AppCompatActivity {
                 //Util.customSnackBar("Usuario valido.",txtNombreTitular,act_AgregarCuenta.this);
             }else{
                 progressBar_ac.setVisibility(View.INVISIBLE);
-                Util.customSnackBar("Usuario invalido.",txtNombreTitular,AgregarCuentaActivity.this);
+                Util.customSnackBar("Usuario invalido.",txtNombreTitular,AgregarReciboActivity.this);
             }
 
         }
@@ -261,3 +257,4 @@ public class AgregarCuentaActivity extends AppCompatActivity {
     }
 
 }
+

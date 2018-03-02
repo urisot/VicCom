@@ -25,7 +25,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
-import mx.com.viccom.viccom.Activities.AgregarCuentaActivity;
+import mx.com.viccom.viccom.Activities.AgregarReciboActivity;
 import mx.com.viccom.viccom.Activities.DetCuentaActivity;
 import mx.com.viccom.viccom.Adapters.RecibosRecyclerViewAdapter;
 import mx.com.viccom.viccom.Clases.clsParameter;
@@ -155,7 +155,7 @@ public class MisCuentasFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent intento = new Intent(getActivity(),AgregarCuentaActivity.class);
+                Intent intento = new Intent(getActivity(),AgregarReciboActivity.class);
                 intento.putExtra("USUARIOAPP",usuarioApp);
                 startActivityForResult(intento, Util.SOLICITUD_AGREGAR_RECIBOS);
             }

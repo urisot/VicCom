@@ -38,36 +38,28 @@
         <activity
             android:name=".Activities.DetCuentaActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MiTemaD" />
-        <activity
-            android:name=".Activities.AgregarCuentaActivity"
-            android:parentActivityName=".Activities.MenuActivity"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.MenuActivity" />
-        </activity>
+            android:theme="@style/Theme.MiTemaD"/>
         <activity
             android:name=".Activities.AgregarFormaPagoActivity"
-            android:parentActivityName=".Activities.MenuActivity"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.MenuActivity" />
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MiTemaD"/>
+        <activity
+            android:name=".Activities.AgregarReciboActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MiTemaD"/>
         <activity
             android:name=".Utilities.Picker"
-            android:theme="@style/Theme.MiTemaD">
-
-        </activity>
-
-        <activity android:name=".Activities.RegistroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MiTemaD"/>
+        <activity
+            android:name=".Activities.RegistroActivity"
             android:parentActivityName=".Activities.LoginActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.LoginActivity" />
         </activity>
+
     </application>
 
 </manifest>

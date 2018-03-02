@@ -1,9 +1,11 @@
 package mx.com.viccom.viccom.Activities;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import mx.com.viccom.viccom.Fragments.AgregarTarjetaFragment;
 import mx.com.viccom.viccom.Fragments.SelectMetodoPagoFragment;
 import mx.com.viccom.viccom.Interfaces.onPageChangedLisener;
 import mx.com.viccom.viccom.R;
+import mx.com.viccom.viccom.Utilities.Util;
 
 public class AgregarFormaPagoActivity extends AppCompatActivity  implements onPageChangedLisener {
     private clsMetodoPago o_MetodoPago = new clsMetodoPago();
@@ -30,13 +33,13 @@ public class AgregarFormaPagoActivity extends AppCompatActivity  implements onPa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_forma_pago);
         // Activar flecha ir atrás
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(R.id.vPagFormasPag);
-  /*      btnAtras = (ImageButton) findViewById(R.id.btnAtras_mp);
+        btnAtras = (ImageButton) findViewById(R.id.btnAtras_mp);
         btnAdelante = (ImageButton) findViewById(R.id.btnAdelante_mp);
         btnCerrar = (ImageButton) findViewById(R.id.btnCerrar_fp);
-        txtContadorPag = (TextView) findViewById(R.id.txtContadorPag_mp);*/
+        txtContadorPag = (TextView) findViewById(R.id.txtContadorPag_mp);
 
         //adr_metodoPagoViewPager = new adr_MetodoPagoViewPager(getSupportFragmentManager(),2,o_MetodoPago);
 
@@ -79,6 +82,15 @@ public class AgregarFormaPagoActivity extends AppCompatActivity  implements onPa
         });
 
         viewPager.setAdapter(metodoPagoViewPagerAdapter);
+
+        btnCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = getIntent();
+                setResult(Util.RESULTADO_CANCEL, intent);
+                finish();
+            }
+        });
     }
 
     @Override

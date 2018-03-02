@@ -50,46 +50,5 @@ public class MetodoPagoViewPagerAdapter extends FragmentStatePagerAdapter {
         Fragment cambioFragment(int position);
         void autoGuardado(clsMetodoPago data);
     }
-  /*  private clsMetodoPago o_MetodoPago = new clsMetodoPago();
-    private int intNumPaginas;
 
-    public adr_MetodoPagoViewPager(FragmentManager fragmentManager,int intNumPaginas,clsMetodoPago o_MetodoPago) {
-        super(fragmentManager);
-        this.intNumPaginas = intNumPaginas;
-        this.o_MetodoPago=o_MetodoPago;
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-        Fragment fragment = new Fragment();
-
-        switch (position){
-            case 0 :
-                fragment = new fnt_SelectMetPagoList();
-                return fragment;
-            case 1 :
-                switch (o_MetodoPago.getId()){
-                    case 0 :
-                        fragment = new fnt_AgregarTarjeta();
-                        return fragment;
-                    case 1 :
-                        fragment = new fnt_AgregarCuentaPayPal();
-                        return fragment;
-                    case 2 :
-                        fragment = new fnt_AgregarTarjeta();
-                        return fragment;
-
-                }
-                //fragment = new fnt_AgregarTarjeta();
-
-            default:
-                return null;
-        }
-
-    }
-
-    @Override
-    public int getCount() {
-        return intNumPaginas;
-    }*/
 }

@@ -22,13 +22,14 @@
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp">
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
                 <AutoCompleteTextView
                     android:id="@+id/txtEmail_log"
@@ -44,8 +45,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp">
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
                 <EditText
                     android:id="@+id/txtContrasena_log"
@@ -65,41 +66,42 @@
                 android:id="@+id/swRecuerdame_log"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:layout_marginRight="16dp"
                 android:layout_gravity="right"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="14dp"
                 android:text="Recuerdame"
-                android:textSize="16sp"
-                android:textColor="@android:color/holo_green_light" />
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
                 android:text="Iniciar Sesión"
                 android:textAllCaps="false"
                 android:textStyle="bold" />
+
             <ProgressBar
                 android:id="@+id/login_progress"
                 style="?android:attr/progressBarStyleLarge"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:visibility="gone"
-                />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-60dp"
+                android:visibility="invisible"
+                 />
 
 
             <CheckedTextView
                 android:id="@+id/linkOlvidoContraseña_log"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:text="¿Olvidó la contraseña?"
                 android:textColor="@color/colorAccent"
@@ -110,8 +112,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="56dp"
                 android:layout_marginBottom="24dp"
+                android:layout_marginTop="56dp"
                 android:text="Registrate"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />

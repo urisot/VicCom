@@ -1,7 +1,8 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="mx.com.viccom.viccom.Fragments.AgregarTarjetaFragment">
 
@@ -317,8 +318,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
-
-                android:text="Marcar como metodo de pago predeterminado"
+                android:text="Marcar como tarjeta predeterminada"
                 />
 
             <RelativeLayout
@@ -347,4 +347,11 @@
 
     </ScrollView >
 
-</FrameLayout>
+<!--    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </LinearLayout>-->
+
+</LinearLayout>
