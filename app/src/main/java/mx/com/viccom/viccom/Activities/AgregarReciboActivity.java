@@ -1,7 +1,11 @@
 package mx.com.viccom.viccom.Activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -34,6 +39,9 @@ public class AgregarReciboActivity extends AppCompatActivity {
     private ProgressBar progressBar_ac;
     private ImageButton btnCerrar;
     private clsUsuarioApp usuarioApp = new clsUsuarioApp();
+    private Button btnEscanear;
+
+    private Class<?> mClss;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +59,7 @@ public class AgregarReciboActivity extends AppCompatActivity {
         btnValidarCta =(Button) findViewById(R.id.btnValidarCta_ac);
         progressBar_ac =(ProgressBar) findViewById(R.id.progressBar_ac);
         btnCerrar =(ImageButton) findViewById(R.id.btn_cerrar_ac);
+        btnEscanear = (Button) findViewById(R.id.btnEscanear);
 
 
         URL_WCF = Util.getDireccionWCF();
@@ -58,32 +67,11 @@ public class AgregarReciboActivity extends AppCompatActivity {
         btnValidarCta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String strNumCta = txtNumCuenta.getText().toString();
-                String strNombreTitular =txtNombreTitular.getText().toString();
 
-                if (!TextUtils.isEmpty(strNumCta)) {
-                    if(!TextUtils.isEmpty(strNombreTitular)){
-
-                        progressBar_ac.setVisibility(View.VISIBLE);
-                        ArrayList<clsParameter> Parametros = new ArrayList<>();
-                        Parametros.add(new clsParameter("p1", strNumCta));
-                        Parametros.add(new clsParameter("p2", strNombreTitular));
-
-                        //ValidaCuentaHttp validaCuentaHttp = new ValidaCuentaHttp();
-                        //validaCuentaHttp.execute(Parametros);*/
-                        new ValidaCuentaHttp().execute(Parametros);
-
-                    }
-                    else{
-                        // customSnackBar("¡ERROR!: Espesifique el nombre del titular.",txtNombreTitular);
-                        txtNombreTitular.setError("¡ERROR!: Espesifique el nombre del titular.");
-                    }
-                }else{
-                    //customSnackBar("¡ERROR!: Espesifique el numero de cuenta.",txtNumCuenta);
-                    txtNumCuenta.setError("¡ERROR!: Espesifique el numero de cuenta.");
-                }
+                AgregarRecibo();
             }
         });
+
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,9 +80,96 @@ public class AgregarReciboActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnEscanear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchActivity(ScannerActivity.class);
+            }
+        });
+    }
+    private void AgregarRecibo(){
+        String strNumCta = txtNumCuenta.getText().toString();
+        String strNombreTitular =txtNombreTitular.getText().toString();
+
+        if (!TextUtils.isEmpty(strNumCta)) {
+            if(!TextUtils.isEmpty(strNombreTitular)){
+
+                progressBar_ac.setVisibility(View.VISIBLE);
+                ArrayList<clsParameter> Parametros = new ArrayList<>();
+                Parametros.add(new clsParameter("p1", strNumCta));
+                Parametros.add(new clsParameter("p2", strNombreTitular));
+
+                ValidaCuentaHttp validaCuentaHttp = new ValidaCuentaHttp();
+                validaCuentaHttp.execute(Parametros);
+
+                //new ValidaCuentaHttp().execute(Parametros);
+
+            }
+            else{
+                // customSnackBar("¡ERROR!: Espesifique el nombre del titular.",txtNombreTitular);
+                txtNombreTitular.setError("¡ERROR!: Espesifique el nombre del titular.");
+            }
+        }else{
+            //customSnackBar("¡ERROR!: Espesifique el numero de cuenta.",txtNumCuenta);
+            txtNumCuenta.setError("¡ERROR!: Espesifique el numero de cuenta.");
+        }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if(requestCode == Util.SOLICITUD_LEER_CODIGO){
+            if(resultCode == Util.RESULTADO_OK ){
+                String strCuenta = data.getStringExtra("CUENTA");
+
+                progressBar_ac.setVisibility(View.VISIBLE);
+                ArrayList<clsParameter> Parametros = new ArrayList<>();
+                Parametros.add(new clsParameter("p1", strCuenta));
+
+                GetDatosPadronHttp getDatosPadronHttp = new GetDatosPadronHttp();
+                getDatosPadronHttp.execute(Parametros);
+
+             /*   progressBar_ac.setVisibility(View.VISIBLE);
+                ArrayList<clsParameter> Parametros = new ArrayList<>();
+                Parametros.add(new clsParameter("p1", strNumCta));*/
+
+               // txtNumCuenta.setText(strCuenta);
+                //Id_TServicio = Catalogo.GetId("Cat_Servicios",Servicio,"id_Servicio");
+            }
+        }
+
+    }
+
+    public void launchActivity(Class<?> clss) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            mClss = clss;
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA}, Util.ZXING_CAMERA_PERMISSION);
+        } else {
+            Intent intent = new Intent(this, clss);
+            startActivityForResult(intent,Util.SOLICITUD_LEER_CODIGO);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,  String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case Util.ZXING_CAMERA_PERMISSION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if(mClss != null) {
+
+                        Intent intent = new Intent(this, mClss);
+                        startActivityForResult(intent,Util.SOLICITUD_LEER_CODIGO);
+                    }
+                } else {
+                    Toast.makeText(this, "Please grant camera permission to use the QR Scanner", Toast.LENGTH_SHORT).show();
+                }
+                return;
+        }
+    }
 
     public class ValidaCuentaHttp extends AsyncTask<ArrayList<clsParameter>,Void,clsCuentaValida> {
 
@@ -192,7 +267,8 @@ public class AgregarReciboActivity extends AppCompatActivity {
             super.onCancelled();
         }
     }
-    public class ActualizaHttp extends AsyncTask<ArrayList<clsParameter>,Integer,ArrayList<clsRecibos>>{
+
+    public class GetDatosPadronHttp extends AsyncTask<ArrayList<clsParameter>,Integer,ArrayList<clsRecibos>>{
         @Override
         protected ArrayList<clsRecibos> doInBackground(ArrayList<clsParameter>[] Parametros) {
             ArrayList<clsRecibos> listRecibosReturn = new ArrayList<clsRecibos>();
@@ -235,6 +311,14 @@ public class AgregarReciboActivity extends AppCompatActivity {
             super.onPostExecute(ListRecibos);
             progressBar_ac.setVisibility(View.INVISIBLE);
 
+            if (ListRecibos.size()>0){
+                txtNumCuenta.setText(ListRecibos.get(0).getId_cuenta()+"");
+                txtNombreTitular.setText(ListRecibos.get(0).getRazon_social().toString());
+
+              //  AgregarRecibo();
+
+            }
+
             // Adaptador.notifyDataSetChanged();
         }
 
@@ -255,6 +339,7 @@ public class AgregarReciboActivity extends AppCompatActivity {
             super.onCancelled();
         }
     }
+
 
 }
 

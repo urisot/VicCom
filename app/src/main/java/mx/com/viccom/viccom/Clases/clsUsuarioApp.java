@@ -216,6 +216,7 @@ public class clsUsuarioApp implements Parcelable {
         parcel.writeString(contrasena);
         parcel.writeString(mac_address);
         parcel.writeString(fecha_insert);
+        parcel.writeString(key);
     }
 }
 
