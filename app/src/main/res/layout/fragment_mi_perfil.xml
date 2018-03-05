@@ -31,11 +31,14 @@
             android:tag="control">
 
             <EditText
-                android:id="@+id/etMediorssIns"
+                android:id="@+id/txtEmail_mp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="E mail"
-                android:inputType="number" >
+                android:inputType="textEmailAddress"
+                android:hint="@string/prompt_email"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:enabled="false">
 
             </EditText>
 
@@ -52,11 +55,11 @@
             android:tag="control">
 
             <EditText
-                android:id="@+id/etMediorIns"
+                android:id="@+id/txtNombre_mp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre"
-                android:inputType="number" >
+                android:inputType="textPersonName" >
 
             </EditText>
 
@@ -75,17 +78,19 @@
             android:background="#efefef"/>
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnActualizar_mp"
             android:layout_below="@+id/seprador1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:text="Actualizar" />
+            android:text="Actualizar"
+            android:visibility="gone"/>
+
         <Button
-            android:id="@+id/button3d"
-            android:layout_below="@+id/button3"
+            android:id="@+id/btnCambiarCon_mp"
+            android:layout_below="@+id/btnActualizar_mp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

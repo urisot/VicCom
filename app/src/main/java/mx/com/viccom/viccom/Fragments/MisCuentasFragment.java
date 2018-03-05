@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import mx.com.viccom.viccom.Activities.AgregarReciboActivity;
 import mx.com.viccom.viccom.Activities.DetCuentaActivity;
 import mx.com.viccom.viccom.Adapters.RecibosRecyclerViewAdapter;
+import mx.com.viccom.viccom.Clases.clsCuentaValida;
 import mx.com.viccom.viccom.Clases.clsParameter;
 import mx.com.viccom.viccom.Clases.clsRecibos;
 import mx.com.viccom.viccom.Clases.clsResultadoWCF;
@@ -46,6 +47,7 @@ public class MisCuentasFragment extends Fragment {
     private SwipeRefreshLayout refreshLayout;
     private RecyclerView mRecyclerView;
     private ActualizaHttp actualizaHttp;
+    private EliminaCuenta eliminaCuenta;
 
 
     //Contenedor de datos
@@ -91,6 +93,7 @@ public class MisCuentasFragment extends Fragment {
 
             @Override
             public void onLongItemClick(clsRecibos recibo, int position) {
+                final clsRecibos o_recibo = recibo;
 
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext(),R.style.AppCompatAlertDialogStyle);
                 alertDialog.setMessage("¿Deseas eliminar el recibo con la cuenta ["+recibo.getId_cuenta()+"] "+recibo.getRazon_social()+"?");
@@ -105,6 +108,15 @@ public class MisCuentasFragment extends Fragment {
                 alertDialog.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
+
+                        ArrayList<clsParameter> listParametros = new ArrayList<clsParameter>();
+                        //liasParametros.add(new clsParameter("pass", "BA587B93B5E6A993F5A3D"));
+                        listParametros.add(new clsParameter("pass", usuarioApp.getKey().toString()));
+                        listParametros.add(new clsParameter("cIdUsuarioApp", usuarioApp.getId_usuarioapp().toString()));
+                        listParametros.add(new clsParameter("nIdCueta", o_recibo.getId_cuenta()+""));
+
+                        eliminaCuenta = new EliminaCuenta();
+                        eliminaCuenta.execute(listParametros);
 
                     }
                 });
@@ -183,6 +195,51 @@ public class MisCuentasFragment extends Fragment {
         actualizaHttp = new ActualizaHttp();
         actualizaHttp.execute(Parametros);
 
+    }
+
+    public class EliminaCuenta extends AsyncTask<ArrayList<clsParameter>,Integer,clsResultadoWCF> {
+
+        @Override
+        protected clsResultadoWCF doInBackground(ArrayList<clsParameter>[] Parametros) {
+            clsResultadoWCF resultadoWCF = new clsResultadoWCF();
+            try {
+                String Url ="http://201.144.165.83/apicomapa/ComapaVic_OS.svc/InsCuentasUsrApp";
+
+                String Resultado = SendToWCF.Send_Post(Url, Parametros[0]);
+
+                if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErroJSON")) {
+
+                    Gson gson = new GsonBuilder().serializeNulls().create();
+                    Resultado =Resultado.substring(26,Resultado.length()-1);
+                    resultadoWCF = gson.fromJson(Resultado, clsResultadoWCF.class);
+
+
+                } else {
+                         /*   publishProgress(new clsParameter("Error", Resultado));
+                            ListId_OtNoSubidos.add(RegistroOrden.getId_orden());
+                            //IdsNoSubidos.add(drLecturas.get(i).getId_padron());*/
+                }
+
+            }catch (Exception e) {//4
+                e.printStackTrace();
+
+
+
+            }//4
+
+            return resultadoWCF;
+        }
+
+        @Override
+        protected void onPostExecute(clsResultadoWCF clsResultadoWCF) {
+            super.onPostExecute(clsResultadoWCF);
+            if(clsResultadoWCF.getError_number()>0){
+               Util.customSnackBar(clsResultadoWCF.getError_menssage(),fabAgregarCuentas,getContext());
+            }else {
+                ActualizarDatos();
+            }
+
+        }
     }
 
     public class ActualizaHttp extends AsyncTask<ArrayList<clsParameter>,Integer,ArrayList<clsRecibos>> {

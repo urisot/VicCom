@@ -151,7 +151,7 @@ public class RegistroActivity extends AppCompatActivity {
             clsResultadoWCF oResultadoWCF = new clsResultadoWCF();
             final clsUsuarioApp usuarioApp = oUsuarioApps[0];
             try {
-   /*             String Url ="http://201.144.165.83/apicomapa/ComapaVic_OS.svc/EnvCodEmail";
+                String Url ="http://201.144.165.83/apicomapa/ComapaVic_OS.svc/EnvCodEmail";
 
                 ArrayList<clsParameter> Parametros = new ArrayList<clsParameter>();
                 Parametros.add(new clsParameter("cEmailAEnviar", usuarioApp.getMail()));
@@ -180,7 +180,7 @@ public class RegistroActivity extends AppCompatActivity {
                     oResultadoWCF.setFolio_registro("");
                     oResultadoWCF.setError_menssage("Error de Conexion.");
 
-                }*/
+                }
 
                 oResultadoWCF.setOperacion("Eenviado con exito");
                 oResultadoWCF.setComando("Email");

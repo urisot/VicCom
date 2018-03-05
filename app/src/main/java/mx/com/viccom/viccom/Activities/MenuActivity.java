@@ -2,11 +2,14 @@ package mx.com.viccom.viccom.Activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.HandlerThread;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,12 +21,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
+
+import mx.com.viccom.viccom.Clases.clsParameter;
+import mx.com.viccom.viccom.Clases.clsResultadoWCF;
 import mx.com.viccom.viccom.Clases.clsUsuarioApp;
 import mx.com.viccom.viccom.Fragments.ConfiguracionFragment;
 import mx.com.viccom.viccom.Fragments.MiPerfilFragment;
 import mx.com.viccom.viccom.Fragments.MisCuentasFragment;
 import mx.com.viccom.viccom.Fragments.MisFormasPagoFragment;
+import mx.com.viccom.viccom.Interfaces.backProces;
 import mx.com.viccom.viccom.R;
+import mx.com.viccom.viccom.Utilities.SendToWCF;
+import mx.com.viccom.viccom.Utilities.Util;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -190,4 +203,123 @@ public class MenuActivity extends AppCompatActivity
         }
         return true;
     }
+
+ /*   @Override
+    public void onActualizaUsrApp(clsUsuarioApp o_usuario) {
+
+    }
+
+    @Override
+    public void onActualizaNombreUsrApp(String nombre) {
+        final clsUsuarioApp o_usuarioNew = usuarioApp;
+        o_usuarioNew.setNombre(nombre);
+
+        new ActualizaUsrAppHttp().execute(o_usuarioNew);
+
+    }
+
+    public class ActualizaUsrAppHttp extends AsyncTask<clsUsuarioApp,Integer,clsResultadoWCF> {
+        clsUsuarioApp o_usuarioNew = new clsUsuarioApp();
+        @Override
+        protected clsResultadoWCF doInBackground(clsUsuarioApp... oUsuarioApps) {
+            o_usuarioNew = oUsuarioApps[0];
+            clsResultadoWCF oResultadoWCF = new clsResultadoWCF();
+            final clsUsuarioApp usuarioApp = oUsuarioApps[0];
+            //clsParameter HttpResult = new clsParameter();
+            try {
+                String Url ="http://201.144.165.83/apicomapa/ComapaVic_OS.svc/InsUsrApp";
+
+                ArrayList<clsParameter> Parametros = new ArrayList<clsParameter>();
+                Parametros.add(new clsParameter("cNombre", usuarioApp.getNombre()));
+                Parametros.add(new clsParameter("cMail", usuarioApp.getMail()));
+                Parametros.add(new clsParameter("cCelular", usuarioApp.getCelular()));
+                Parametros.add(new clsParameter("cContrasena", usuarioApp.getContrasena()));
+                Parametros.add(new clsParameter("cMacAdres", usuarioApp.getMac_address()));
+
+
+                String Resultado = SendToWCF.Send_Post(Url, Parametros);
+
+                //Pudo establecer conexion
+                if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErroJSON")) {
+
+                    Gson gson = new GsonBuilder().create();
+                    Resultado = Resultado.replace("\\/","/").replace("\n","");
+                    Resultado = Resultado.substring(19,Resultado.length()-1);
+                    oResultadoWCF = gson.fromJson(Resultado, clsResultadoWCF.class);
+
+                    //Inserto correctamente el usuario y obtobo el folio consecutivo de registro
+                    if (oResultadoWCF.getFolio_registro().toString().length()>0){
+
+                    }else{
+                        oResultadoWCF.setOperacion("Registrando Usuario");
+                        oResultadoWCF.setComando("Registro");
+                        oResultadoWCF.setError_number(1);
+                        oResultadoWCF.setFecha(Util.getFechaActual());
+                        oResultadoWCF.setFolio_registro("");
+                        oResultadoWCF.setError_menssage("No pudo obtener elfolio consecutivo.");
+                    }
+
+
+                } else {
+
+                    oResultadoWCF.setOperacion("Establecioendo conexion");
+                    oResultadoWCF.setComando("Conexion");
+                    oResultadoWCF.setError_number(1);
+                    oResultadoWCF.setFecha(Util.getFechaActual());
+                    oResultadoWCF.setFolio_registro("");
+                    oResultadoWCF.setError_menssage("Error de Conexion.");
+
+                }
+
+            }catch (Exception e) {
+                e.printStackTrace();
+                Log.e("Error", e.toString());
+                //HttpResult.setParameter_name("Error");
+                //HttpResult.setParameter_value("Error!: "+e.toString());
+                oResultadoWCF.setOperacion("Establecioendo conexion");
+                oResultadoWCF.setComando("Error");
+                oResultadoWCF.setError_number(1);
+                oResultadoWCF.setFecha(Util.getFechaActual());
+                oResultadoWCF.setFolio_registro("");
+                oResultadoWCF.setError_menssage("Error en el Servicio. "+e.toString());
+
+                return oResultadoWCF;
+            }
+            return oResultadoWCF;
+        }
+
+        @Override
+        protected void onPostExecute(clsResultadoWCF oResultadoWCF) {
+            super.onPostExecute(oResultadoWCF);
+            if (oResultadoWCF.getFolio_registro().toString().length()>0){
+
+              *//*  final clsUsuarioApp  oUsuarioApp = new clsUsuarioApp(
+                        oResultadoWCF.getFolio_registro().toString()
+                        ,txtNombre.getText().toString()
+                        ,txtEmail.getText().toString()
+                        ,""
+                        ,""
+                        ,""
+                        ,oResultadoWCF.getFecha()
+                        ,"" );*//*
+
+                clsUsuarioApp.upgradeUsuarioApp(o_usuarioNew);
+
+                txtNombre_mnu.setText(o_usuarioNew.getNombre().toString());
+
+                //Util.customSnackBar("Registro exitoso",btnRegistrar,RegistroActivity.this);
+                try {
+                    HandlerThread.sleep(3000);
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+
+               // IrALogIn();
+            }else {
+                //Util.customSnackBar(oResultadoWCF.getError_menssage(),btnRegistrar,RegistroActivity.this);
+            }
+
+        }
+    }*/
+
 }

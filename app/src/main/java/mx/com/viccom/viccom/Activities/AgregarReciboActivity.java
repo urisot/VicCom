@@ -193,15 +193,15 @@ public class AgregarReciboActivity extends AppCompatActivity {
                     if (cuentaValida.isUsrValido()){
                         Url ="http://201.144.165.83/apicomapa/ComapaVic_OS.svc/InsCuentasUsrApp";
 
-                        ArrayList<clsParameter> liasParametros = new ArrayList<clsParameter>();
+                        ArrayList<clsParameter> listParametros = new ArrayList<clsParameter>();
                         //liasParametros.add(new clsParameter("pass", "BA587B93B5E6A993F5A3D"));
-                        liasParametros.add(new clsParameter("pass", usuarioApp.getKey().toString()));
-                        liasParametros.add(new clsParameter("cIdUsuarioApp", usuarioApp.getId_usuarioapp().toString()));
-                        liasParametros.add(new clsParameter("nIdCueta", txtNumCuenta.getText().toString()));
+                        listParametros.add(new clsParameter("pass", usuarioApp.getKey().toString()));
+                        listParametros.add(new clsParameter("cIdUsuarioApp", usuarioApp.getId_usuarioapp().toString()));
+                        listParametros.add(new clsParameter("nIdCueta", txtNumCuenta.getText().toString()));
 
 
 
-                        String Resultado = SendToWCF.Send_Post(Url, liasParametros);
+                        String Resultado = SendToWCF.Send_Post(Url, listParametros);
 
                         if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErroJSON")) {
 
