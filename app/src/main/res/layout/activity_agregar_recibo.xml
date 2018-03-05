@@ -50,7 +50,7 @@
                 android:layout_below="@+id/rl_tituloy"
                 android:layout_marginTop="15dp"
                 android:gravity="center"
-                android:text="Agregar una cuenta"
+                android:text="Agregar un recibo"
                 android:textColor="@color/colorPrimary"
                 android:textSize="24sp" />
 
@@ -79,6 +79,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:background="@android:color/darker_gray" />
+
             <ImageView
                 android:id="@+id/imgMuestra"
                 android:layout_width="100dp"
