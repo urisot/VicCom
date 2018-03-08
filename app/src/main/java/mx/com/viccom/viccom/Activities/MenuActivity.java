@@ -55,6 +55,7 @@ public class MenuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             strMail = bundle.getString("EMAIL");
@@ -111,6 +112,7 @@ public class MenuActivity extends AppCompatActivity
                 .commit();
         item.setChecked(true);
         getSupportActionBar().setTitle(item.getTitle());
+        //getSupportActionBar().setTitle("");
     }
 
 
