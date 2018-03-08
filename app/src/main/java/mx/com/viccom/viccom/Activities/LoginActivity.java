@@ -39,6 +39,8 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -185,7 +187,14 @@ public class LoginActivity extends AppCompatActivity  {
                 String Resultado = SendToWCF.Send_Post(Url, Parametros);
 
                 //Pudo establecer conexion
-                if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErroJSON")) {
+                if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErrorJSON")) {
+/*
+
+                    JSONObject jsonObject = new JSONObject(Resultado);
+                    JSONObject jsonObject2 = jsonObject.getJSONObject("ValidaUsrAppResult");
+
+*/
+
 
                     Gson gson = new GsonBuilder().create();
                     Resultado = Resultado.replace("\\/","/").replace("\n","");

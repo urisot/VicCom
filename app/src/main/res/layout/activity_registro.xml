@@ -16,6 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
             android:orientation="vertical" >
             <TextView
                 android:id="@+id/textViewsdffg2"
@@ -35,16 +37,17 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/tilEmaidflReg"
                 android:layout_below="@+id/textViewsdffg2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
+
                 android:layout_centerHorizontal="true"
                 android:tag="control"
                 android:layout_gravity="center">
                 <EditText
                     android:id="@+id/txt_Nombre_reg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nombre completo"
                     android:ems="10"
@@ -56,16 +59,17 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/tilEmailReg"
                 android:layout_below="@+id/tilEmaidflReg"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_centerHorizontal="true"
                 android:tag="control"
                 android:layout_gravity="center">
                 <EditText
                     android:id="@+id/txt_email_reg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email"
                     android:ems="10"
@@ -77,17 +81,18 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/tilEmfdgfdgail"
                 android:layout_below="@+id/tilEmailReg"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_centerHorizontal="true"
                 android:visibility="gone"
                 android:tag="control"
                 android:layout_gravity="center">
                 <EditText
                     android:id="@+id/txtCelular_reg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Celular"
                     android:ems="10"
@@ -107,16 +112,17 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/tifdgfdgdlEmail"
                 android:layout_below="@+id/tilEmfdgfdgail"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_centerHorizontal="true"
                 android:tag="control"
                 android:layout_gravity="center">
                 <EditText
                     android:id="@+id/txtContrasena_reg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Contraseña"
                     android:ems="10"
@@ -128,21 +134,19 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/tildfgfdgjEmail"
                 android:layout_below="@+id/tifdgfdgdlEmail"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_centerHorizontal="true"
                 android:visibility="gone"
                 android:tag="control"
                 android:layout_gravity="center">
                 <EditText
                     android:id="@+id/txtConfirmContrasena_reg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/editText3"
-                    android:layout_alignStart="@+id/editText3"
-                    android:layout_below="@+id/editText3"
                     android:layout_marginTop="16dp"
                     android:hint="Confirmar contraseña"
                     android:ems="10"
@@ -152,29 +156,26 @@
 
             <Button
                 android:id="@+id/btnRegistrar"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="200dp"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tildfgfdgjEmail"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
                 android:text="Aceptar"
                 android:textAllCaps="false"
-                android:textColor="@color/icons"
-                android:textSize="16sp" />
+                android:textStyle="bold"
+                 />
 
             <View
                 android:id="@+id/separador1"
                 android:layout_below="@+id/btnRegistrar"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginLeft="24dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:background="@android:color/darker_gray" />
 
 
@@ -183,8 +184,8 @@
                 android:id="@+id/txtMesajeEnvio_reg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="32dp"
-                android:layout_marginLeft="32dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="Se envió el codigo de activacion a su correo, por favor ingreselo a continuación:"
@@ -192,59 +193,70 @@
                 android:layout_gravity="center"
                 android:visibility="gone"
                 />
-            <LinearLayout
+        <!--    <LinearLayout
                 android:id="@+id/llCodigoVer"
                 android:layout_below="@+id/txtMesajeEnvio_reg"
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginBottom="16dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center">
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/tilEmfdgfddfgail"
-                    android:layout_below="@+id/textViewsdsdsffg2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:tag="control"
-                    android:layout_gravity="center">
 
-                    <EditText
-                        android:id="@+id/txtCodigo_reg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:hint="Codigo"
-                        android:inputType="phone"
-                        android:maxLength="6"
-                        android:textAlignment="center"
-                        android:visibility="gone"/>
-                </android.support.design.widget.TextInputLayout>
-                <ProgressBar
-                    android:id="@+id/pbProgresoRegistro"
-                    android:layout_width="wrap_content"
-                    android:layout_gravity="center"
+
+            </LinearLayout>-->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilEmfdgfddfgail"
+                android:layout_below="@+id/textViewsdsdsffg2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:tag="control"
+                android:layout_gravity="center">
+
+                <EditText
+                    android:id="@+id/txtCodigo_reg"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"/>
-            </LinearLayout>
+                    android:ems="10"
+                    android:hint="Codigo de activación"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:textAlignment="center"
+                    android:visibility="gone"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+         <!--   <ProgressBar
+                android:id="@+id/pbProgresoRegistro"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-60dp"
+                android:visibility="invisible"
+
+                />-->
+
             <Button
                 android:id="@+id/btnEnviarNvo_reg"
+                style="?android:textAppearanceSmall"
                 android:layout_below="@+id/tildfgfdgjEmail"
                 android:layout_centerHorizontal="true"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
                 android:layout_gravity="center"
                 android:layout_marginBottom="24dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:text="Enviar de nuevo"
                 android:textAllCaps="false"
-                android:textColor="@color/icons"
-                android:textSize="16sp"
-                android:visibility="gone"/>
+                android:textStyle="bold"
+                android:visibility="gone"
+               />
 
 
       <!--      <com.facebook.login.widget.LoginButton
@@ -281,4 +293,15 @@
 
 
     </ScrollView >
+
+    <ProgressBar
+        android:id="@+id/pbProgresoRegistro"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="-60dp"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        />
 </RelativeLayout>

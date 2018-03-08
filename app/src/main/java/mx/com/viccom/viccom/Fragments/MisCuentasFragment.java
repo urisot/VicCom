@@ -203,27 +203,37 @@ public class MisCuentasFragment extends Fragment {
         protected clsResultadoWCF doInBackground(ArrayList<clsParameter>[] Parametros) {
             clsResultadoWCF resultadoWCF = new clsResultadoWCF();
             try {
-                String Url ="http://201.144.165.83/apicomapa/ComapaVic_OS.svc/InsCuentasUsrApp";
+                String Url ="http://201.144.165.83/apicomapa/ComapaVic_OS.svc/DelCuentasUsrApp";
 
                 String Resultado = SendToWCF.Send_Post(Url, Parametros[0]);
 
-                if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErroJSON")) {
+                if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErrorJSON")) {
 
                     Gson gson = new GsonBuilder().serializeNulls().create();
-                    Resultado =Resultado.substring(26,Resultado.length()-1);
+                    Resultado = Resultado.replace("\\/","/").replace("\n","");
+                    Resultado = Resultado.substring(26,Resultado.length()-1);
                     resultadoWCF = gson.fromJson(Resultado, clsResultadoWCF.class);
 
-
                 } else {
-                         /*   publishProgress(new clsParameter("Error", Resultado));
-                            ListId_OtNoSubidos.add(RegistroOrden.getId_orden());
-                            //IdsNoSubidos.add(drLecturas.get(i).getId_padron());*/
+
+                    resultadoWCF.setOperacion("Establecioendo conexion WCF");
+                    resultadoWCF.setComando("Conexion");
+                    resultadoWCF.setError_number(1);
+                    resultadoWCF.setFecha(Util.getFechaActual());
+                    resultadoWCF.setFolio_registro("");
+                    resultadoWCF.setError_menssage("Error de Conexion.");
+
                 }
 
             }catch (Exception e) {//4
                 e.printStackTrace();
 
-
+                resultadoWCF.setOperacion("Establecioendo conexion");
+                resultadoWCF.setComando("Conexion");
+                resultadoWCF.setError_number(1);
+                resultadoWCF.setFecha(Util.getFechaActual());
+                resultadoWCF.setFolio_registro("");
+                resultadoWCF.setError_menssage(e.getMessage());
 
             }//4
 

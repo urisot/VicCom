@@ -46,8 +46,10 @@ public class RegistroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+
         // Activar flecha ir atrás
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Registrate");
 
         txtNombre = (EditText) findViewById(R.id.txt_Nombre_reg);
         txtEmail = (EditText) findViewById(R.id.txt_email_reg);
@@ -81,7 +83,7 @@ public class RegistroActivity extends AppCompatActivity {
                     String strCodigo = Util.getCodigoRegistro();
                     String strTxtCod = txtCodigoReg.getText().toString();
                     if (strTxtCod.equals(strCodigo)){
-                        pbValidando.setVisibility(View.VISIBLE);
+
 
                         String strMacAddress = Util.getMacAddress(RegistroActivity.this);
                         String strContrasena = StringMD.getStringMessageDigest(txtEmail.getText().toString() + txtContrasena.getText().toString(), StringMD.SHA1).toUpperCase();
@@ -131,7 +133,7 @@ public class RegistroActivity extends AppCompatActivity {
             Util.setCodigoRegistro(strCodigo);
         }
 
-        txtMensje.setText(strCodigo);
+        //txtMensje.setText(strCodigo);
 
         clsUsuarioApp usuarioApp = new clsUsuarioApp(""
                 ,txtNombre.getText().toString()
@@ -145,6 +147,12 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     public class EnviarCodigoRegistroEmailHttp extends AsyncTask<clsUsuarioApp,Integer,clsResultadoWCF> {
+
+        @Override
+        protected void onPreExecute() {
+            pbValidando.setVisibility(View.VISIBLE);
+            super.onPreExecute();
+        }
 
         @Override
         protected clsResultadoWCF doInBackground(clsUsuarioApp... oUsuarioApps) {
@@ -182,12 +190,7 @@ public class RegistroActivity extends AppCompatActivity {
 
                 }
 
-                oResultadoWCF.setOperacion("Eenviado con exito");
-                oResultadoWCF.setComando("Email");
-                oResultadoWCF.setError_number(0);
-                oResultadoWCF.setFecha(Util.getFechaActual());
-                oResultadoWCF.setFolio_registro("");
-                oResultadoWCF.setError_menssage("Error de Conexion.");
+
 
             }catch (Exception e) {
                 e.printStackTrace();
@@ -204,75 +207,36 @@ public class RegistroActivity extends AppCompatActivity {
 
         }
 
+
         @Override
         protected void onPostExecute(clsResultadoWCF oResultadoWCF) {
             super.onPostExecute(oResultadoWCF);
             if (oResultadoWCF.getError_number() == 0){
                 btnRegistrar.setVisibility(View.GONE);
+                txtNombre.setEnabled(false);
+                txtEmail.setEnabled(false);
+                txtContrasena.setEnabled(false);
                 txtCodigoReg.setVisibility(View.VISIBLE);
                 txtMensje.setVisibility(View.VISIBLE);
-
-              /*  AlertDialog.Builder alertDialog = new AlertDialog.Builder(RegistroActivity.this,R.style.AppCompatAlertDialogStyle);
-                alertDialog.setMessage("Se ha enviado el codigo de activación a su correo, introduscalo a continuación");
-                alertDialog.setTitle("Introdice el codigo");
-                txtImpCodigo = new EditText(RegistroActivity.this);
-                txtImpCodigo.setInputType(InputType.TYPE_CLASS_NUMBER);// | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-                //txtImpCodigo.setText(Util.getCodigoAleatorio());
-                //txtImpCodigo.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                //txtImpCodigo.setPadding(8,0,8,0);
-                alertDialog.setView(txtImpCodigo);
-                alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
-                alertDialog.setCancelable(false);
-                alertDialog.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        String strCodigoegistro = Util.getCodigoRegistro();
-
-                        if (txtImpCodigo.getText().toString().equals(strCodigoegistro)){
-                           // Util.customSnackBar("el codigo es igual",btnRegistrar,RegistroActivity.this);
-
-                            String strMacAddress = Util.getMacAddress(RegistroActivity.this);
-                            String strContrasena = StringMD.getStringMessageDigest(txtEmail.getText().toString() + txtContrasena.getText().toString(), StringMD.SHA1).toUpperCase();
-
-                            clsUsuarioApp oUsuarioApp = new clsUsuarioApp(""
-                                    ,txtNombre.getText().toString()
-                                    ,txtEmail.getText().toString()
-                                    ,""
-                                    ,strContrasena
-                                    ,strMacAddress
-                                    ,""
-                                    ,"" );
-                            new AgregarUsrAppHttp().execute(oUsuarioApp);
-                        }else{
-
-                            Util.customSnackBar("El Codigo de Activacion es incorrecto, ¿deseas enviar un nuevo codigo?"
-                                    , btnRegistrar
-                                    , RegistroActivity.this
-                                    , new onClickLisener() {
-
-                                @Override
-                                public void onClick() {
-                                    EnviarCorreoRegistro();
-                                }
-                            });
-                        }
-
-                    }
-                });
-                alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                alertDialog.show();*/
+                btnReenviarCodigo.setVisibility(View.VISIBLE);
+                txtCodigoReg.requestFocus();
 
 
             }else{
                 Util.customSnackBar(oResultadoWCF.getError_menssage(),btnRegistrar,RegistroActivity.this);
+
             }
+            pbValidando.setVisibility(View.INVISIBLE);
         }
     }
 
     public class AgregarUsrAppHttp extends AsyncTask<clsUsuarioApp,Integer,clsResultadoWCF> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pbValidando.setVisibility(View.VISIBLE);
+        }
 
         @Override
         protected clsResultadoWCF doInBackground(clsUsuarioApp... oUsuarioApps) {
@@ -364,12 +328,12 @@ public class RegistroActivity extends AppCompatActivity {
                 } catch (Exception e){
                     e.printStackTrace();
                 }
-
                 IrALogIn();
             }else {
                 Util.customSnackBar(oResultadoWCF.getError_menssage(),btnRegistrar,RegistroActivity.this);
-            }
 
+            }
+            pbValidando.setVisibility(View.INVISIBLE);
         }
     }
 

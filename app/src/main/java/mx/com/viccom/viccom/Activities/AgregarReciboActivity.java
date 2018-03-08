@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import mx.com.viccom.viccom.Clases.clsCuentaValida;
 import mx.com.viccom.viccom.Clases.clsParameter;
 import mx.com.viccom.viccom.Clases.clsRecibos;
+import mx.com.viccom.viccom.Clases.clsResultadoWCF;
 import mx.com.viccom.viccom.Clases.clsUsuarioApp;
 import mx.com.viccom.viccom.R;
 import mx.com.viccom.viccom.Utilities.SendToWCF;
@@ -172,6 +173,7 @@ public class AgregarReciboActivity extends AppCompatActivity {
     }
 
     public class ValidaCuentaHttp extends AsyncTask<ArrayList<clsParameter>,Void,clsCuentaValida> {
+        clsResultadoWCF resultadoWCF = new clsResultadoWCF();
 
         @Override
         protected clsCuentaValida doInBackground(ArrayList<clsParameter>[] Parametros) {
@@ -203,20 +205,22 @@ public class AgregarReciboActivity extends AppCompatActivity {
 
                         String Resultado = SendToWCF.Send_Post(Url, listParametros);
 
-                        if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErroJSON")) {
+                        if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErrorJSON")) {
 
-                       /*     if (Resultado.contains("EXITO")) {
-                                publishProgress(new clsParameter("Success", Resultado));
-                                ListId_OtSubidos.add(RegistroOrden.getId_orden());
-                            } else {
-                                publishProgress(new clsParameter("Error", Resultado));
-                                ListId_OtNoSubidos.add(RegistroOrden.getId_orden());
-                            }*/
+                            Gson gson2 = new GsonBuilder().serializeNulls().create();
+                            Resultado = Resultado.replace("\\/","/").replace("\n","");
+                            Resultado = Resultado.substring(26,Resultado.length()-1);
+                            resultadoWCF = gson2.fromJson(Resultado, clsResultadoWCF.class);
+
 
                         } else {
-                         /*   publishProgress(new clsParameter("Error", Resultado));
-                            ListId_OtNoSubidos.add(RegistroOrden.getId_orden());
-                            //IdsNoSubidos.add(drLecturas.get(i).getId_padron());*/
+                            resultadoWCF.setOperacion("Establecioendo conexion WCF");
+                            resultadoWCF.setComando("Conexion");
+                            resultadoWCF.setError_number(1);
+                            resultadoWCF.setFecha(Util.getFechaActual());
+                            resultadoWCF.setFolio_registro("");
+                            resultadoWCF.setError_menssage("Error de Conexion.");
+
                         }
 
                     }else{
@@ -241,18 +245,20 @@ public class AgregarReciboActivity extends AppCompatActivity {
             return cuentaValida;
         }
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
 
         @Override
         protected void onPostExecute(clsCuentaValida clsCuentaValida) {
             super.onPostExecute(clsCuentaValida);
             if (clsCuentaValida.isUsrValido()){
-                Intent intent = getIntent();
-                setResult(Util.RESULTADO_OK, intent);
-                finish();//finishing activity
+
+                if (!(resultadoWCF.getError_number()>0)){
+                    Intent intent = getIntent();
+                    setResult(Util.RESULTADO_OK, intent);
+                    finish();//finishing activity
+                }else{
+                    Util.customSnackBar(resultadoWCF.getError_menssage(),txtNombreTitular,AgregarReciboActivity.this);
+                }
+
 
                 //Util.customSnackBar("Usuario valido.",txtNombreTitular,act_AgregarCuenta.this);
             }else{

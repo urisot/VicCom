@@ -54,6 +54,7 @@ public class MenuActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             strMail = bundle.getString("EMAIL");
