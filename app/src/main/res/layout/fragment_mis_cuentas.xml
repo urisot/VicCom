@@ -5,59 +5,61 @@
     android:layout_height="match_parent"
     tools:context="mx.com.viccom.viccom.Fragments.MisCuentasFragment">
 
-    <RelativeLayout
+    <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Mis recibos"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swipeRefresh"
+        <LinearLayout
+            android:id="@+id/l1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/textView2"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recMisRecibos"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_heightPercent="60%"
+            app:layout_widthPercent="100%">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Mis recibos"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipeRefresh"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="3dp"
-                android:scrollbars="vertical" />
-
-        </android.support.v4.widget.SwipeRefreshLayout>
-        <!--    <ListView
-                android:id="@+id/listMisRecibos"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_below="@+id/textView2"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp">
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true">
 
-            </ListView>-->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recMisRecibos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="3dp"
+                    android:scrollbars="vertical" />
 
-    </RelativeLayout>
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/l2"
+            android:layout_below="@+id/l1"
+            app:layout_heightPercent="40%"
+            app:layout_widthPercent="100%"
+            android:orientation="vertical"
+            android:background="@drawable/ic_ciudadvivalogo">
+
+
+        </LinearLayout>
+
+    </android.support.percent.PercentRelativeLayout>
 
 
 

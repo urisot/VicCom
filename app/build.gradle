@@ -39,4 +39,5 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
     compile 'me.dm7.barcodescanner:zxing:1.9.8'
     compile 'io.card:android-sdk:5.5.0'
+    compile 'com.android.support:percent:26.1.0'
 }
