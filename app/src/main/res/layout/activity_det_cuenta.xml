@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:background="@drawable/boton_pagar"
+            android:background="@drawable/boton_celeste"
             android:text="Pagar"
             android:textAllCaps="false"
             android:textColor="@color/icons" />

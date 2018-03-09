@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">VicCom</string>
+    <string name="comapa_derechos_res">Comapa Victoria © 2018 | Aviso de Privacidad</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

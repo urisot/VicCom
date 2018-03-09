@@ -14,6 +14,8 @@
     <color name="black_overlay">#660000</color>
     <color name="importe">#FF0000</color>
     <color name="actionbar_opacity">#33000000</color>
+    <color name="login_backgrond">#0056B9</color>
+    <color name="transparent">#00000000</color>
 
     <color name="s1">#A7FFEB</color>
     <color name="s2">#64FFDA</color>

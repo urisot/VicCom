@@ -1,30 +1,43 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/login_backgrond"
+    tools:context="mx.com.viccom.viccom.Activities.LoginActivity">
+<!--    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="mx.com.viccom.viccom.Activities.LoginActivity">
-
-    <!-- Login progress -->
+    android:paddingTop="@dimen/activity_vertical_margin"-->
 
 
-    <ScrollView
+
+
+
+
+<!--    <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent">-->
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:layout_alignParentRight="true"
+            />
 
         <LinearLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
+                android:paddingTop="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -34,6 +47,9 @@
                     android:id="@+id/txtEmail_log"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/cuadros_texto"
+                    android:layout_marginTop="12dp"
+                    android:padding="8dp"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
@@ -44,6 +60,7 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="12dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp">
 
@@ -51,6 +68,9 @@
                     android:id="@+id/txtContrasena_log"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/cuadros_texto"
+                    android:layout_marginTop="12dp"
+                    android:padding="8dp"
                     android:hint="Contraseña"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
@@ -60,30 +80,51 @@
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
-
-            <Switch
-                android:id="@+id/swRecuerdame_log"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="left"
+                android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="14dp"
-                android:text="Recuerdame"
-                android:textColor="@android:color/holo_green_light"
-                android:textSize="16sp" />
+                android:layout_marginTop="14dp">
+
+                <Switch
+                    android:id="@+id/swRecuerdame_log"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tooltipText="prueba de tool tip text" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:checked="false"
+                    android:layout_toRightOf="@+id/swRecuerdame_log"
+                    android:text="Recuerda mis datos"
+                    android:textColor="@color/icons"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+
+
 
             <Button
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
+                android:layout_width="210dp"
                 android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_gravity="right"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Iniciar Sesión"
+                android:background="@drawable/boton_azul"
+                android:text="Entrar"
                 android:textAllCaps="false"
-                android:textStyle="bold"
-                />
+                android:textColor="@color/icons"
+                android:textDirection="inherit"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <ProgressBar
                 android:id="@+id/login_progress"
@@ -101,10 +142,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:text="¿Olvidó la contraseña?"
-                android:textColor="@color/colorAccent"
+                android:layout_gravity="right"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="-8dp"
+                android:text="Olvidé mi contraseña"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/icons"
                 android:textSize="16sp" />
 
             <CheckedTextView
@@ -115,9 +158,53 @@
                 android:layout_marginBottom="24dp"
                 android:layout_marginTop="56dp"
                 android:text="Registrate"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/icons"
                 android:textSize="16sp" />
 
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+
+    <!--</ScrollView>-->
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="9dp"
+        android:textColor="@color/icons"
+        android:text="@string/comapa_derechos_res" />
+
+
+
+   <!-- <RelativeLayout
+        android:id="@+id/rl_tituloTabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        >
+
+    </RelativeLayout >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vPagDetUsr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tabLayDetalle"
+        android:layout_above="@+id/llResumen_det"/>
+
+    <LinearLayout
+        android:id="@+id/llDotIndicator"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+    </LinearLayout>-->
+
+</RelativeLayout>

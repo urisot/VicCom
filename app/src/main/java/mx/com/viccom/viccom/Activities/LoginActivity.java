@@ -168,6 +168,7 @@ public class LoginActivity extends AppCompatActivity  {
             editor.apply();
         }
     }
+
     public class ValidarUsrAppHttp extends AsyncTask<ArrayList<String>,Integer,clsUsuarioApp> {
 
         @Override
@@ -261,14 +262,13 @@ public class LoginActivity extends AppCompatActivity  {
         }
     }
 
-
-
     private void goToMain() {
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra("EMAIL", txtEmail.getText().toString());
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
     private void irARegistro() {
         Intent intent = new Intent(this, RegistroActivity.class);
         // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
