@@ -26,12 +26,16 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -67,6 +71,9 @@ public class LoginActivity extends AppCompatActivity  {
     private CheckedTextView linkRegiste;
     private CheckedTextView linkResetContrasena;
     private ProgressBar pbValidamndo;
+    private ImageView imgCandado;
+    private Animation animCaida,animSubir;
+    private LinearLayout llLogIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +118,8 @@ public class LoginActivity extends AppCompatActivity  {
 
             }
         });
+        imgCandado.setAnimation(animCaida);
+        llLogIn.setAnimation(animSubir);
 
 
     }
@@ -133,6 +142,11 @@ public class LoginActivity extends AppCompatActivity  {
         linkRegiste = (CheckedTextView) findViewById(R.id.linkRegistrarse_log);
         linkResetContrasena = (CheckedTextView) findViewById(R.id.linkOlvidoContraseña_log);
         pbValidamndo = (ProgressBar) findViewById(R.id.login_progress);
+        imgCandado = (ImageView) findViewById(R.id.imgCandado);
+        llLogIn = (LinearLayout) findViewById(R.id.email_login_form);
+
+        animCaida = AnimationUtils.loadAnimation(this,R.anim.bajar);
+        animSubir = AnimationUtils.loadAnimation(this,R.anim.subir);
     }
 
     private void setCredentialsIfExist() {

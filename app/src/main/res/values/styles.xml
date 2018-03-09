@@ -9,9 +9,23 @@
     </style>
 
 
-    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/centerColor</item>
+        <item name="colorPrimaryDark">@color/endColor</item>
+     <!--   <item name="colorAccent">@color/colorAccent</item>-->
+    </style>
+
+    <style name="LogIn" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/login_backgrond</item>
+        <item name="colorPrimaryDark">@color/login_backgrond</item>
+        <item name="colorAccent">@color/boton_azul</item>
     </style>
 
     <style name="Theme.MiTemaD" parent="Theme.AppCompat.Light.Dialog.MinWidth">
