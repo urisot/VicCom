@@ -9,7 +9,7 @@
             android:icon="@drawable/ic_inicio_abstracto_24dp"
             android:title="@string/menu_item_inicio" />
         <item
-            android:id="@+id/opt_FormasPago"
+            android:id="@+id/opt_Targetas"
             android:icon="@drawable/ic_formas_pago_24dp"
             android:title="@string/menu_item_formas_pago" />
         <item

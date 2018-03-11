@@ -55,7 +55,7 @@ public class SelectMetodoPagoFragment extends Fragment {
 
         mLayoutManager = new LinearLayoutManager(getContext());
 
-        mAdapter = new MetodosPagoRecyclerViewAdapter(ArListMetodosPago, R.layout.metodos_pago_recycler_view_item, new onClickLisener() {
+        mAdapter = new MetodosPagoRecyclerViewAdapter(ArListMetodosPago, R.layout.tarjetas_bancarias_recycler_view_item, new onClickLisener() {
             @Override
             public void onClick() {
 

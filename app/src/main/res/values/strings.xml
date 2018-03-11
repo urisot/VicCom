@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VicCom</string>
+    <string name="app_name">Comapa Smart</string>
     <string name="comapa_derechos_res">Comapa Victoria © 2018 | Aviso de Privacidad</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -8,8 +8,8 @@
     <string name="aceptar">Aceptar</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_item_inicio">Inicio</string>
-    <string name="menu_item_formas_pago">Formas de pago</string>
+    <string name="menu_item_inicio">Recibos</string>
+    <string name="menu_item_formas_pago">Tarjetas bancarias</string>
     <string name="menu_item_mi_perfil">Mi perfil</string>
     <string name="menu_item_configuracion">Configuración</string>
     <string name="menu_item_cerrar_sesion">Cerrar sesion</string>

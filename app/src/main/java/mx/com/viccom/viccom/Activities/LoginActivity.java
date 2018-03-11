@@ -98,10 +98,6 @@ public class LoginActivity extends AppCompatActivity  {
                 listToSend.add(password);
                 new ValidarUsrAppHttp().execute(listToSend);
 
-              /*  if (login(email, password)) {
-                    goToMain();
-                    saveOnPreferences(email, password);
-                }*/
             }
         });
 
@@ -118,6 +114,7 @@ public class LoginActivity extends AppCompatActivity  {
 
             }
         });
+
         imgCandado.setAnimation(animCaida);
         llLogIn.setAnimation(animSubir);
 

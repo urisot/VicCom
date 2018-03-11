@@ -19,13 +19,13 @@ import mx.com.viccom.viccom.Utilities.Util;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MisFormasPagoFragment extends Fragment {
+public class MisTarjetasFragment extends Fragment {
 
 
     private clsUsuarioApp usuarioApp = new clsUsuarioApp();
     private RecyclerView recViewFormasPago;
     private FloatingActionButton fabAgregarFP;
-    public MisFormasPagoFragment() {
+    public MisTarjetasFragment() {
         // Required empty public constructor
     }
 
@@ -38,9 +38,9 @@ public class MisFormasPagoFragment extends Fragment {
             usuarioApp = bundle.getParcelable("USUARIOAPP");
         }
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_mis_formas_pago, container, false);
-        recViewFormasPago = (RecyclerView) view.findViewById(R.id.recMisFormasPAgo);
-        fabAgregarFP = (FloatingActionButton) view.findViewById(R.id.fabAgregarFormasPago);
+        View view = inflater.inflate(R.layout.fragment_mis_tarjetas_pago, container, false);
+        recViewFormasPago = (RecyclerView) view.findViewById(R.id.recMisTarjetasBancarias);
+        fabAgregarFP = (FloatingActionButton) view.findViewById(R.id.fabAgregarTarjetas);
         return view;
     }
     @Override

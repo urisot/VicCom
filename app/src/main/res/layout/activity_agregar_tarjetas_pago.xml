@@ -1,10 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="mx.com.viccom.viccom.Fragments.AgregarTarjetaFragment">
+    tools:context="mx.com.viccom.viccom.Activities.AgregarTarjetasPagoActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_titulotarjetas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        >
+
+        <ImageButton
+            android:id="@+id/btn_cerrar_at"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_cerrar_blanco_24dp" />
+    </RelativeLayout >
 
     <ScrollView
         android:id="@+id/sv_Principal"
@@ -122,24 +143,24 @@
                         android:background="@android:color/darker_gray"
                         android:layout_height="match_parent" />
 
-                  <!--  <android.support.design.widget.TextInputLayout
+                    <!--  <android.support.design.widget.TextInputLayout
 
-                        android:id="@+id/tilmesvence"
-                        android:layout_weight="2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:tag="control">
+                          android:id="@+id/tilmesvence"
+                          android:layout_weight="2"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:tag="control">
 
-                        <EditText
-                            android:id="@+id/txtMesVence"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Mes"
-                            android:inputType="number" >
+                          <EditText
+                              android:id="@+id/txtMesVence"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:hint="Mes"
+                              android:inputType="number" >
 
-                        </EditText>
+                          </EditText>
 
-                    </android.support.design.widget.TextInputLayout>-->
+                      </android.support.design.widget.TextInputLayout>-->
                     <LinearLayout
                         android:layout_weight="2"
                         android:layout_width="match_parent"
@@ -238,67 +259,67 @@
                 </TableRow>
             </TableLayout>
 
-     <!--       <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp">
+            <!--       <TableLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="8dp"
+                       android:layout_marginEnd="16dp"
+                       android:layout_marginStart="16dp">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:weightSum="10"
+                       <TableRow
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent"
+                           android:weightSum="10"
 
-                    >
+                           >
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="6"
-                        android:gravity="center_vertical"
-                        android:text="Codigo de seguridad"
-                        android:textSize="18sp" />
+                           <TextView
+                               android:layout_width="0dp"
+                               android:layout_height="match_parent"
+                               android:layout_weight="6"
+                               android:gravity="center_vertical"
+                               android:text="Codigo de seguridad"
+                               android:textSize="18sp" />
 
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent" />
+                           <View
+                               android:layout_width="2dp"
+                               android:layout_height="match_parent" />
 
-                    <android.support.design.widget.TextInputLayout
+                           <android.support.design.widget.TextInputLayout
 
-                        android:id="@+id/tilCodigoSeg"
-                        android:layout_weight="3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:tag="control">
+                               android:id="@+id/tilCodigoSeg"
+                               android:layout_weight="3"
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:tag="control">
 
-                        <EditText
-                            android:id="@+id/txtCodigoSeguridad"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="CVV"
-                            android:inputType="number" >
+                               <EditText
+                                   android:id="@+id/txtCodigoSeguridad"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:hint="CVV"
+                                   android:inputType="number" >
 
-                        </EditText>
+                               </EditText>
 
-                    </android.support.design.widget.TextInputLayout>
+                           </android.support.design.widget.TextInputLayout>
 
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent" />
+                           <View
+                               android:layout_width="2dp"
+                               android:layout_height="match_parent" />
 
 
-                    <ImageView
-                        android:id="@+id/imgCodigo"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/ic_barcode_black"
-                        android:tag="control">
+                           <ImageView
+                               android:id="@+id/imgCodigo"
+                               android:layout_width="match_parent"
+                               android:layout_height="match_parent"
+                               android:layout_weight="1"
+                               app:srcCompat="@drawable/ic_barcode_black"
+                               android:tag="control">
 
-                    </ImageView>
-                </TableRow>
-            </TableLayout>-->
+                           </ImageView>
+                       </TableRow>
+                   </TableLayout>-->
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -372,12 +393,4 @@
         </LinearLayout>
 
     </ScrollView >
-
-<!--    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-    </LinearLayout>-->
-
 </LinearLayout>

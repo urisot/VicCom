@@ -2,14 +2,9 @@ package mx.com.viccom.viccom.Activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.HandlerThread;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,22 +16,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.util.ArrayList;
-
-import mx.com.viccom.viccom.Clases.clsParameter;
-import mx.com.viccom.viccom.Clases.clsResultadoWCF;
 import mx.com.viccom.viccom.Clases.clsUsuarioApp;
 import mx.com.viccom.viccom.Fragments.ConfiguracionFragment;
 import mx.com.viccom.viccom.Fragments.MiPerfilFragment;
 import mx.com.viccom.viccom.Fragments.MisCuentasFragment;
-import mx.com.viccom.viccom.Fragments.MisFormasPagoFragment;
-import mx.com.viccom.viccom.Interfaces.backProces;
+import mx.com.viccom.viccom.Fragments.MisTarjetasFragment;
 import mx.com.viccom.viccom.R;
-import mx.com.viccom.viccom.Utilities.SendToWCF;
-import mx.com.viccom.viccom.Utilities.Util;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -182,8 +167,8 @@ public class MenuActivity extends AppCompatActivity
 
                 fragmentTransaction = true;
                 break;
-            case R.id.opt_FormasPago:
-                fragment = new MisFormasPagoFragment();
+            case R.id.opt_Targetas:
+                fragment = new MisTarjetasFragment();
 
                 fragmentTransaction = true;
                 break;

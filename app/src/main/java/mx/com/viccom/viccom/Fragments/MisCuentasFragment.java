@@ -17,6 +17,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -48,6 +51,8 @@ public class MisCuentasFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private ActualizaHttp actualizaHttp;
     private EliminaCuenta eliminaCuenta;
+    private ImageView imgLogo,imgCiudadViva;
+    private Animation animEntrar,animSalir;
 
 
     //Contenedor de datos
@@ -74,11 +79,19 @@ public class MisCuentasFragment extends Fragment {
         fabAgregarCuentas = (FloatingActionButton) view.findViewById(R.id.fabAgregarCuentas);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recMisRecibos);
         refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefresh);
+        imgLogo = (ImageView) view.findViewById(R.id.imgLogo);
+        imgCiudadViva = (ImageView) view.findViewById(R.id.imgCiudad);
+        animEntrar = AnimationUtils.loadAnimation(getContext(),R.anim.entrar);
+        animSalir = AnimationUtils.loadAnimation(getContext(),R.anim.salir);
+
         return view;
     }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        imgLogo.setAnimation(animEntrar);
+        imgCiudadViva.setAnimation(animSalir);
 
         mLayoutManager = new LinearLayoutManager(getContext());
 
@@ -172,6 +185,9 @@ public class MisCuentasFragment extends Fragment {
                 startActivityForResult(intento, Util.SOLICITUD_AGREGAR_RECIBOS);
             }
         });
+
+
+
 
         ActualizarDatos();
     }

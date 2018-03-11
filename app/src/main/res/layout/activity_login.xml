@@ -30,6 +30,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="-260dp"
             app:srcCompat="@drawable/ic_candado_11"
+            android:stateListAnimator="@anim/bajar"
             />
 
         <LinearLayout
