@@ -56,6 +56,7 @@ public class BDManager  extends SQLiteOpenHelper {
             "iva REAL NULL,"+
             "total REAL NULL);";
     String sqlCreaCfgConfig          = "CREATE TABLE Cfg_Parametros (id integer primary key,parametro text not null,valor text not null);";
+
     String sqlCreaSysUsuarios        = "CREATE TABLE Sys_Usuarios (" +
             "id integer primary key," +
             "id_usuarioapp text not null" +
@@ -66,6 +67,23 @@ public class BDManager  extends SQLiteOpenHelper {
             ",mac_address text null" +
             ",key text null" +
             ",fecha_insert text null);";
+
+    String sqlCreaOprTarjetas        = "CREATE TABLE Opr_Tarjetas (" +
+            "id integer primary key" +
+            ",alias text not null" +
+            ",nombre text not null" +
+            ",numero text null" +
+            ",mes text null" +
+            ",ano text null" +
+            ",ccv text null" +
+            ",tipo text null" +
+            ",predeterminado int null);";
+
+    String sqlCreaCat_TiposTarjeta        = "CREATE TABLE Cat_TiposTarjetas (" +
+            "id integer primary key," +
+            "descripcion text not null" +
+            ",url text not null);";
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //sqLiteDatabase.execSQL(sqlCreaPadron);
@@ -73,7 +91,12 @@ public class BDManager  extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(sqlCreaSysUsuarios);
         sqLiteDatabase.execSQL(sqlCreaRecibos);
         sqLiteDatabase.execSQL(sqlCreaDetRecibos);
+        sqLiteDatabase.execSQL(sqlCreaOprTarjetas);
+        sqLiteDatabase.execSQL(sqlCreaCat_TiposTarjeta);
         sqLiteDatabase.execSQL("INSERT INTO Cfg_Parametros(parametro,valor) VALUES ('DIRECION_WCF','http://201.144.165.83/apicomapa/ComapaVic_OS.svc/');");
+
+        sqLiteDatabase.execSQL("INSERT INTO Cat_TiposTarjetas(descripcion,url) VALUES ('Visa','https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Old_Visa_Logo.svg/220px-Old_Visa_Logo.svg.png');");
+        sqLiteDatabase.execSQL("INSERT INTO Cat_TiposTarjetas(descripcion,url) VALUES ('Mastercard','https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/MasterCard_early_1990s_logo.png/220px-MasterCard_early_1990s_logo.png');");
 
     }
 
@@ -84,13 +107,20 @@ public class BDManager  extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Sys_Usuarios");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Opr_Recibos");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Opr_DetRecibos");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Opr_Tarjetas");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Cat_TiposTarjetas");
 
         // sqLiteDatabase.execSQL(sqlCreaPadron);
         sqLiteDatabase.execSQL(sqlCreaCfgConfig);
         sqLiteDatabase.execSQL(sqlCreaSysUsuarios);
         sqLiteDatabase.execSQL(sqlCreaRecibos);
         sqLiteDatabase.execSQL(sqlCreaDetRecibos);
+        sqLiteDatabase.execSQL(sqlCreaOprTarjetas);
+        sqLiteDatabase.execSQL(sqlCreaCat_TiposTarjeta);
         sqLiteDatabase.execSQL("INSERT INTO Cfg_Parametros(parametro,valor) VALUES ('DIRECION_WCF','http://201.144.165.83/apicomapa/ComapaVic_OS.svc/');");
+
+        sqLiteDatabase.execSQL("INSERT INTO Cat_TiposTarjetas(descripcion,url) VALUES ('Visa','https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Old_Visa_Logo.svg/220px-Old_Visa_Logo.svg.png');");
+        sqLiteDatabase.execSQL("INSERT INTO Cat_TiposTarjetas(descripcion,url) VALUES ('Mastercard','https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/MasterCard_early_1990s_logo.png/220px-MasterCard_early_1990s_logo.png');");
 
     }
 }

@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import mx.com.viccom.viccom.Adapters.DetRecibosViewPagerAdapter;
 import mx.com.viccom.viccom.Clases.clsRecibos;
@@ -26,6 +29,7 @@ public class DetCuentaActivity extends AppCompatActivity {
     private TextView txtImporte;
     private Button btnPagar;
     private LinearLayout llResumenDet;
+    private ImageView imgLogoCom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,7 @@ public class DetCuentaActivity extends AppCompatActivity {
         txtImporte = (TextView) findViewById(R.id.txt_TotalAdeudo_det);
         btnPagar = (Button) findViewById(R.id.btnPagar_det);
         llResumenDet = (LinearLayout) findViewById(R.id.llResumen_det);
+        imgLogoCom = (ImageView) findViewById(R.id.imgLogoCom);
 
         txtImporte.setText("$ "+Math.round(o_recibo.getTotal()) +".00");
 
@@ -67,16 +72,22 @@ public class DetCuentaActivity extends AppCompatActivity {
                     case 0:
                         rl_tituloTab.setBackgroundResource(R.color.tab1);
                         tabLayout.setBackgroundResource(R.color.tab1);
+                        imgLogoCom.setImageResource(R.drawable.ic_logocomapaazul);
+                       // Picasso.with(DetCuentaActivity.this).load(R.drawable.ic_logocomapaazul).into(imgLogoCom);
                         // llResumenDet.setVisibility(View.VISIBLE);
                         break;
                     case 1:
                         rl_tituloTab.setBackgroundResource(R.color.tab2);
                         tabLayout.setBackgroundResource(R.color.tab2);
+                        imgLogoCom.setImageResource(R.drawable.ic_logocomablanco);
+                       // Picasso.with(DetCuentaActivity.this).load(R.drawable.ic_logocomablanco).into(imgLogoCom);
                         //llResumenDet.setVisibility(View.VISIBLE);
                         break;
                     case 2:
-                        rl_tituloTab.setBackgroundResource(R.color.tab3);
-                        tabLayout.setBackgroundResource(R.color.tab3);
+                        rl_tituloTab.setBackgroundResource(R.color.tab1);
+                        tabLayout.setBackgroundResource(R.color.tab1);
+                        imgLogoCom.setImageResource(R.drawable.ic_logocomapaazul);
+                        //Picasso.with(DetCuentaActivity.this).load(R.drawable.ic_logocomapaazul).into(imgLogoCom);
                         //llResumenDet.setVisibility(View.GONE);
                         break;
                 }

@@ -36,7 +36,7 @@ public class Util{
     public static final int RESULTADO_OK = 1;
     public static final int RESULTADO_CANCEL = 2;
     public static final int SOLICITUD_AGREGAR_RECIBOS = 3;
-    public static final int SOLICITUD_AGREGAR_CUENTA_USR = 4;
+    public static final int SOLICITUD_AGREGAR_TARJETA = 4;
     public static final int SOLICITUD_AGREGAR_FORMA_PAGO = 5;
     public static final int SOLICITUD_CAMBIO_CONTRASENA = 6;
     public static final int SOLICITUD_VER_DETALLE_CUENTA = 7;

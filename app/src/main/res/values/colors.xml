@@ -13,7 +13,7 @@
     <color name="endColor">#A4A4A4</color>
     <color name="boton_pagar">#0F93BA</color>
     <color name="borde_boton_pagar">#0EAEBA</color>
-    <color name="boton_login">#6EFF33</color>
+    <color name="boton_login">#77BD1E</color>
     <color name="black_overlay">#660000</color>
     <color name="importe">#FF0000</color>
     <color name="actionbar_opacity">#33000000</color>
@@ -32,7 +32,7 @@
     <color name="back4">#FEC52E</color>
     <color name="back5">#005CA8</color>
 
-    <color name="tab1">#626262</color>
-    <color name="tab2">#FB8E4D</color>
+    <color name="tab1">#0056B9</color>
+    <color name="tab2">#65646A</color>
     <color name="tab3">#2D9FC3</color>
 </resources>

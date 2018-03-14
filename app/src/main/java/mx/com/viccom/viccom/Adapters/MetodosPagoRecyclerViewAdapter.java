@@ -38,7 +38,7 @@ public MetodosPagoRecyclerViewAdapter(ArrayList<clsMetodoPago> arListMetodosPago
 public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         context = parent.getContext();
-    MetodosPagoRecyclerViewAdapter.ViewHolder vh = new MetodosPagoRecyclerViewAdapter.ViewHolder(v);
+        MetodosPagoRecyclerViewAdapter.ViewHolder vh = new MetodosPagoRecyclerViewAdapter.ViewHolder(v);
         return vh;
         }
 

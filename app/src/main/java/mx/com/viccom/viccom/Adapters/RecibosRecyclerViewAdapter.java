@@ -78,9 +78,6 @@ public class RecibosRecyclerViewAdapter  extends RecyclerView.Adapter<RecibosRec
         public TextView txtVerDetalle;
 
 
-
-
-
         public ViewHolder(View itemView) {
             // Recibe la View completa. La pasa al constructor padre y enlazamos referencias UI
             // con nuestras propiedades ViewHolder declaradas justo arriba.

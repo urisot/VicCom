@@ -55,7 +55,7 @@ public class AgregarTarjetaFragment extends Fragment {
         txtNumeroTar = (EditText) view.findViewById(R.id.txtNumeroTarjeta);
         pikerMesVence = (TextView) view.findViewById(R.id.txtMesVence);
         pikerAnoVence = (TextView) view.findViewById(R.id.txtAnoVence);
-        txtCodigoSeg = (EditText) view.findViewById(R.id.txtCodigoSeguridad);
+       // txtCodigoSeg = (EditText) view.findViewById(R.id.txtCodigoSeguridad);
         imgTipoTarjeta = (ImageView) view.findViewById(R.id.imgTipoTarjeta);
         SwPredeterminar = (Switch) view.findViewById(R.id.swPredeterminado);
         btnGuardar = (Button) view.findViewById(R.id.btnGradarTarjeta);
