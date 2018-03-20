@@ -72,11 +72,12 @@
         <activity
             android:name=".Activities.AgregarTarjetasPagoActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MiTemaD"></activity>
-
-        <activity android:name=".Activities.CodigoRegistroActivity"
+            android:theme="@style/Theme.MiTemaD" />
+        <activity
+            android:name=".Activities.CodigoRegistroActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Registro"></activity>
+            android:theme="@style/Registro" />
+        <activity android:name=".Activities.RealizarPagoActivity"></activity>
     </application>
 
 </manifest>

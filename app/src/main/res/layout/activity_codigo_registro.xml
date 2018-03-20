@@ -35,9 +35,10 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="Revisa tu correo e ingresa el código de activación"
-            android:textSize="35sp"
+            android:textSize="39sp"
             android:layout_gravity="center"
             android:textColor="@color/icons"
+            android:fontFamily="@font/dni_condensed_bold"
             />
 
         <FrameLayout

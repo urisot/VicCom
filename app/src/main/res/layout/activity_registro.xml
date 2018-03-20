@@ -42,8 +42,9 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="Regístrate aquí"
-                android:textSize="35sp"
+                android:textSize="39sp"
                 android:textColor="@color/icons"
+                android:fontFamily="@font/dni_condensed_bold"
                 />
 
  <!--           <android.support.design.widget.TextInputLayout

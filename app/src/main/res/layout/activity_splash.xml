@@ -8,12 +8,21 @@
     tools:context="mx.com.viccom.viccom.Activities.SplashActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/logocomapa"
         android:layout_width="200dp"
         android:layout_height="120dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         app:srcCompat="@drawable/ic_logocomapa_09" />
+
+    <ImageView
+        android:id="@+id/logovictoria"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/ic_logovictoria"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/textView"

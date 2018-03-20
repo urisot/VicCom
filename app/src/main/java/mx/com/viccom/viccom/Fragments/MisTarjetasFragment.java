@@ -89,7 +89,7 @@ public class MisTarjetasFragment extends Fragment {
             }
         });
 
-        ActualizarDatos();
+        //ActualizarDatos();
     }
 
     @Override
