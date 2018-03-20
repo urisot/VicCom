@@ -77,7 +77,7 @@ public class BDManager  extends SQLiteOpenHelper {
             ",ano text null" +
             ",ccv text null" +
             ",tipo text null" +
-            ",predeterminado int null);";
+            ",predeterminado integer null);";
 
     String sqlCreaCat_TiposTarjeta        = "CREATE TABLE Cat_TiposTarjetas (" +
             "id integer primary key," +

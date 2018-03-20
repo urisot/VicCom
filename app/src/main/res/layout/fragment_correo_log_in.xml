@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/cuadros_texto"
+        android:background="@drawable/cuadros_texto_login"
         android:layout_marginTop="16dp"
         android:layout_marginRight="45dp"
         android:layout_marginLeft="45dp"

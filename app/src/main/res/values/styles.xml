@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/centerColor</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
@@ -27,6 +27,14 @@
         <item name="colorPrimaryDark">@color/login_backgrond</item>
         <item name="colorAccent">@color/boton_azul</item>
     </style>
+
+    <style name="Registro" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/registro</item>
+        <item name="colorPrimaryDark">@color/registro_darck</item>
+        <item name="colorAccent">@color/boton_azul</item>
+    </style>
+
 
     <style name="Theme.MiTemaD" parent="Theme.AppCompat.Light.Dialog.MinWidth">
         <item name="windowActionBar">false</item>

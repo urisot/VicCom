@@ -71,7 +71,7 @@ public class TarjetasPagoRecyclerViewAdapter extends RecyclerView.Adapter<Tarjet
                 txtDescripcion.setText(o_Tarjeta.getNombre());
 
                 String url = "";
-                if (o_Tarjeta.getTipo() == 0){
+                if (o_Tarjeta.getId_tipo() == 0){
                     url="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Old_Visa_Logo.svg/220px-Old_Visa_Logo.svg.png";
                 }else  {
                     url="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/MasterCard_early_1990s_logo.png/220px-MasterCard_early_1990s_logo.png";

@@ -8,9 +8,9 @@
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
-    <color name="startColor">#E6E6E6</color>
-    <color name="centerColor">#BDBDBD</color>
-    <color name="endColor">#A4A4A4</color>
+    <color name="startColor">#F2F2F2</color>
+    <color name="centerColor">#E6E6E6</color>
+    <color name="endColor">#BDBDBD</color>
     <color name="boton_pagar">#0F93BA</color>
     <color name="borde_boton_pagar">#0EAEBA</color>
     <color name="boton_login">#77BD1E</color>
@@ -20,6 +20,8 @@
     <color name="login_backgrond">#0056B9</color>
     <color name="boton_azul">#003466</color>
     <color name="transparent">#00000000</color>
+    <color name="registro">#FEC52E</color>
+    <color name="registro_darck">#C69A23</color>
 
     <color name="s1">#A7FFEB</color>
     <color name="s2">#64FFDA</color>

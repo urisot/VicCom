@@ -35,7 +35,7 @@
             android:name=".Activities.LoginActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/LogIn"></activity>
+            android:theme="@style/LogIn" />
         <activity
             android:name=".Activities.MenuActivity"
             android:label="@string/app_name"
@@ -60,18 +60,23 @@
         <activity
             android:name=".Activities.RegistroActivity"
             android:parentActivityName=".Activities.LoginActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Registro">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.LoginActivity" />
         </activity>
         <activity
             android:name=".Activities.ScannerActivity"
-            android:theme="@style/AppOverlayTheme"></activity>
-        <activity android:name=".Activities.AgregarTarjetasPagoActivity"
+            android:theme="@style/AppOverlayTheme" />
+        <activity
+            android:name=".Activities.AgregarTarjetasPagoActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MiTemaD">
-        </activity>
+            android:theme="@style/Theme.MiTemaD"></activity>
+
+        <activity android:name=".Activities.CodigoRegistroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Registro"></activity>
     </application>
 
 </manifest>

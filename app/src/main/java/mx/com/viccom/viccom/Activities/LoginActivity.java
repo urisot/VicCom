@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,6 +44,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.tooltip.Tooltip;
 
 import org.json.JSONObject;
 
@@ -67,10 +70,10 @@ public class LoginActivity extends AppCompatActivity  {
     private EditText txtEmail;
     private EditText txtPassword;
     private Switch switchRemember;
-    private Button btnLogin;
+    private Button btnLogin,btnHelpMail,btnHelpContrasena;
     private CheckedTextView linkRegiste;
     private CheckedTextView linkResetContrasena;
-    private ProgressBar pbValidamndo;
+    private ProgressBar pbValidando;
     private ImageView imgCandado;
     private Animation animCaida,animSubir;
     private LinearLayout llLogIn;
@@ -88,7 +91,7 @@ public class LoginActivity extends AppCompatActivity  {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MostrarEspera(true);
+
                 String email = txtEmail.getText().toString();
                 String password = StringMD.getStringMessageDigest(txtEmail.getText().toString() + txtPassword.getText().toString(), StringMD.SHA1).toUpperCase();
 //                String password = editTextPassword.getText().toString();
@@ -115,20 +118,50 @@ public class LoginActivity extends AppCompatActivity  {
             }
         });
 
+        btnHelpMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               MuestraTooltip(view ,Gravity.START,"Ingresa un correo electronico valido.");
+            }
+        });
+
+        btnHelpContrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MuestraTooltip(view ,Gravity.START,"Ingresa una contraseña valida.");
+            }
+        });
+
         imgCandado.setAnimation(animCaida);
         llLogIn.setAnimation(animSubir);
 
 
     }
+
+    private void MuestraTooltip(View view, int gravity, String mensaje) {
+        Button btn = (Button) view;
+        Tooltip tooltip = new Tooltip.Builder(btn)
+                .setText(mensaje)
+                .setTextColor(Color.WHITE)
+                .setGravity(gravity)
+                .setCornerRadius(8f)
+                .setDismissOnClick(true)
+                .show();
+    }
+
+
     private void MostrarEspera(Boolean boolMostrar) {
         if (boolMostrar){
-            pbValidamndo.setVisibility(View.VISIBLE);
-            btnLogin.setVisibility(View.INVISIBLE);
+            pbValidando.setVisibility(View.VISIBLE);
+            llLogIn.setVisibility(View.INVISIBLE);
+            linkRegiste.setVisibility(View.INVISIBLE);
         }else{
-            pbValidamndo.setVisibility(View.GONE);
-            btnLogin.setVisibility(View.VISIBLE);
+            pbValidando.setVisibility(View.INVISIBLE);
+            llLogIn.setVisibility(View.VISIBLE);
+            linkRegiste.setVisibility(View.VISIBLE);
         }
     }
+
 
 
     private void bindUI() {
@@ -138,9 +171,11 @@ public class LoginActivity extends AppCompatActivity  {
         btnLogin = (Button) findViewById(R.id.email_sign_in_button);
         linkRegiste = (CheckedTextView) findViewById(R.id.linkRegistrarse_log);
         linkResetContrasena = (CheckedTextView) findViewById(R.id.linkOlvidoContraseña_log);
-        pbValidamndo = (ProgressBar) findViewById(R.id.login_progress);
+        pbValidando = (ProgressBar) findViewById(R.id.login_progress);
         imgCandado = (ImageView) findViewById(R.id.imgCandado);
         llLogIn = (LinearLayout) findViewById(R.id.email_login_form);
+        btnHelpMail = (Button) findViewById(R.id.btnHelpEmail);
+        btnHelpContrasena = (Button) findViewById(R.id.btnHelpContrasena);
 
         animCaida = AnimationUtils.loadAnimation(this,R.anim.bajar);
         animSubir = AnimationUtils.loadAnimation(this,R.anim.subir);
@@ -181,6 +216,11 @@ public class LoginActivity extends AppCompatActivity  {
     }
 
     public class ValidarUsrAppHttp extends AsyncTask<ArrayList<String>,Integer,clsUsuarioApp> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            MostrarEspera(true);
+        }
 
         @Override
         protected clsUsuarioApp doInBackground(ArrayList<String>[] lists) {
