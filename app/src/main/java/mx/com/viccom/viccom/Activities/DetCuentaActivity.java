@@ -1,5 +1,6 @@
 package mx.com.viccom.viccom.Activities;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -116,10 +117,23 @@ public class DetCuentaActivity extends AppCompatActivity {
         btnPagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DetCuentaActivity.this, "Pagar recibo de: "+o_recibo.getRazon_social(), Toast.LENGTH_LONG).show();
+              //  if (!(o_recibo.getTotal() == null)){
+                    if (o_recibo.getTotal() >0){
+                        PagarRecibo(o_recibo);
+                    }
+                //}
+
+                //Toast.makeText(DetCuentaActivity.this, "Pagar recibo de: "+o_recibo.getRazon_social(), Toast.LENGTH_LONG).show();
+
             }
         });
 
+    }
+
+    private void PagarRecibo( clsRecibos o_recibo) {
+        Intent intent = new Intent(DetCuentaActivity.this, RealizarPagoActivity.class);
+        intent.putExtra("RECIBO", o_recibo);
+        startActivity(intent);
     }
 }
 

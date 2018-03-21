@@ -77,7 +77,16 @@
             android:name=".Activities.CodigoRegistroActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Registro" />
-        <activity android:name=".Activities.RealizarPagoActivity"></activity>
+
+        <activity android:name=".Activities.RealizarPagoActivity"
+            android:parentActivityName=".Activities.MenuActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MenuActivity" />
+        </activity>
+
+        <activity android:name=".Activities.ResultadoPagoActivity"></activity>
     </application>
 
 </manifest>

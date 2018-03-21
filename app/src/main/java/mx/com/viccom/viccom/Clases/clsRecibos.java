@@ -299,6 +299,7 @@ public class clsRecibos  implements Parcelable{
     }
 
     public float getTotal() {
+
         return total;
     }
 

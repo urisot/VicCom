@@ -6,9 +6,122 @@
     android:layout_height="match_parent"
     tools:context="mx.com.viccom.viccom.Activities.RealizarPagoActivity">
 
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="PayPal"/>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/regularLayout"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <!--<ImageView
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/muestra"
+                android:layout_gravity="center_horizontal" />-->
+
+
+            <TableLayout
+                android:id="@+id/tlImportes"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                >
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="10"
+                    >
+                    <TextView
+                        android:id="@+id/txt_Concepto"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:text="Recibo de Agua:"
+                        android:gravity="right"
+                        android:textSize="15sp"
+                        />
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="wrap_content"
+                        />
+                    <TextView
+                        android:id="@+id/txtImporteRequerido"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:text="165.03"
+                        android:gravity="left"
+                        android:textSize="15sp" />
+                </TableRow>
+            </TableLayout>
+            <TableLayout
+                android:id="@+id/tlComiciones"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_below="@+id/tlImportes"
+                >
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="10"
+                    >
+                    <TextView
+                        android:id="@+id/txtd"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:text="Comisión PayPal:"
+                        android:gravity="right"
+                        android:textSize="15sp"
+                        />
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="wrap_content"
+                        />
+                    <TextView
+                        android:id="@+id/txtComiciones"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:text="9.43"
+                        android:gravity="left"
+                        android:textSize="15sp" />
+                </TableRow>
+            </TableLayout>
+            <Button
+            android:id="@+id/btnPagarPayPal"
+            android:layout_below="@+id/tlComiciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="pagar con PayPal"/>
+            <Button
+                android:id="@+id/btnPagarTarjeta"
+                android:layout_below="@+id/tlComiciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pagar con Tarjeta"/>
+
+            <Button
+                android:id="@+id/btnCancelar"
+                android:text="Cancelar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

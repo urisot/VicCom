@@ -36,6 +36,7 @@ public class DetCuentaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         Bundle bundle = getArguments();
         if (bundle != null) {
             o_recibo = bundle.getParcelable("RECIBO");

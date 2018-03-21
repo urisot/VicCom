@@ -30,6 +30,8 @@ import java.util.ArrayList;
 
 import mx.com.viccom.viccom.Activities.AgregarReciboActivity;
 import mx.com.viccom.viccom.Activities.DetCuentaActivity;
+import mx.com.viccom.viccom.Activities.MenuActivity;
+import mx.com.viccom.viccom.Activities.RealizarPagoActivity;
 import mx.com.viccom.viccom.Adapters.RecibosRecyclerViewAdapter;
 import mx.com.viccom.viccom.Clases.clsCuentaValida;
 import mx.com.viccom.viccom.Clases.clsParameter;
@@ -139,7 +141,11 @@ public class MisCuentasFragment extends Fragment {
 
             @Override
             public void onButton1ItemClick(clsRecibos recibo, int position) {
-                Toast.makeText(getContext(), "Pagar recibo de: "+recibo.getRazon_social() + " - " + position, Toast.LENGTH_LONG).show();
+                if (recibo.getTotal() >0){
+                    PagarRecibo(recibo);
+                }
+
+                //Toast.makeText(getContext(), "Pagar recibo de: "+recibo.getRazon_social() + " - " + position, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -201,6 +207,12 @@ public class MisCuentasFragment extends Fragment {
                 ActualizarDatos();
             }
         }
+    }
+
+    private void PagarRecibo( clsRecibos o_recibo) {
+        Intent intent = new Intent(getContext(), RealizarPagoActivity.class);
+        intent.putExtra("RECIBO", o_recibo);
+        startActivity(intent);
     }
 
     private void ActualizarDatos(){
