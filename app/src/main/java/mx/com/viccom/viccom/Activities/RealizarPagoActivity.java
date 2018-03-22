@@ -28,6 +28,7 @@ import java.math.BigDecimal;
 import mx.com.viccom.viccom.Clases.clsRecibos;
 import mx.com.viccom.viccom.Clases.clsUsuarioApp;
 import mx.com.viccom.viccom.R;
+import mx.com.viccom.viccom.Utilities.Util;
 
 public class RealizarPagoActivity extends AppCompatActivity {
 
@@ -47,8 +48,8 @@ public class RealizarPagoActivity extends AppCompatActivity {
             .merchantPrivacyPolicyUri(Uri.parse("https://www.example.com/privacy"))
             .merchantUserAgreementUri(Uri.parse("https://www.example.com/legal"));
 
-    private Button btnPagar;
-    private TextView txtImporte,txtComicion;
+    private Button btnPagar,btnPagarTarjeta,btnCancelar;
+    private TextView txtImporte,txtComicion,txtTotal,txtNombre,txtPeriodo,txtMetros;
     private String Importe;
 
     @Override
@@ -73,14 +74,24 @@ public class RealizarPagoActivity extends AppCompatActivity {
 
         txtImporte = (TextView) findViewById(R.id.txtImporteRequerido);
         txtComicion = (TextView) findViewById(R.id.txtComiciones);
-        btnPagar = (Button) findViewById(R.id.btnPagarPayPal);
+        txtTotal = (TextView) findViewById(R.id.txtTotal);
+        txtNombre = (TextView) findViewById(R.id.txtNombre);
+        txtPeriodo = (TextView) findViewById(R.id.txtPeriodo);
+        txtMetros = (TextView) findViewById(R.id.txtMetros);
 
+        btnPagar = (Button) findViewById(R.id.btnPagarPayPal);
+        btnPagarTarjeta = (Button) findViewById(R.id.btnPagarTarjeta);
+        btnCancelar = (Button) findViewById(R.id.btnCancelar);
 
         if (o_recibo.getTotal() != 0 ){
             txtImporte.setText(o_recibo.getTotal()+"");
         }
+        txtNombre.setText("["+o_recibo.getId_cuenta()+"] "+ o_recibo.getRazon_social());
+        txtMetros.setText(o_recibo.getConsumo_act()+" m³ ("+o_recibo.getTipocalculo()+")");
+        txtPeriodo.setText(o_recibo.getCiclo_facturado().toString());
 
         txtComicion.setText(CalculaComicion(o_recibo.getTotal()));
+        txtTotal.setText(calculaTotal());
 
         btnPagar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,8 +99,28 @@ public class RealizarPagoActivity extends AppCompatActivity {
                 ProcesoAplicaPago();
             }
         });
+        btnPagarTarjeta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(RealizarPagoActivity.this,"No disponible por el momento",Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(Util.RESULTADO_CANCEL);
+                finish();//finishing activity
+            }
+        });
+
 
     }
+
+    private String calculaTotal() {
+        double douImporte = Double.parseDouble(txtImporte.getText().toString()) + Double.parseDouble(txtComicion.getText().toString());
+        return  douImporte+"";
+    }
+
     private String CalculaComicion(float importe){
        // String strReturn ="";
 

@@ -135,7 +135,15 @@ public class clsUsuarioApp implements Parcelable {
         //Si hemos abierto correctamente la base de datos
         if (db != null) {
 
-            Cursor c = db.rawQuery("SELECT * FROM Sys_Usuarios WHERE mail = '" +o_usuario.getMail()+"'", null);
+    /*        String StrDelete = "DELETE FROM Sys_Usuarios WHERE mail != '"+o_usuario.getMail()+"';";
+            db.execSQL(StrDelete);*/
+
+            String strWhereDel = "mail != '"+o_usuario.getMail()+"'";
+            db.delete("Sys_Usuarios",strWhereDel,null);
+
+
+
+            Cursor c = db.rawQuery("SELECT * FROM Sys_Usuarios WHERE mail = '" +o_usuario.getMail()+"';", null);
             //si no existe un usuario con este correo lo registra
             if(!c.moveToFirst()){
                 ContentValues nuevoRegistro = new ContentValues();
@@ -182,7 +190,35 @@ public class clsUsuarioApp implements Parcelable {
         //Si hemos abierto correctamente la base de datos
         if (db != null) {
 
-            Cursor c = db.rawQuery("SELECT * FROM Sys_Usuarios WHERE mail='" +strMail+"'", null);
+            Cursor c = db.rawQuery("SELECT * FROM Sys_Usuarios WHERE mail='" +strMail+"';", null);
+            //si no existe un usuario con este correo lo registra
+            if(c.moveToFirst()){
+                usuarioAppReturn.setId_usuarioapp(c.getString(c.getColumnIndex("id_usuarioapp")));
+                usuarioAppReturn.setNombre(c.getString(c.getColumnIndex("nombre")));
+                usuarioAppReturn.setMail(c.getString(c.getColumnIndex("mail")));
+                usuarioAppReturn.setCelular(c.getString(c.getColumnIndex("celular")));
+                usuarioAppReturn.setContrasena(c.getString(c.getColumnIndex("contrasena")));
+                usuarioAppReturn.setMac_address(c.getString(c.getColumnIndex("mac_address")));
+                usuarioAppReturn.setFecha_insert(c.getString(c.getColumnIndex("fecha_insert")));
+                usuarioAppReturn.setKey(c.getString(c.getColumnIndex("key")));
+            }
+            db.close();
+            if (!c.isClosed()) c.close();
+        }
+
+        return usuarioAppReturn;
+
+    }
+
+    public static clsUsuarioApp getUsrApp (){
+        clsUsuarioApp usuarioAppReturn = new clsUsuarioApp();
+        BDManager manejador = new BDManager(App.getContext(), "DBPagos", null, 1);
+        SQLiteDatabase db = manejador.getReadableDatabase();
+
+        //Si hemos abierto correctamente la base de datos
+        if (db != null) {
+
+            Cursor c = db.rawQuery("SELECT * FROM Sys_Usuarios;", null);
             //si no existe un usuario con este correo lo registra
             if(c.moveToFirst()){
                 usuarioAppReturn.setId_usuarioapp(c.getString(c.getColumnIndex("id_usuarioapp")));

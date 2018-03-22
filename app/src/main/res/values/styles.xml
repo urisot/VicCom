@@ -35,6 +35,13 @@
         <item name="colorAccent">@color/boton_azul</item>
     </style>
 
+    <style name="RealizarPago" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/centerColor</item>
+        <item name="colorPrimaryDark">@color/endColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 
     <style name="Theme.MiTemaD" parent="Theme.AppCompat.Light.Dialog.MinWidth">
         <item name="windowActionBar">false</item>

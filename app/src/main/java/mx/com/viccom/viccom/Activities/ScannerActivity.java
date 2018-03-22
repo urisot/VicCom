@@ -2,8 +2,10 @@ package mx.com.viccom.viccom.Activities;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -21,6 +23,8 @@ public class ScannerActivity extends BaseScannerActivity implements ZXingScanner
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner);
         setupToolbar();
+
+       getSupportActionBar().setTitle("Escaneando recibo");
 
 
         ViewGroup contentFrame = (ViewGroup) findViewById(R.id.content_frame);

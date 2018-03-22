@@ -25,7 +25,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/txtNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_gravity="center"
+                    android:text="[752318] Perez Juan Manuel"
+
+                    android:textSize="25sp"
+                    />
+                <TextView
+                    android:id="@+id/txtPeriodo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="center"
+                    android:text="Febrero 2018"
+
+                    android:textSize="16sp"
+                    />
+                <TextView
+                    android:id="@+id/txtMetros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_gravity="center"
+                    android:text="25 m³ (Promedio)"
+                    android:textSize="16sp"
+                    />
+
+
+
 
             <!--<ImageView
                 android:layout_width="150dp"
@@ -37,6 +77,7 @@
 
             <TableLayout
                 android:id="@+id/tlImportes"
+                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="22dp"
                 >
@@ -52,7 +93,7 @@
                         android:layout_weight="5"
                         android:text="Recibo de Agua:"
                         android:gravity="right"
-                        android:textSize="15sp"
+                        android:textSize="16sp"
                         />
                     <View
                         android:layout_width="2dp"
@@ -64,8 +105,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="5"
                         android:text="165.03"
-                        android:gravity="left"
-                        android:textSize="15sp" />
+                        android:gravity="right"
+                        android:textSize="16sp" />
                 </TableRow>
             </TableLayout>
             <TableLayout
@@ -86,7 +127,7 @@
                         android:layout_weight="5"
                         android:text="Comisión PayPal:"
                         android:gravity="right"
-                        android:textSize="15sp"
+                        android:textSize="16sp"
                         />
                     <View
                         android:layout_width="2dp"
@@ -98,28 +139,94 @@
                         android:layout_height="match_parent"
                         android:layout_weight="5"
                         android:text="9.43"
-                        android:gravity="left"
-                        android:textSize="15sp" />
+                        android:gravity="right"
+                        android:textSize="16sp" />
                 </TableRow>
             </TableLayout>
+            <View
+                android:id="@+id/separador1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="250dp"
+                android:background="@android:color/darker_gray" />
+            <TableLayout
+                android:id="@+id/tlComicionwes"
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_marginBottom="16dp"
+                android:layout_below="@+id/tlImportes"
+                >
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="10"
+                    >
+                    <TextView
+                        android:id="@+id/txwtd"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:text="Total:"
+                        android:gravity="right"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        />
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="wrap_content"
+                        />
+                    <TextView
+                        android:id="@+id/txtTotal"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:text="172.67"
+                        android:gravity="right"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+
+                </TableRow>
+            </TableLayout>
+
+            <CheckBox
+                android:id="@+id/swEnviarCorreoConfi"
+                android:text="Enviar correo de confirmación "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:switchPadding="8dp"
+                android:layout_marginBottom="16dp"
+                android:checked="true"
+                android:textSize="16sp"
+                />
+
             <Button
-            android:id="@+id/btnPagarPayPal"
-            android:layout_below="@+id/tlComiciones"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="pagar con PayPal"/>
+                android:id="@+id/btnPagarPayPal"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/boton_celeste"
+                android:textColor="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="pagar con PayPal"/>
+
             <Button
                 android:id="@+id/btnPagarTarjeta"
+                android:background="@drawable/boton_celeste"
+                android:textColor="@android:color/white"
                 android:layout_below="@+id/tlComiciones"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pagar con Tarjeta"/>
+                android:text="Pagar con Tarjeta"
+                android:layout_marginBottom="16dp"/>
 
             <Button
                 android:id="@+id/btnCancelar"
                 android:text="Cancelar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@color/colorAccent"
+                />
 
         </LinearLayout>
     </ScrollView>
