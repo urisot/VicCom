@@ -13,7 +13,7 @@
         android:layout_height="120dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        app:srcCompat="@drawable/ic_logocomapa_09" />
+        app:srcCompat="@drawable/logo_comapa" />
 
     <ImageView
         android:id="@+id/logovictoria"
@@ -21,7 +21,7 @@
         android:layout_height="120dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        app:srcCompat="@drawable/ic_logovictoria"
+        app:srcCompat="@drawable/logo_victoria"
         android:visibility="invisible"/>
 
     <TextView

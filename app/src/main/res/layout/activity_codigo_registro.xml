@@ -14,7 +14,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-160dp"
-        app:srcCompat="@drawable/ic_usuario"
+        app:srcCompat="@drawable/usuario_registro"
         />
 
     <LinearLayout
@@ -51,7 +51,7 @@
                 android:id="@+id/txtCodigo_reg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/cuadros_texto_registro"
+                android:background="@drawable/cuadro_texto"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:paddingRight="35dp"

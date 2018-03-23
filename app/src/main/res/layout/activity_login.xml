@@ -25,12 +25,6 @@
 
 
 
-    <ImageView
-        android:layout_width="149dp"
-        android:layout_height="71dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="24dp"
-        app:srcCompat="@drawable/ic_logovictoria"/>
 
 
 
@@ -42,25 +36,33 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="-250dp"
-            app:srcCompat="@drawable/ic_candado_11"
+            android:layout_marginBottom="-200dp"
+            app:srcCompat="@drawable/candado_login"
             android:stateListAnimator="@anim/bajar"
             />
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        app:srcCompat="@drawable/logo_victoria_blanco" />
     <!--    <ScrollView
             android:id="@+id/login_form"
             android:layout_width="match_parent"
             android:layout_height="match_parent">-->
         <LinearLayout
             android:id="@+id/email_login_form"
+            android:layout_margin="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
 
             android:orientation="vertical">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="48dp"
                 android:layout_gravity="center"
@@ -107,7 +109,7 @@
                     android:id="@+id/txtEmail_log"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/cuadros_texto_login"
+                    android:background="@drawable/cuadro_texto"
                     android:drawablePadding="8dp"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
@@ -127,14 +129,7 @@
                     android:layout_marginEnd="10dp" />
             </FrameLayout>
 
-        <!--    </android.support.design.widget.TextInputLayout>-->
 
-  <!--          <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="12dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp">-->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -146,7 +141,7 @@
                     android:id="@+id/txtContrasena_log"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/cuadros_texto_login"
+                    android:background="@drawable/cuadro_texto"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:paddingRight="35dp"
@@ -199,7 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Olvidé mi contraseña"
-                android:textColor="#979862"
+                android:textColor="@color/registro_backgrond"
                 android:textSize="16sp"
                 android:layout_gravity="end|center_vertical"
                 android:textStyle="italic"/>
@@ -225,7 +220,7 @@
                     android:gravity="center"
                     android:checked="false"
                     android:layout_toRightOf="@+id/swRecuerdame_log"
-                    android:text="Recuerda mis datos"
+                    android:text="Recuerda mi usuario"
                     android:textColor="@color/icons"
                     android:textSize="16sp"/>
             </LinearLayout>

@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import mx.com.viccom.viccom.Adapters.MetodoPagoViewPagerAdapter;
+import mx.com.viccom.viccom.Adapters.ViewPagerAdapter;
 import mx.com.viccom.viccom.Clases.clsMetodoPago;
 import mx.com.viccom.viccom.Fragments.AgregarCtaMerPagoFragment;
 import mx.com.viccom.viccom.Fragments.AgregarCtaPayPalFragment;
@@ -26,7 +26,7 @@ public class AgregarFormaPagoActivity extends AppCompatActivity  implements onPa
     private ImageButton btnAtras;
     private ImageButton btnAdelante;
     private TextView txtContadorPag;
-    private MetodoPagoViewPagerAdapter metodoPagoViewPagerAdapter;
+    private ViewPagerAdapter viewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class AgregarFormaPagoActivity extends AppCompatActivity  implements onPa
 
         //adr_metodoPagoViewPager = new adr_MetodoPagoViewPager(getSupportFragmentManager(),2,o_MetodoPago);
 
-        metodoPagoViewPagerAdapter = new MetodoPagoViewPagerAdapter(getSupportFragmentManager(), 2, new MetodoPagoViewPagerAdapter.enCambioFragmento() {
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 2, new ViewPagerAdapter.enCambioFragmento() {
             @Override
             public Fragment cambioFragment(int position) {
                 Fragment fragmento = new Fragment();
@@ -81,7 +81,7 @@ public class AgregarFormaPagoActivity extends AppCompatActivity  implements onPa
             }
         });
 
-        viewPager.setAdapter(metodoPagoViewPagerAdapter);
+        viewPager.setAdapter(viewPagerAdapter);
 
         btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +96,7 @@ public class AgregarFormaPagoActivity extends AppCompatActivity  implements onPa
     @Override
     public void onChanged(Object Datos) {
         this.o_MetodoPago = (clsMetodoPago) Datos;
-        metodoPagoViewPagerAdapter.notifyDataSetChanged();
+        viewPagerAdapter.notifyDataSetChanged();
         viewPager.setCurrentItem(1);
 
     }

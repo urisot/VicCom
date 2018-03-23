@@ -15,13 +15,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-160dp"
-        app:srcCompat="@drawable/ic_usuario"
+        app:srcCompat="@drawable/usuario_registro"
         />
- <!--   <ScrollView
-        android:id="@+id/sv_Principal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >-->
+
 
         <LinearLayout
             android:id="@+id/llRegistro"
@@ -47,16 +43,6 @@
                 android:fontFamily="@font/dni_condensed_bold"
                 />
 
- <!--           <android.support.design.widget.TextInputLayout
-                android:id="@+id/tilEmaidflReg"
-                android:layout_below="@+id/textViewsdffg2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_centerHorizontal="true"
-                android:tag="control"
-                android:layout_gravity="center">-->
 
 
             <FrameLayout
@@ -73,7 +59,7 @@
                     android:drawableLeft="@drawable/ic_person_gris_24dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:background="@drawable/cuadros_texto_registro"
+                    android:background="@drawable/cuadro_texto"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:paddingRight="35dp"
@@ -89,19 +75,7 @@
                     android:layout_marginEnd="10dp" />
             </FrameLayout>
 
-          <!--  </android.support.design.widget.TextInputLayout>-->
 
-<!--            <android.support.design.widget.TextInputLayout
-                android:id="@+id/tilEmailReg"
-                android:layout_below="@+id/tilEmaidflReg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_centerHorizontal="true"
-                android:tag="control"
-                android:layout_gravity="center">-->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -113,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_email_24dp"
-                    android:background="@drawable/cuadros_texto_registro"
+                    android:background="@drawable/cuadro_texto"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:paddingRight="35dp"
@@ -132,20 +106,7 @@
                     android:layout_marginEnd="10dp" />
             </FrameLayout>
 
-        <!--    </android.support.design.widget.TextInputLayout>-->
 
-            <!--<android.support.design.widget.TextInputLayout
-                android:id="@+id/tilEmfdgfdgail"
-                android:layout_below="@+id/tilEmailReg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_centerHorizontal="true"
-                android:visibility="gone"
-                android:tag="control"
-                android:layout_gravity="center">-->
                 <EditText
                     android:id="@+id/txtCelular_reg"
                     android:layout_width="match_parent"
@@ -158,28 +119,7 @@
                     android:inputType="phone"
                     android:visibility="gone"
                     android:maxLength="10"/>
-         <!--   </android.support.design.widget.TextInputLayout>-->
 
-            <!--    <View
-                    android:id="@+id/separador13"
-                    android:layout_below="@+id/tilEmfdgfdgail"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginRight="24dp"
-                    android:layout_marginLeft="24dp"
-                    android:background="@android:color/darker_gray" />-->
-
-          <!--  <android.support.design.widget.TextInputLayout
-                android:id="@+id/tifdgfdgdlEmail"
-                android:layout_below="@+id/tilEmfdgfdgail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_centerHorizontal="true"
-                android:tag="control"
-                android:layout_gravity="center">-->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -191,7 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_lock_24dp"
-                    android:background="@drawable/cuadros_texto_registro"
+                    android:background="@drawable/cuadro_texto"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:paddingRight="35dp"
@@ -209,21 +149,7 @@
                     android:background="@drawable/ic_help_black_24dp"
                     android:layout_marginEnd="10dp" />
             </FrameLayout>
-<!--
-            </android.support.design.widget.TextInputLayout>-->
 
-    <!--        <android.support.design.widget.TextInputLayout
-                android:id="@+id/tildfgfdgjEmail"
-                android:layout_below="@+id/tifdgfdgdlEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_centerHorizontal="true"
-                android:visibility="gone"
-                android:tag="control"
-                android:layout_gravity="center">-->
                 <EditText
                     android:id="@+id/txtConfirmContrasena_reg"
                     android:layout_width="match_parent"
@@ -236,7 +162,7 @@
                     android:inputType="textPassword"
                     android:visibility="gone"
                     android:maxLength="9"/>
-<!--            </android.support.design.widget.TextInputLayout>-->
+
 
             <Button
                 android:id="@+id/btnRegistrar"
@@ -257,130 +183,10 @@
                 android:layout_gravity="right"
                  />
 
-           <!-- <View
-                android:id="@+id/separador1"
-                android:layout_below="@+id/btnRegistrar"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:background="@android:color/darker_gray" />
-
-
-
-            <TextView
-                android:id="@+id/txtMesajeEnvio_reg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="Se envió el codigo de activacion a su correo, por favor ingreselo a continuación:"
-                android:textSize="16sp"
-                android:layout_gravity="center"
-                android:visibility="gone"
-                />
-        &lt;!&ndash;    <LinearLayout
-                android:id="@+id/llCodigoVer"
-                android:layout_below="@+id/txtMesajeEnvio_reg"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center">
-
-
-            </LinearLayout>&ndash;&gt;
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/tilEmfdgfddfgail"
-                android:layout_below="@+id/textViewsdsdsffg2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:tag="control"
-                android:layout_gravity="center">
-
-                <EditText
-                    android:id="@+id/txtCodigo_reg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Codigo de activación"
-                    android:inputType="number"
-                    android:maxLength="6"
-                    android:textAlignment="center"
-                    android:visibility="gone"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-         &lt;!&ndash;   <ProgressBar
-                android:id="@+id/pbProgresoRegistro"
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="-60dp"
-                android:visibility="invisible"
-
-                />&ndash;&gt;
-
-            <Button
-                android:id="@+id/btnEnviarNvo_reg"
-                style="?android:textAppearanceSmall"
-                android:layout_below="@+id/tildfgfdgjEmail"
-                android:layout_centerHorizontal="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="24dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:text="Enviar de nuevo"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:visibility="gone"
-               />
--->
-
-      <!--      <com.facebook.login.widget.LoginButton
-                android:id="@+id/login_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/separador1"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal"
-                android:visibility="gone"
-                android:layout_marginTop="16dp" />-->
 
         </LinearLayout>
 
-        <!--  <Button
-              android:id="@+id/btnRegFacebook"
-              style="@style/com_facebook_button_share"
-              android:layout_width="200dp"
-              android:layout_height="wrap_content"
-              android:layout_below="@+id/tildfgfdgjEmail"
-              android:layout_centerHorizontal="true"
-              android:layout_gravity="center"
-              android:layout_marginBottom="16dp"
-              android:layout_marginLeft="16dp"
-              android:layout_marginRight="16dp"
-              android:layout_marginTop="16dp"
-              android:background="@color/colorPrimary"
-              android:text=" Registrar con facebook"
-              android:textAllCaps="false"
-              android:textColor="@color/icons"
-              android:textSize="14sp" />-->
 
-
-
-
- <!--   </ScrollView >-->
 
     <ProgressBar
         android:id="@+id/pbProgresoRegistro"

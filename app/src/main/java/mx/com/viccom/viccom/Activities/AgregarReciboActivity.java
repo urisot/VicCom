@@ -262,9 +262,10 @@ public class AgregarReciboActivity extends AppCompatActivity {
 
                 //Util.customSnackBar("Usuario valido.",txtNombreTitular,act_AgregarCuenta.this);
             }else{
-                progressBar_ac.setVisibility(View.INVISIBLE);
+
                 Util.customSnackBar("Usuario invalido.",txtNombreTitular,AgregarReciboActivity.this);
             }
+            progressBar_ac.setVisibility(View.INVISIBLE);
 
         }
 

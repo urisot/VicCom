@@ -9,15 +9,12 @@ import android.util.Log;
 import mx.com.viccom.viccom.Clases.clsMetodoPago;
 
 
-/**
- * Created by Admin on 28/02/2018.
- */
 
-public class MetodoPagoViewPagerAdapter extends FragmentStatePagerAdapter {
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     private int cantidadItems;//cantidad fragments por implementacion
     private enCambioFragmento listener;// escucha para diferentes fragments
 
-    public MetodoPagoViewPagerAdapter(FragmentManager fragmentManager, int cantidadItems, enCambioFragmento enCambioFragmentoListener ) {
+    public ViewPagerAdapter(FragmentManager fragmentManager, int cantidadItems, enCambioFragmento enCambioFragmentoListener ) {
         super(fragmentManager);
         this.cantidadItems = cantidadItems;
         this.listener = enCambioFragmentoListener;

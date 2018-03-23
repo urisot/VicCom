@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/restablece_con_backgrond"
     tools:context="mx.com.viccom.viccom.Fragments.ResConPideCodigoFragment">
 
@@ -12,7 +13,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-160dp"
-        app:srcCompat="@drawable/ic_usuario"
+        app:srcCompat="@drawable/usuario_registro"
         />
 
     <LinearLayout
@@ -33,7 +34,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="Revisa tu correo e ingresa el código para restablecer tu contraseña:"
-            android:textSize="39sp"
+            android:textSize="35sp"
             android:layout_gravity="center"
             android:textColor="@color/icons"
             android:fontFamily="@font/dni_condensed_bold"
@@ -49,7 +50,7 @@
                 android:id="@+id/txtCodigo_res"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/cuadros_texto_registro"
+                android:background="@drawable/cuadro_texto"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:paddingRight="35dp"

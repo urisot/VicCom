@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity  {
         linkResetContrasena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                irARestablecerContrasena();
             }
         });
 
@@ -322,6 +322,11 @@ public class LoginActivity extends AppCompatActivity  {
 
     private void irARegistro() {
         Intent intent = new Intent(this, RegistroActivity.class);
+        // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+    private void irARestablecerContrasena() {
+        Intent intent = new Intent(this, RestableceContrasenaActivity.class);
         // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
