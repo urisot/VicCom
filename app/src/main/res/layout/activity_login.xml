@@ -25,6 +25,13 @@
 
 
 
+    <ImageView
+        android:layout_width="149dp"
+        android:layout_height="71dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        app:srcCompat="@drawable/ic_logovictoria"/>
+
 
 
 
@@ -35,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="-260dp"
+            android:layout_marginBottom="-250dp"
             app:srcCompat="@drawable/ic_candado_11"
             android:stateListAnimator="@anim/bajar"
             />
@@ -49,8 +56,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+
             android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="48dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_logocomablanco"/>
 
             <TextView
                 android:id="@+id/mensajebinvenida"
@@ -95,7 +109,10 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/cuadros_texto_login"
                     android:drawablePadding="8dp"
-                    android:padding="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingRight="35dp"
+                    android:paddingLeft="8dp"
                     android:drawableLeft="@drawable/ic_email_24dp"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
@@ -130,7 +147,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/cuadros_texto_login"
-                    android:padding="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingRight="35dp"
+                    android:paddingLeft="8dp"
                     android:drawablePadding="8dp"
                     android:hint="Contraseña"
                     android:drawableLeft="@drawable/ic_lock_24dp"
@@ -220,8 +240,8 @@
                 android:layout_marginTop="-35dp"
                 android:background="@drawable/boton_azul"
                 android:drawableRight="@drawable/ic_send_24dp"
-                android:paddingRight="16dp"
-                android:paddingLeft="16dp"
+                android:paddingRight="24dp"
+                android:paddingLeft="24dp"
                 android:text="Entrar  "
                 android:textAllCaps="false"
                 android:textColor="@color/icons"

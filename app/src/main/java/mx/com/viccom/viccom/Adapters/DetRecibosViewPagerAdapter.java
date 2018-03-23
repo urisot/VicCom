@@ -29,11 +29,7 @@ public class DetRecibosViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = new Fragment();
-    /*    Bundle argumentos = new Bundle();
-        argumentos.putParcelable("recibo",o_recibo);
-        fragment.setArguments(argumentos);
 
-*/
         Bundle argumentos = new Bundle();
         switch (position){
             case 0 :

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/registro"
+    android:background="@color/registro_backgrond"
     tools:context="mx.com.viccom.viccom.Activities.RegistroActivity">
 
     <ImageView
@@ -74,7 +74,10 @@
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:background="@drawable/cuadros_texto_registro"
-                    android:padding="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingRight="35dp"
+                    android:paddingLeft="8dp"
                     android:drawablePadding="8dp"
                     android:maxLength="80"/>
                 <Button
@@ -111,7 +114,10 @@
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_email_24dp"
                     android:background="@drawable/cuadros_texto_registro"
-                    android:padding="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingRight="35dp"
+                    android:paddingLeft="8dp"
                     android:drawablePadding="8dp"
                     android:hint="Email"
                     android:ems="10"
@@ -186,7 +192,10 @@
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_lock_24dp"
                     android:background="@drawable/cuadros_texto_registro"
-                    android:padding="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingRight="35dp"
+                    android:paddingLeft="8dp"
                     android:drawablePadding="8dp"
                     android:hint="Contraseña"
                     android:ems="10"

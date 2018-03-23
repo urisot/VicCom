@@ -131,7 +131,7 @@ public class MisCuentasFragment extends Fragment {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext(),R.style.AppCompatAlertDialogStyle);
                 alertDialog.setMessage("¿Deseas eliminar el recibo con la cuenta ["+recibo.getId_cuenta()+"] "+recibo.getRazon_social()+"?");
                 alertDialog.setTitle("Eliminar recibo");
-                alertDialog.setIcon(android.R.drawable.ic_delete);
+                alertDialog.setIcon(android.R.drawable.ic_input_delete);
                 alertDialog.setCancelable(false);
                 alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

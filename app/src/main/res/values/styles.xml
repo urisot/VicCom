@@ -30,10 +30,18 @@
 
     <style name="Registro" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/registro</item>
+        <item name="colorPrimary">@color/registro_backgrond</item>
         <item name="colorPrimaryDark">@color/registro_darck</item>
         <item name="colorAccent">@color/boton_azul</item>
     </style>
+
+    <style name="RestablecerCon" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/restablece_con_backgrond</item>
+        <item name="colorPrimaryDark">@color/restablece_con_darck</item>
+        <item name="colorAccent">@color/boton_azul</item>
+    </style>
+
 
     <style name="RealizarPago" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->

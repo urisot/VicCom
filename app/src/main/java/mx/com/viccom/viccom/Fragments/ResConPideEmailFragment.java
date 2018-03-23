@@ -12,10 +12,10 @@ import mx.com.viccom.viccom.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CorreoLogInFragment extends Fragment {
+public class ResConPideEmailFragment extends Fragment {
 
 
-    public CorreoLogInFragment() {
+    public ResConPideEmailFragment() {
         // Required empty public constructor
     }
 
@@ -24,8 +24,7 @@ public class CorreoLogInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_correo_log_in, container, false);
-
+        View view = inflater.inflate(R.layout.fragment_res_con_pide_email, container, false);
         return view;
     }
 
