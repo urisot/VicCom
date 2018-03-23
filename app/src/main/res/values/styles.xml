@@ -35,10 +35,10 @@
         <item name="colorAccent">@color/boton_azul</item>
     </style>
 
-    <style name="RealizarPago" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="RealizarPago" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/centerColor</item>
-        <item name="colorPrimaryDark">@color/endColor</item>
+        <item name="colorPrimary">@color/borde_boton_pagar</item>
+        <item name="colorPrimaryDark">@color/boton_pagar</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 

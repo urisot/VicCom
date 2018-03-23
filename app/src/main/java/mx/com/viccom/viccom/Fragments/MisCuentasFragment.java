@@ -101,15 +101,33 @@ public class MisCuentasFragment extends Fragment {
             @Override
             public void onItemClick(clsRecibos recibo, int position) {
 
-
+                Intent intento = new Intent(getActivity(),DetCuentaActivity.class);
+                intento.putExtra("RECIBO",  recibo);
+                startActivityForResult(intento, Util.SOLICITUD_VER_DETALLE_CUENTA);
 
                 //Toast.makeText(act_MenuPrincipal.this, recibo.getNombre() + " - " + position, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onLongItemClick(clsRecibos recibo, int position) {
-                final clsRecibos o_recibo = recibo;
 
+
+
+
+            }
+
+            @Override
+            public void onButton1ItemClick(clsRecibos recibo, int position) {
+                if (recibo.getTotal() >0){
+                    PagarRecibo(recibo);
+                }
+
+                //Toast.makeText(getContext(), "Pagar recibo de: "+recibo.getRazon_social() + " - " + position, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onButton2ItemClick(clsRecibos recibo, int position) {
+                final clsRecibos o_recibo = recibo;
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext(),R.style.AppCompatAlertDialogStyle);
                 alertDialog.setMessage("¿Deseas eliminar el recibo con la cuenta ["+recibo.getId_cuenta()+"] "+recibo.getRazon_social()+"?");
                 alertDialog.setTitle("Eliminar recibo");
@@ -137,22 +155,6 @@ public class MisCuentasFragment extends Fragment {
                 });
                 alertDialog.show();
 
-            }
-
-            @Override
-            public void onButton1ItemClick(clsRecibos recibo, int position) {
-                if (recibo.getTotal() >0){
-                    PagarRecibo(recibo);
-                }
-
-                //Toast.makeText(getContext(), "Pagar recibo de: "+recibo.getRazon_social() + " - " + position, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onButton2ItemClick(clsRecibos recibo, int position) {
-                Intent intento = new Intent(getActivity(),DetCuentaActivity.class);
-                intento.putExtra("RECIBO",  recibo);
-                startActivityForResult(intento, Util.SOLICITUD_VER_DETALLE_CUENTA);
             }
         });
 

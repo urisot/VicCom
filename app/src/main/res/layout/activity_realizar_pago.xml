@@ -8,17 +8,19 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        android:visibility="gone"
+        android:visibility="invisible"
         style="?android:attr/progressBarStyleLarge"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginBottom="8dp" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/regularLayout"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrlPideCobro"
         android:visibility="visible">
 
         <LinearLayout
@@ -87,7 +89,6 @@
                     android:weightSum="10"
                     >
                     <TextView
-                        android:id="@+id/txt_Concepto"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="5"
@@ -148,7 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="250dp"
-                android:background="@android:color/darker_gray" />
+                android:background="@android:color/black" />
             <TableLayout
                 android:id="@+id/tlComicionwes"
                 android:layout_width="match_parent"
@@ -222,6 +223,210 @@
             <Button
                 android:id="@+id/btnCancelar"
                 android:text="Cancelar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="@color/colorAccent"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrlResultado"
+        android:layout_below="@+id/scrlPideCobro"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="#11AE61"
+                >
+                <ImageButton
+                    android:id="@+id/btnAtras_mp"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/ic_chevron_left_black_24dp"
+                    android:padding="16dp"
+                    />
+                <ImageView
+                    android:id="@+id/imgCorrecto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_check_circle_withe"
+                    android:layout_centerInParent="true"
+                    />
+                <TextView
+                    android:id="@+id/txtMensajePago"
+                    android:layout_below="@+id/imgCorrecto"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pago aplicado correctamente"
+                    android:layout_centerInParent="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/icons"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TableLayout
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    >
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="10"
+                        >
+                        <TextView
+                            android:id="@+id/txt_Concepto"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:text="Folio de aprovación: "
+                            android:gravity="right"
+                            android:textSize="16sp"
+                            />
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:id="@+id/txtId"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6"
+                            android:textStyle="bold"
+                            android:text="PAYXMLZ5DKJ324JY432DJ24"
+                            />
+                    </TableRow>
+                </TableLayout>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    >
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="10"
+                        >
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:text="Folio del pago: "
+                            android:gravity="right"
+                            android:textSize="16sp"
+                            />
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:id="@+id/txtFolioPago"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6"
+                            android:textStyle="bold"
+                            android:text="P07523474"/>
+                    </TableRow>
+                </TableLayout>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    >
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="10"
+                        >
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:text="Importe aplicado: "
+                            android:gravity="right"
+                            android:textSize="16sp"
+                            />
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:id="@+id/txtImorteaplicado"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6"
+                            android:textStyle="bold"
+                            android:text="$145.62"/>
+                    </TableRow>
+                </TableLayout>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    >
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="10"
+                        >
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:text="Estatus: "
+                            android:gravity="right"
+                            android:textSize="16sp"
+                            />
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:id="@+id/txtEstatus"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6"
+                            android:textStyle="bold"
+                            android:text="Aprovado"/>
+                    </TableRow>
+                </TableLayout>
+
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtAvisoPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Aviso: se ha enviado una representación gráfica de su recibo de pago a su correo electronico. Para mayores aclaraciones consulte nuestra política de privacidad o marque al 073."
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:id="@+id/btnCancelar1"
+                android:text="Aceptar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"

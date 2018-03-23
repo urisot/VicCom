@@ -37,11 +37,11 @@ public class ConfiguracionFragment extends Fragment {
         }
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_configuracion, container, false);
-        txtTextoAencriptar = (EditText) view.findViewById(R.id.txtTextoencriptar);
+    /*    txtTextoAencriptar = (EditText) view.findViewById(R.id.txtTextoencriptar);
         txtEncriptado = (TextView) view.findViewById(R.id.txtResultado);
         txtDesencriptado = (TextView) view.findViewById(R.id.txtTextoOriginal);
         btnEncripta = (Button) view.findViewById(R.id.btnEncriptar);
-        btnDesencripta = (Button) view.findViewById(R.id.btndesencriptar);
+        btnDesencripta = (Button) view.findViewById(R.id.btndesencriptar);*/
 
         return view;
     }
@@ -50,12 +50,12 @@ public class ConfiguracionFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        btnEncripta.setOnClickListener(new View.OnClickListener() {
+     /*   btnEncripta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
-        });
+        });*/
 
 
     }

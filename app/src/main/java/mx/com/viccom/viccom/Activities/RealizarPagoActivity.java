@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.math.BigDecimal;
 
@@ -48,9 +51,13 @@ public class RealizarPagoActivity extends AppCompatActivity {
             .merchantPrivacyPolicyUri(Uri.parse("https://www.example.com/privacy"))
             .merchantUserAgreementUri(Uri.parse("https://www.example.com/legal"));
 
-    private Button btnPagar,btnPagarTarjeta,btnCancelar;
+    private Button btnPagar,btnPagarTarjeta,btnCancelar,btnCancelar1;
     private TextView txtImporte,txtComicion,txtTotal,txtNombre,txtPeriodo,txtMetros;
     private String Importe;
+
+    private TextView txtId,txtImporteApli,txtEstatus,txtFolioPago;
+    private ScrollView scrlResultado,scrlPideCobro;
+    private ImageButton btnAtras_mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +66,7 @@ public class RealizarPagoActivity extends AppCompatActivity {
 
         // Activar flecha ir atrás
        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Revisa tu pago");
+       // getSupportActionBar().setTitle("Revisa tu pago");
 
 
         Bundle bundle = getIntent().getExtras();
@@ -71,6 +78,8 @@ public class RealizarPagoActivity extends AppCompatActivity {
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,configuration);
         startService(intent);
 
+        scrlResultado = (ScrollView) findViewById(R.id.scrlResultado);
+        scrlPideCobro = (ScrollView) findViewById(R.id.scrlPideCobro);
 
         txtImporte = (TextView) findViewById(R.id.txtImporteRequerido);
         txtComicion = (TextView) findViewById(R.id.txtComiciones);
@@ -78,6 +87,14 @@ public class RealizarPagoActivity extends AppCompatActivity {
         txtNombre = (TextView) findViewById(R.id.txtNombre);
         txtPeriodo = (TextView) findViewById(R.id.txtPeriodo);
         txtMetros = (TextView) findViewById(R.id.txtMetros);
+
+
+        txtId =(TextView) findViewById(R.id.txtId);
+        txtImporteApli =(TextView) findViewById(R.id.txtImorteaplicado);
+        txtEstatus =(TextView) findViewById(R.id.txtEstatus);
+        txtFolioPago = (TextView) findViewById(R.id.txtFolioPago);
+        btnCancelar1 = (Button) findViewById(R.id.btnCancelar1);
+        btnAtras_mp = (ImageButton) findViewById(R.id.btnAtras_mp);
 
         btnPagar = (Button) findViewById(R.id.btnPagarPayPal);
         btnPagarTarjeta = (Button) findViewById(R.id.btnPagarTarjeta);
@@ -103,9 +120,25 @@ public class RealizarPagoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(RealizarPagoActivity.this,"No disponible por el momento",Toast.LENGTH_SHORT).show();
+
+              //  getApplication().setTheme(android.R.style.Theme_Translucent_NoTitleBar); // Set here
             }
         });
         btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(Util.RESULTADO_CANCEL);
+                finish();//finishing activity
+            }
+        });
+        btnCancelar1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(Util.RESULTADO_CANCEL);
+                finish();//finishing activity
+            }
+        });
+        btnAtras_mp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setResult(Util.RESULTADO_CANCEL);
@@ -160,10 +193,17 @@ public class RealizarPagoActivity extends AppCompatActivity {
                 PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
                 if(confirmation != null){
                     try{
+
                         String detallePago = confirmation.toJSONObject().toString(4);
-                        startActivity( new Intent(this,ResultadoPagoActivity.class)
+                      /*  startActivity( new Intent(this,ResultadoPagoActivity.class)
                                 .putExtra("DETALLEPAGO",detallePago)
-                                .putExtra("IMPORTE",Importe));
+                                .putExtra("IMPORTE",Importe));*/
+                        scrlPideCobro.setVisibility(View.GONE);
+                        scrlResultado.setVisibility(View.VISIBLE);
+
+                        JSONObject jsonObject = new JSONObject(detallePago);
+                        MuestraDetalle(jsonObject.getJSONObject("response"),Importe);
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -181,9 +221,23 @@ public class RealizarPagoActivity extends AppCompatActivity {
 
         }
 
+        if (requestCode == PAYPAL_REQUEST_CODE){
+            if (resultCode == Util.RESULTADO_CANCEL){
+                finish();//finishing activity
+            }
+        }
 
 
+    }
+    private void MuestraDetalle(JSONObject response, String importe) {
 
+        try {
+            txtId.setText(response.getString("id"));
+            txtEstatus.setText(response.getString("state"));
+            txtImporteApli.setText(String.format("$%s",importe));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -6,30 +6,203 @@
     android:layout_height="match_parent"
     tools:context="mx.com.viccom.viccom.Activities.ResultadoPagoActivity">
 
-    <LinearLayout
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:id="@+id/regularLayout"
+        android:visibility="visible">
 
-        <TextView
-            android:id="@+id/txtId"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+        >
 
-        <TextView
-            android:id="@+id/txtImorteaplicado"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="#11AE61"
+                >
+                <ImageView
+                    android:id="@+id/imgCorrecto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_check_circle_withe"
+                    android:layout_centerInParent="true"
+                    />
+                <TextView
+                    android:id="@+id/txtMensajePago"
+                    android:layout_below="@+id/imgCorrecto"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pago aplicado correctamente"
+                    android:layout_centerInParent="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/icons"/>
 
-        <TextView
-            android:id="@+id/txtEstatus"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            </RelativeLayout>
 
-    </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TableLayout
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    >
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="10"
+                        >
+                        <TextView
+                            android:id="@+id/txt_Concepto"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:text="Folio de aprovación: "
+                            android:gravity="right"
+                            android:textSize="16sp"
+                            />
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:id="@+id/txtId"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6"
+                            android:textStyle="bold"
+                            android:text="PAYXMLZ5DKJ324JY432DJ24"
+                            />
+                    </TableRow>
+                </TableLayout>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    >
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="10"
+                        >
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:text="Folio del pago: "
+                            android:gravity="right"
+                            android:textSize="16sp"
+                            />
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:id="@+id/txtFolioPago"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6"
+                            android:textStyle="bold"
+                            android:text="P07523474"/>
+                    </TableRow>
+                </TableLayout>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    >
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="10"
+                        >
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:text="Importe aplicado: "
+                            android:gravity="right"
+                            android:textSize="16sp"
+                            />
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:id="@+id/txtImorteaplicado"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6"
+                            android:textStyle="bold"
+                            android:text="$145.62"/>
+                    </TableRow>
+                </TableLayout>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    >
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:weightSum="10"
+                        >
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:text="Estatus: "
+                            android:gravity="right"
+                            android:textSize="16sp"
+                            />
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:id="@+id/txtEstatus"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="6"
+                            android:textStyle="bold"
+                            android:text="Aprovado"/>
+                    </TableRow>
+                </TableLayout>
+
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtAvisoPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Aviso: se ha enviado una representación gráfica de su recibo de pago a su correo electronico. Para mayores aclaraciones consulte nuestra política de privacidad o marque al 073."
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnCerrarPago"
+        android:layout_margin="16dp"
+        android:background="@drawable/boton_celeste"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aceptar"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

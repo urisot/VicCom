@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -75,7 +76,7 @@ public class RecibosRecyclerViewAdapter  extends RecyclerView.Adapter<RecibosRec
         public TextView txtImporte;
         public TextView txtVencimiento;
         public Button btnPagar;
-        public TextView txtVerDetalle;
+        public ImageButton btnEliminar;
 
 
         public ViewHolder(View itemView) {
@@ -87,7 +88,7 @@ public class RecibosRecyclerViewAdapter  extends RecyclerView.Adapter<RecibosRec
             txtImporte = (TextView) itemView.findViewById(R.id.txt_Importe_US);
             txtVencimiento = (TextView) itemView.findViewById(R.id.txt_Vencimiento_US);
             btnPagar = (Button) itemView.findViewById(R.id.btnPagar_us);
-            txtVerDetalle = (TextView) itemView.findViewById(R.id.btnDetalle_us);
+            btnEliminar = (ImageButton) itemView.findViewById(R.id.btnEliminar_us);
 
         }
 
@@ -102,6 +103,7 @@ public class RecibosRecyclerViewAdapter  extends RecyclerView.Adapter<RecibosRec
                 if (!(Math.round(recibo.getTotal())>0)){
                     btnPagar.setVisibility(View.INVISIBLE);
                 }
+
 
 //            Picasso.with(context).load(movie.getId()).fit().into(imageViewPoster);
                 // imageViewPoster.setImageResource(movie.getPoster());
@@ -128,7 +130,7 @@ public class RecibosRecyclerViewAdapter  extends RecyclerView.Adapter<RecibosRec
                         listener.onButton1ItemClick(recibo, getAdapterPosition());
                     }
                 });
-                txtVerDetalle.setOnClickListener(new View.OnClickListener() {
+                btnEliminar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         listener.onButton2ItemClick(recibo, getAdapterPosition());

@@ -43,6 +43,7 @@ public class Util{
     public static final int SOLICITUD_SELECCIONA_MES_VENCIMIENTO = 8;
     public static final int SOLICITUD_SELECCIONA_ANO_VENCIMIENTO = 9;
     public static final int SOLICITUD_LEER_CODIGO = 10;
+    public static final int SOLICITUD_CONFIRMAR_PAGO = 11;
     public static final int ZXING_CAMERA_PERMISSION = 1;
 
 
