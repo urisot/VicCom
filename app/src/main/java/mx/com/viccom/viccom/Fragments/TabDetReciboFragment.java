@@ -30,7 +30,7 @@ import mx.com.viccom.viccom.Utilities.SendToWCF;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DetReciboFragment extends Fragment {
+public class TabDetReciboFragment extends Fragment {
 
     private clsRecibos o_recibo = new clsRecibos();
     private ActualizaDetalleHttp actualizaDetalleHttp;
@@ -42,7 +42,7 @@ public class DetReciboFragment extends Fragment {
     private ProgressBar pbCargandoConceptos;
     private ConceptosRecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    public DetReciboFragment() {
+    public TabDetReciboFragment() {
         // Required empty public constructor
     }
 

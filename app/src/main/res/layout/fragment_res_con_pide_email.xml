@@ -6,7 +6,7 @@
     tools:context="mx.com.viccom.viccom.Fragments.ResConPideEmailFragment">
 
     <ProgressBar
-        android:id="@+id/login_progress"
+        android:id="@+id/restablece_progress"
         style="?android:attr/progressBarStyleLarge"
         android:visibility="invisible"
         android:layout_gravity="center"
@@ -17,7 +17,7 @@
         android:layout_marginBottom="8dp" />
 
     <LinearLayout
-        android:id="@+id/llRegistro"
+        android:id="@+id/llRestablece"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"

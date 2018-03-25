@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="mx.com.viccom.viccom.Fragments.DetReciboFragment">
+    tools:context="mx.com.viccom.viccom.Fragments.TabDetReciboFragment">
 
     <TextView
         android:id="@+id/txtConceptos"

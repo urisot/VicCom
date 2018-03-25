@@ -94,10 +94,20 @@ public class AgregarFormaPagoActivity extends AppCompatActivity  implements onPa
     }
 
     @Override
-    public void onChanged(Object Datos) {
+    public void onChangedPasObject(Object Datos) {
         this.o_MetodoPago = (clsMetodoPago) Datos;
         viewPagerAdapter.notifyDataSetChanged();
         viewPager.setCurrentItem(1);
+
+    }
+
+    @Override
+    public void onChangedPasPage(int page) {
+
+    }
+
+    @Override
+    public void onChangedPasFragment(Fragment fragment) {
 
     }
 }

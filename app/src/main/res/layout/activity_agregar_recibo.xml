@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     tools:context="mx.com.viccom.viccom.Activities.AgregarReciboActivity">
 
-
-
     <RelativeLayout
         android:id="@+id/rl_tituloy"
         android:layout_width="match_parent"
@@ -61,19 +59,44 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Con tu recibo impreso a la mano, ingresa la siguiente información:"
-                android:textSize="16sp"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp">
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                >
+                <TextView
+                    android:id="@+id/txtAviso"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Con tu recibo impreso a la mano, ingresa la siguiente información:"
+                    android:textSize="15sp" />
+
+                <ImageButton
+                    android:id="@+id/btnEscanear"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="end|center_vertical"
+                    android:background="@drawable/boton_gris"
+                    app:srcCompat="@drawable/ic_barcode_scan" />
+
+            </FrameLayout>
+
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                >
 
                 <EditText
                     android:id="@+id/txtNumeroCuenta_ac"
@@ -96,67 +119,6 @@
                     android:background="@drawable/ic_help_black_24dp"
                     android:layout_marginEnd="10dp" />
             </FrameLayout>
-
-            <TableLayout
-                android:layout_below="@+id/ll_vencimiento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-                <TableRow
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:weightSum="10"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    >
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_height="wrap_content"
-                        android:layout_width="0dp"
-                        android:layout_weight="6">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tu numero de cuenta se ubica en la esquina superior derecha de tu recibo"
-                            android:textStyle="italic"
-                            android:layout_marginBottom="8dp"
-                            />
-
-                        <Button
-                            android:id="@+id/btnEscanear"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_barcode_scan"
-                            android:background="@drawable/boton_gris"
-                            android:text="Escanea tu código"
-                            android:paddingLeft="16dp"
-                            android:textAllCaps="false"
-                            android:textSize="13sp"
-                            android:textColor="@android:color/background_light" />
-
-                    </LinearLayout>
-
-
-                    <View
-                        android:layout_width="8dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        />
-
-                    <ImageView
-                        android:id="@+id/imgMuestra"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:background="@drawable/ic_ejemplo_recibo" />
-
-                </TableRow>
-
-            </TableLayout>
-
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -187,6 +149,57 @@
                     android:layout_marginEnd="10dp" />
             </FrameLayout>
 
+            <ImageView
+                android:id="@+id/imgMuestra"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="@drawable/ejemplo_recibo" />
+
+   <!--         <TableLayout
+                android:layout_below="@+id/ll_vencimiento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TableRow
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="10"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    >
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="6">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tu numero de cuenta se ubica en la esquina superior derecha de tu recibo"
+                            android:textStyle="italic"
+                            android:layout_marginBottom="8dp"
+                            />
+
+
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        />
+
+
+
+                </TableRow>
+
+            </TableLayout>
 
             <TextView
                 android:id="@+id/textView4"
@@ -195,7 +208,8 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
                 android:text="El nombre del titular se escribe tal y como aparece en el recibo."
-                android:textStyle="italic"/>
+                android:textStyle="italic"/>-->
+
 
             <Button
                 android:id="@+id/btnValidarCta_ac"

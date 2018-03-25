@@ -301,6 +301,7 @@ public class RegistroActivity extends AppCompatActivity {
             MostrarEspera(false);
         }
     }
+
     private Boolean DatosValidos(){
         boolean boolRetornar = false;
         String strNombre =  txtNombre.getText().toString();
@@ -332,6 +333,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         return boolRetornar;
     }
+
     private void PedirCodigoActivacion(clsUsuarioApp o_usuario){
         Intent intent = new Intent(RegistroActivity.this,CodigoRegistroActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);

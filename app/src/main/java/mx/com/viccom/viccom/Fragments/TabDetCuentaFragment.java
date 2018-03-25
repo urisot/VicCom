@@ -15,7 +15,7 @@ import mx.com.viccom.viccom.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DetCuentaFragment extends Fragment {
+public class TabDetCuentaFragment extends Fragment {
 
     private clsRecibos o_recibo = new clsRecibos();
 
@@ -28,7 +28,7 @@ public class DetCuentaFragment extends Fragment {
     private TextView txtTarifa;
     private TextView txtConsumoFac;
 
-    public DetCuentaFragment() {
+    public TabDetCuentaFragment() {
         // Required empty public constructor
     }
 

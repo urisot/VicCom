@@ -4,12 +4,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import mx.com.viccom.viccom.Adapters.ViewPagerAdapter;
 import mx.com.viccom.viccom.Clases.clsMetodoPago;
 import mx.com.viccom.viccom.Fragments.AgregarCtaMerPagoFragment;
 import mx.com.viccom.viccom.Fragments.AgregarCtaPayPalFragment;
 import mx.com.viccom.viccom.Fragments.AgregarTarjetaFragment;
+import mx.com.viccom.viccom.Fragments.MisCuentasFragment;
 import mx.com.viccom.viccom.Fragments.ResConCambioConFragment;
 import mx.com.viccom.viccom.Fragments.ResConPideCodigoFragment;
 import mx.com.viccom.viccom.Fragments.ResConPideEmailFragment;
@@ -25,7 +27,9 @@ public class RestableceContrasenaActivity extends AppCompatActivity implements o
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restablece_contrasena);
 
-        viewPager = (ViewPager) findViewById(R.id.vPagRestableceContraseña);
+        setFragmentByDefault();
+
+      /*  viewPager = (ViewPager) findViewById(R.id.vPagRestableceContraseña);
 
 
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 3, new ViewPagerAdapter.enCambioFragmento() {
@@ -59,11 +63,41 @@ public class RestableceContrasenaActivity extends AppCompatActivity implements o
             }
         });
 
-        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setAdapter(viewPagerAdapter);*/
+    }
+    private void setFragmentByDefault() {
+        Fragment fragment = new ResConPideEmailFragment();
+        changeFragment(fragment);
+    }
+    private void changeFragment(Fragment fragment) {
+
+   /*     if (fragment != null){
+            Bundle argumentos = new Bundle();
+            argumentos.putParcelable("USUARIOAPP",usuarioApp);
+            fragment.setArguments(argumentos);
+        }*/
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content_frame, fragment)
+                .commit();
+
+        //getSupportActionBar().setTitle(item.getTitle());
+        //getSupportActionBar().setTitle("");
     }
 
     @Override
-    public void onChanged(Object Datos) {
+    public void onChangedPasObject(Object Datos) {
 
+    }
+
+    @Override
+    public void onChangedPasPage(int page) {
+        viewPager.setCurrentItem(page);
+    }
+
+    @Override
+    public void onChangedPasFragment(Fragment fragment) {
+        changeFragment(fragment);
     }
 }

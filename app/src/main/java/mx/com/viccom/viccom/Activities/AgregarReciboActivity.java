@@ -40,7 +40,7 @@ public class AgregarReciboActivity extends AppCompatActivity {
     private ProgressBar progressBar_ac;
     private ImageButton btnCerrar;
     private clsUsuarioApp usuarioApp = new clsUsuarioApp();
-    private Button btnEscanear;
+    private ImageButton btnEscanear;
 
     private Class<?> mClss;
 
@@ -60,7 +60,7 @@ public class AgregarReciboActivity extends AppCompatActivity {
         btnValidarCta =(Button) findViewById(R.id.btnValidarCta_ac);
         progressBar_ac =(ProgressBar) findViewById(R.id.progressBar_ac);
         btnCerrar =(ImageButton) findViewById(R.id.btn_cerrar_ac);
-        btnEscanear = (Button) findViewById(R.id.btnEscanear);
+        btnEscanear = (ImageButton) findViewById(R.id.btnEscanear);
 
 
         URL_WCF = Util.getDireccionWCF();

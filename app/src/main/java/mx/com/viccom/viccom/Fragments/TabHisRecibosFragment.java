@@ -31,7 +31,7 @@ import mx.com.viccom.viccom.Utilities.SendToWCF;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HisRecibosFragment extends Fragment {
+public class TabHisRecibosFragment extends Fragment {
 
     private clsRecibos o_recibo = new clsRecibos();
     private ActualizaHisReciosHttp actualizaHisReciosHttp;
@@ -42,7 +42,7 @@ public class HisRecibosFragment extends Fragment {
     private BarChart barChartImportes;
     private ProgressBar pbGraficas;
 
-    public HisRecibosFragment() {
+    public TabHisRecibosFragment() {
         // Required empty public constructor
     }
 

@@ -64,7 +64,7 @@ public class SelectMetodoPagoFragment extends Fragment {
             @Override
             public void onItemListClick(Object registro) {
                 o_metodoPago = (clsMetodoPago) registro;
-                Listener.onChanged(o_metodoPago);
+                Listener.onChangedPasObject(o_metodoPago);
             }
         });
 

@@ -6,9 +6,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import mx.com.viccom.viccom.Clases.clsRecibos;
-import mx.com.viccom.viccom.Fragments.DetCuentaFragment;
-import mx.com.viccom.viccom.Fragments.DetReciboFragment;
-import mx.com.viccom.viccom.Fragments.HisRecibosFragment;
+import mx.com.viccom.viccom.Fragments.TabDetCuentaFragment;
+import mx.com.viccom.viccom.Fragments.TabDetReciboFragment;
+import mx.com.viccom.viccom.Fragments.TabHisRecibosFragment;
 
 
 /**
@@ -33,17 +33,17 @@ public class DetRecibosViewPagerAdapter extends FragmentStatePagerAdapter {
         Bundle argumentos = new Bundle();
         switch (position){
             case 0 :
-                fragment = new DetCuentaFragment();
+                fragment = new TabDetCuentaFragment();
                 argumentos.putParcelable("RECIBO",o_recibo);
                 fragment.setArguments(argumentos);
                 return fragment;
             case 1 :
-                fragment = new DetReciboFragment();
+                fragment = new TabDetReciboFragment();
                 argumentos.putParcelable("RECIBO",o_recibo);
                 fragment.setArguments(argumentos);
                 return fragment;
             case 2 :
-                fragment = new HisRecibosFragment();
+                fragment = new TabHisRecibosFragment();
                 argumentos.putParcelable("RECIBO",o_recibo);
                 fragment.setArguments(argumentos);
                 return fragment;
