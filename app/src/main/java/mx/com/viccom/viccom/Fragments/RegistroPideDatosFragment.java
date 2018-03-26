@@ -1,18 +1,18 @@
-package mx.com.viccom.viccom.Activities;
+package mx.com.viccom.viccom.Fragments;
 
-import android.content.Intent;
+
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.HandlerThread;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -20,27 +20,28 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
+import mx.com.viccom.viccom.Activities.RegistroActivity;
 import mx.com.viccom.viccom.Clases.clsParameter;
 import mx.com.viccom.viccom.Clases.clsResultadoWCF;
 import mx.com.viccom.viccom.Clases.clsUsuarioApp;
-import mx.com.viccom.viccom.Fragments.RegistroPideDatosFragment;
-import mx.com.viccom.viccom.Fragments.ResConPideEmailFragment;
 import mx.com.viccom.viccom.Interfaces.onPageChangedLisener;
 import mx.com.viccom.viccom.R;
 import mx.com.viccom.viccom.Utilities.SendToWCF;
-import mx.com.viccom.viccom.Utilities.StringMD;
 import mx.com.viccom.viccom.Utilities.Util;
 
-public class RegistroActivity extends AppCompatActivity implements onPageChangedLisener {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class RegistroPideDatosFragment extends Fragment {
+
+    onPageChangedLisener Listener;
 
     private EditText txtNombre,txtEmail,txtContrasena;
     private Button btnRegistrar,btnAyuaNom,btnAyudaEmail,btnAyudaCont;
@@ -48,28 +49,40 @@ public class RegistroActivity extends AppCompatActivity implements onPageChanged
     private Animation animCaida,animSubir;
     private LinearLayout llRegistro;
     private ImageView imgUsuario;
+    public RegistroPideDatosFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_registro_pide_datos, container, false);
+        txtNombre = (EditText) view.findViewById(R.id.txt_Nombre_reg);
+        txtEmail = (EditText) view.findViewById(R.id.txt_email_reg);
+        txtContrasena = (EditText) view.findViewById(R.id.txtContrasena_reg);
+        btnRegistrar = (Button) view.findViewById(R.id.btnRegistrar);
+        pbValidando = (ProgressBar) view.findViewById(R.id.pbProgresoRegistro);
+        btnAyuaNom = (Button) view.findViewById(R.id.btnHelpNombre_reg);
+        btnAyudaEmail = (Button) view.findViewById(R.id.btnHelpEmail_reg);
+        btnAyudaCont = (Button) view.findViewById(R.id.btnHelpContrasena_reg);
+        llRegistro = (LinearLayout) view.findViewById(R.id.llRegistro);
+        imgUsuario = (ImageView) view.findViewById(R.id.imgUsuario);
 
-        // Activar flecha ir atrás
-/*        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Registrate");*/
+        animCaida = AnimationUtils.loadAnimation(getContext(),R.anim.bajar);
+        animSubir = AnimationUtils.loadAnimation(getContext(),R.anim.subir);
+        return view;
+    }
 
- /*       txtNombre = (EditText) findViewById(R.id.txt_Nombre_reg);
-        txtEmail = (EditText) findViewById(R.id.txt_email_reg);
-        txtContrasena = (EditText) findViewById(R.id.txtContrasena_reg);
-        btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
-        pbValidando = (ProgressBar) findViewById(R.id.pbProgresoRegistro);
-        btnAyuaNom = (Button) findViewById(R.id.btnHelpNombre_reg);
-        btnAyudaEmail = (Button) findViewById(R.id.btnHelpEmail_reg);
-        btnAyudaCont = (Button) findViewById(R.id.btnHelpContrasena_reg);
-        llRegistro = (LinearLayout) findViewById(R.id.llRegistro);
-        imgUsuario = (ImageView) findViewById(R.id.imgUsuario);
-
-        animCaida = AnimationUtils.loadAnimation(this,R.anim.bajar);
-        animSubir = AnimationUtils.loadAnimation(this,R.anim.subir);
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        try {
+            Listener = (onPageChangedLisener) getActivity();
+        } catch (ClassCastException e) {
+            //
+        }
 
         llRegistro.setAnimation(animCaida);
         imgUsuario.setAnimation(animSubir);
@@ -159,47 +172,10 @@ public class RegistroActivity extends AppCompatActivity implements onPageChanged
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-        });*/
-
-        setFragmentByDefault();
-    }
-    private void setFragmentByDefault() {
-        Fragment fragment = new RegistroPideDatosFragment();
-        changeFragment(fragment);
-    }
-    private void changeFragment(Fragment fragment) {
-
-   /*     if (fragment != null){
-            Bundle argumentos = new Bundle();
-            argumentos.putParcelable("USUARIOAPP",usuarioApp);
-            fragment.setArguments(argumentos);
-        }*/
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.content_frame, fragment)
-                .commit();
-
-        //getSupportActionBar().setTitle(item.getTitle());
-        //getSupportActionBar().setTitle("");
+        });
     }
 
-    @Override
-    public void onChangedPasObject(Object Datos) {
-
-    }
-
-    @Override
-    public void onChangedPasPage(int page) {
-
-    }
-
-    @Override
-    public void onChangedPasFragment(Fragment fragment) {
-        changeFragment(fragment);
-    }
-    
-/*    private void MostrarEspera(Boolean boolMostrar) {
+    private void MostrarEspera(Boolean boolMostrar) {
         if (boolMostrar){
             pbValidando.setVisibility(View.VISIBLE);
             llRegistro.setVisibility(View.INVISIBLE);
@@ -311,7 +287,7 @@ public class RegistroActivity extends AppCompatActivity implements onPageChanged
             if (oResultadoWCF.getError_number() == 0){
                 btnRegistrar.setVisibility(View.GONE);
 
-                String strMacAddress = Util.getMacAddress(RegistroActivity.this);
+                String strMacAddress = Util.getMacAddress(getContext());
 
                 clsUsuarioApp oUsuarioApp = new clsUsuarioApp(""
                         ,txtNombre.getText().toString()
@@ -322,18 +298,20 @@ public class RegistroActivity extends AppCompatActivity implements onPageChanged
                         ,""
                         ,"" );
 
-                PedirCodigoActivacion(oUsuarioApp);
-*//*                txtNombre.setEnabled(false);
-                txtEmail.setEnabled(false);
-                txtContrasena.setEnabled(false);
-                txtCodigoReg.setVisibility(View.VISIBLE);
-                txtMensje.setVisibility(View.VISIBLE);
-                btnReenviarCodigo.setVisibility(View.VISIBLE);
-                txtCodigoReg.requestFocus();*//*
+                Fragment fragment = new RegistroPideCodigoFragment();
+
+                Bundle argumentos = new Bundle();
+                argumentos.putParcelable("REGUSUARIOAPP",oUsuarioApp);
+                fragment.setArguments(argumentos);
+
+                Listener.onChangedPasFragment(fragment);
+
+               // PedirCodigoActivacion(oUsuarioApp);
+
 
 
             }else{
-                Util.customSnackBar(oResultadoWCF.getError_menssage(),btnRegistrar,RegistroActivity.this);
+                Util.customSnackBar(oResultadoWCF.getError_menssage(),btnRegistrar,getContext());
 
             }
             MostrarEspera(false);
@@ -371,11 +349,4 @@ public class RegistroActivity extends AppCompatActivity implements onPageChanged
 
         return boolRetornar;
     }
-
-    private void PedirCodigoActivacion(clsUsuarioApp o_usuario){
-        Intent intent = new Intent(RegistroActivity.this,CodigoRegistroActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("REGUSUARIOAPP",o_usuario);
-        startActivity(intent);
-    }*/
 }

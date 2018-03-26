@@ -1,16 +1,19 @@
-package mx.com.viccom.viccom.Activities;
+package mx.com.viccom.viccom.Fragments;
+
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.HandlerThread;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -18,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,6 +29,8 @@ import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
 
+import mx.com.viccom.viccom.Activities.CodigoRegistroActivity;
+import mx.com.viccom.viccom.Activities.MenuActivity;
 import mx.com.viccom.viccom.Clases.clsParameter;
 import mx.com.viccom.viccom.Clases.clsResultadoWCF;
 import mx.com.viccom.viccom.Clases.clsUsuarioApp;
@@ -33,7 +39,11 @@ import mx.com.viccom.viccom.Utilities.SendToWCF;
 import mx.com.viccom.viccom.Utilities.StringMD;
 import mx.com.viccom.viccom.Utilities.Util;
 
-public class CodigoRegistroActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class RegistroPideCodigoFragment extends Fragment {
+
     private clsUsuarioApp usuarioApp = new clsUsuarioApp();
     private EditText txtCodigoReg;
     private Button btnReenviarCodigo,btnAyudaCod;
@@ -41,28 +51,42 @@ public class CodigoRegistroActivity extends AppCompatActivity {
     private ImageView imgCodigo;
     private LinearLayout llCodigo;
     private Animation animCaida,animSubir;
+    private RelativeLayout rlPrincipal;
+
+    public RegistroPideCodigoFragment() {
+        // Required empty public constructor
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_codigo_registro);
-
-        Bundle bundle = getIntent().getExtras();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        Bundle bundle = getArguments();
         if (bundle != null) {
             usuarioApp = bundle.getParcelable("REGUSUARIOAPP");
-
         }
 
+        // Inflate the layout for this fragment
+        View view =  inflater.inflate(R.layout.fragment_registro_pide_codigo, container, false);
+        txtCodigoReg = (EditText) view.findViewById(R.id.txtCodigo_reg);
+        btnReenviarCodigo = (Button) view.findViewById(R.id.btnEnviarNvo_reg);
+        btnAyudaCod = (Button) view.findViewById(R.id.btnHelpCodigo);
+        pbValidando = (ProgressBar) view.findViewById(R.id.pbProgresoRegistro);
+        imgCodigo = (ImageView) view.findViewById(R.id.imgCodigo);
+        llCodigo = (LinearLayout) view.findViewById(R.id.llCodigo);
+        rlPrincipal = (RelativeLayout) view.findViewById(R.id.rlPrincipal);
 
-        txtCodigoReg = (EditText) findViewById(R.id.txtCodigo_reg);
-        btnReenviarCodigo = (Button) findViewById(R.id.btnEnviarNvo_reg);
-        btnAyudaCod = (Button) findViewById(R.id.btnHelpCodigo);
-        pbValidando = (ProgressBar) findViewById(R.id.pbProgresoRegistro);
-        imgCodigo = (ImageView) findViewById(R.id.imgCodigo);
-        llCodigo = (LinearLayout) findViewById(R.id.llCodigo);
+        animCaida = AnimationUtils.loadAnimation(getContext(),R.anim.bajar);
+        animSubir = AnimationUtils.loadAnimation(getContext(),R.anim.subir);
+//        animEntrar = AnimationUtils.loadAnimation(getContext(),R.anim.entrar_fragment);
 
-        animCaida = AnimationUtils.loadAnimation(this,R.anim.bajar);
-        animSubir = AnimationUtils.loadAnimation(this,R.anim.subir);
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+//        rlPrincipal.setAnimation(animEntrar);
 
         llCodigo.setAnimation(animCaida);
         imgCodigo.setAnimation(animSubir);
@@ -89,7 +113,7 @@ public class CodigoRegistroActivity extends AppCompatActivity {
                         new AgregarUsrAppHttp().execute(oUsuarioApp);
 
                     }else {
-                        Util.customSnackBar("Verifique el codigo",txtCodigoReg,CodigoRegistroActivity.this);
+                        Util.customSnackBar("Verifique el codigo",txtCodigoReg,getContext());
                     }
 
                 }else {
@@ -112,7 +136,7 @@ public class CodigoRegistroActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String strCodigo = Util.getCodigoRegistro();
 
-               // EnviarCorreoRegistro(strCodigo);
+                // EnviarCorreoRegistro(strCodigo);
             }
         });
         btnAyudaCod.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +145,6 @@ public class CodigoRegistroActivity extends AppCompatActivity {
                 MuestraTooltip(view , Gravity.START,"Código de 6 digitos.");
             }
         });
-
     }
 
     private void MuestraTooltip(View view, int gravity, String mensaje) {
@@ -186,22 +209,32 @@ public class CodigoRegistroActivity extends AppCompatActivity {
 
                         Url ="http://201.144.165.83/apicomapa/ComapaVic_OS.svc/ValidaUsrApp";
 
-                        String strMail = usuarioApp.getMail();
-                        String strContrasena = usuarioApp.getContrasena();
+                        String strMailUsr = usuarioApp.getMail();
+                        String strContrasenaUsr = usuarioApp.getContrasena();
 
-                        ArrayList<clsParameter> ParametrosValidar = new ArrayList<clsParameter>();
-                        Parametros.add(new clsParameter("cMail", strMail));
-                        Parametros.add(new clsParameter("cContrasena", strContrasena));
+                        ArrayList<clsParameter> ParametrosUsr = new ArrayList<clsParameter>();
+                        ParametrosUsr.add(new clsParameter("cMail", strMailUsr));
+                        ParametrosUsr.add(new clsParameter("cContrasena", strContrasenaUsr));
 
-                        String ResultadoValidar = SendToWCF.Send_Post(Url, ParametrosValidar);
+                        String ResultadoUsr = SendToWCF.Send_Post(Url, ParametrosUsr);
 
-                        if (!ResultadoValidar.equals("ErrorConexion") && !ResultadoValidar.equals("ErrorURL") && !ResultadoValidar.equals("ErrorJSON")) {
+                        if (!ResultadoUsr.equals("ErrorConexion") && !ResultadoUsr.equals("ErrorURL") && !ResultadoUsr.equals("ErrorJSON")) {
 
-                            Gson gson2 = new GsonBuilder().create();
-                            ResultadoValidar = ResultadoValidar.replace("\\/","/").replace("\n","");
-                            ResultadoValidar = ResultadoValidar.substring(22,ResultadoValidar.length()-1);
-                            o_UsuarioRegistrado = gson2.fromJson(ResultadoValidar, clsUsuarioApp.class);
+                            Gson gsonUsr = new GsonBuilder().create();
+                            ResultadoUsr = ResultadoUsr.replace("\\/","/").replace("\n","");
+                            ResultadoUsr = ResultadoUsr.substring(22,ResultadoUsr.length()-1);
+                            o_UsuarioRegistrado = gsonUsr.fromJson(ResultadoUsr, clsUsuarioApp.class);
 
+                            if (o_UsuarioRegistrado.getId_usuarioapp().toString().length()>0){
+
+                            }else{
+                                oResultadoWCF.setOperacion("Insertando Usuario");
+                                oResultadoWCF.setComando("Conexion");
+                                oResultadoWCF.setError_number(1);
+                                oResultadoWCF.setFecha(Util.getFechaActual());
+                                oResultadoWCF.setFolio_registro("");
+                                oResultadoWCF.setError_menssage(o_UsuarioRegistrado.getNombre());
+                            }
 
                         } else {
 
@@ -258,28 +291,14 @@ public class CodigoRegistroActivity extends AppCompatActivity {
             super.onPostExecute(oResultadoWCF);
 
             if (oResultadoWCF.getFolio_registro().toString().length()>0){
-                //si se pudo registrar en la nube lo registro en la bd local
-              /*  clsUsuarioApp  oUsuarioApp = new clsUsuarioApp(
-                        oResultadoWCF.getFolio_registro().toString()
-                        ,usuarioApp.getNombre()
-                        ,usuarioApp.getMail()
-                        ,""
-                        ,""
-                        ,""
-                        ,oResultadoWCF.getFecha()
-                        ,"" );*/
 
                 clsUsuarioApp.upgradeUsuarioApp(o_UsuarioRegistrado);
 
-                Util.customSnackBar("Registro exitoso",txtCodigoReg,CodigoRegistroActivity.this);
-           /*     try {
-                    HandlerThread.sleep(3000);
-                } catch (Exception e){
-                    e.printStackTrace();
-                }*/
+                Util.customSnackBar("Registro exitoso",txtCodigoReg,getContext());
+
                 goToMain();
             }else {
-                Util.customSnackBar(oResultadoWCF.getError_menssage(),txtCodigoReg,CodigoRegistroActivity.this);
+                Util.customSnackBar(oResultadoWCF.getError_menssage(),txtCodigoReg,getContext());
 
             }
             MostrarEspera(false);
@@ -287,8 +306,7 @@ public class CodigoRegistroActivity extends AppCompatActivity {
     }
 
     private void goToMain() {
-        Intent intent = new Intent(this, MenuActivity.class);
-        intent.putExtra("EMAIL", usuarioApp.getMail().toString());
+        Intent intent = new Intent(getActivity(), MenuActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

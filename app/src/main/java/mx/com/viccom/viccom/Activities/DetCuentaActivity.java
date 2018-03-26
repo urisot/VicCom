@@ -54,9 +54,11 @@ public class DetCuentaActivity extends AppCompatActivity {
 
         txtImporte.setText("$ "+Math.round(o_recibo.getTotal()) +".00");
 
+/*
         if (!(Math.round(o_recibo.getTotal())>0)){
             btnPagar.setVisibility(View.INVISIBLE);
         }
+*/
 
 
         DetRecibosViewPagerAdapter adrDetRecibosViewPager = new DetRecibosViewPagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount(),o_recibo);

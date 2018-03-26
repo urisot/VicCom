@@ -157,7 +157,10 @@ public class Util{
             strCodigo = intAletorio+"";
         } catch (Exception e) {
             e.printStackTrace();
-            strCodigo = "000000";
+            strCodigo = "654321";
+        }
+        if(strCodigo.length()<6){
+            strCodigo = "654321";
         }
 
 

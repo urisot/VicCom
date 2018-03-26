@@ -100,9 +100,9 @@ public class RecibosRecyclerViewAdapter  extends RecyclerView.Adapter<RecibosRec
                 txtImporte.setText("$ "+ Math.round(recibo.getTotal()) +".");
                 txtVencimiento.setText(recibo.getFecha_vencimiento());
 
-                if (!(Math.round(recibo.getTotal())>0)){
+            /*    if (!(Math.round(recibo.getTotal())>0)){
                     btnPagar.setVisibility(View.INVISIBLE);
-                }
+                }*/
 
 
 //            Picasso.with(context).load(movie.getId()).fit().into(imageViewPoster);

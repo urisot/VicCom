@@ -41,16 +41,7 @@ public class MenuActivity extends AppCompatActivity
         setContentView(R.layout.activity_menu);
 
         //getSupportActionBar().setDisplayShowTitleEnabled(false);
-     /*   Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            strMail = bundle.getString("EMAIL");
-            usuarioApp = clsUsuarioApp.getUsrAppByMail(strMail);
-
-        }*/
-
         usuarioApp = clsUsuarioApp.getUsrApp();
-
-
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         dragLayMenuLateral = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -59,8 +50,6 @@ public class MenuActivity extends AppCompatActivity
         viewMenuHeader =  navigationView.getHeaderView(0);
         txtNombre_mnu = (TextView) viewMenuHeader.findViewById(R.id.txtNombre_mnu);
         txtEmail_mnu = (TextView) viewMenuHeader.findViewById(R.id.txtEmail_mnu);
-
-
 
         txtNombre_mnu.setText(usuarioApp.getNombre().toString());
         txtEmail_mnu.setText(usuarioApp.getMail().toString());

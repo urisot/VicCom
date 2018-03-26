@@ -138,12 +138,12 @@
             android:layout_height="wrap_content">
 
 
-            <Button
+            <TextView
                 android:id="@+id/btnDetalle_us"
                 android:layout_below="@+id/ll_vencimiento"
                 android:layout_marginRight="16dp"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/boton_gris"
                 android:layout_gravity="center"
                 android:gravity="center"

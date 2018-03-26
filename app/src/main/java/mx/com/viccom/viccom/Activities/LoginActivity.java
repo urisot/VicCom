@@ -229,29 +229,25 @@ public class LoginActivity extends AppCompatActivity  {
             try {
                 String Url ="http://201.144.165.83/apicomapa/ComapaVic_OS.svc/ValidaUsrApp";
 
-                String strMail = listParametros.get(0).toString();
-                String strContrasena = listParametros.get(1).toString();
+                String strMailUsr = listParametros.get(0).toString();
+                String strContrasenaUsr = listParametros.get(1).toString();
 
-                ArrayList<clsParameter> Parametros = new ArrayList<clsParameter>();
-                Parametros.add(new clsParameter("cMail", strMail));
-                Parametros.add(new clsParameter("cContrasena", strContrasena));
+                ArrayList<clsParameter> ParametrosUsr = new ArrayList<clsParameter>();
+                ParametrosUsr.add(new clsParameter("cMail", strMailUsr));
+                ParametrosUsr.add(new clsParameter("cContrasena", strContrasenaUsr));
 
-                String Resultado = SendToWCF.Send_Post(Url, Parametros);
+                String ResultadoUsr = SendToWCF.Send_Post(Url, ParametrosUsr);
 
                 //Pudo establecer conexion
-                if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErrorJSON")) {
+                if (!ResultadoUsr.equals("ErrorConexion") && !ResultadoUsr.equals("ErrorURL") && !ResultadoUsr.equals("ErrorJSON")) {
 /*
-
                     JSONObject jsonObject = new JSONObject(Resultado);
                     JSONObject jsonObject2 = jsonObject.getJSONObject("ValidaUsrAppResult");
-
 */
-
-
-                    Gson gson = new GsonBuilder().create();
-                    Resultado = Resultado.replace("\\/","/").replace("\n","");
-                    Resultado = Resultado.substring(22,Resultado.length()-1);
-                    usuarioApp = gson.fromJson(Resultado, clsUsuarioApp.class);
+                    Gson gsonUsr = new GsonBuilder().create();
+                    ResultadoUsr = ResultadoUsr.replace("\\/","/").replace("\n","");
+                    ResultadoUsr = ResultadoUsr.substring(22,ResultadoUsr.length()-1);
+                    usuarioApp = gsonUsr.fromJson(ResultadoUsr, clsUsuarioApp.class);
 
                     //Inserto correctamente el usuario y obtobo el folio consecutivo de registro
                     if (usuarioApp.getId_usuarioapp().toString().length()>0){

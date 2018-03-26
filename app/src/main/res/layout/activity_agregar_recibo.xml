@@ -231,7 +231,6 @@
             <ProgressBar
                 android:id="@+id/progressBar_ac"
                 style="?android:attr/progressBarStyleLarge"
-                android:background="@color/boton_azul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -239,70 +238,7 @@
                 android:visibility="invisible"
                />
 
-    </LinearLayout>
-    </ScrollView>
-
-<!--    <RelativeLayout
-        android:id="@+id/rl_tituloFormasPago"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        >
-        <LinearLayout
-            android:id="@+id/ll_cabecera"
-            android:layout_width="wrap_content"
-            android:layout_height="56dp"
-            android:orientation="horizontal"
-            android:layout_alignParentLeft="true"
-            >
-            <ImageButton
-                android:id="@+id/btnAtras_ar"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:background="@android:color/transparent"
-                app:srcCompat="@drawable/ic_chevron_left_black_24dp"
-                android:padding="16dp"
-                />
-            <TextView
-                android:id="@+id/txtContadorPag_ar"
-                android:layout_marginRight="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="56dp"
-                android:text="1 de 2"
-                android:textColor="@color/icons"
-                android:gravity="center"
-                />
-            <ImageButton
-                android:id="@+id/btnAdelante_ar"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:background="@android:color/transparent"
-                app:srcCompat="@drawable/ic_chevron_right_black_24dp"
-                android:padding="16dp"
-                />
         </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/btnCerrar_ar"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/ic_cerrar_blanco_24dp" />
-    </RelativeLayout >
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vPagFormasPag"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/rl_tituloFormasPago"
-        />-->
-
+    </ScrollView>
 
 </RelativeLayout>

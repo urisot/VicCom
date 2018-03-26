@@ -93,7 +93,7 @@ public class RestableceContrasenaActivity extends AppCompatActivity implements o
 
     @Override
     public void onChangedPasPage(int page) {
-        viewPager.setCurrentItem(page);
+        //viewPager.setCurrentItem(page);
     }
 
     @Override

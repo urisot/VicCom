@@ -7,27 +7,17 @@
     android:orientation="vertical"
     android:background="@color/login_backgrond"
     tools:context="mx.com.viccom.viccom.Activities.LoginActivity">
-<!--    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"-->
 
    <ProgressBar
         android:id="@+id/login_progress"
         style="?android:attr/progressBarStyleLarge"
-       android:visibility="invisible"
+        android:visibility="invisible"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginBottom="8dp" />
-
-
-
-
-
-
 
 
         <ImageView
@@ -44,263 +34,210 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/textView"
+        android:layout_above="@+id/txtComapaAviso"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
         app:srcCompat="@drawable/logo_victoria_blanco" />
-    <!--    <ScrollView
+
+<!--        <ScrollView
             android:id="@+id/login_form"
             android:layout_width="match_parent"
             android:layout_height="match_parent">-->
-        <LinearLayout
-            android:id="@+id/email_login_form"
-            android:layout_margin="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="48dp"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/ic_logocomablanco"/>
-
-            <TextView
-                android:id="@+id/mensajebinvenida"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:text="Bienvenido"
-                android:textSize="39sp"
-                android:textColor="@color/icons"
-                android:fontFamily="@font/dni_condensed_bold"
-                />
-            <TextView
-                android:id="@+id/textViewsdffg2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="Ingresa tu información"
-                android:textSize="39sp"
-                android:textColor="@color/icons"
-                android:fontFamily="@font/dni_condensed_bold"
-                />
-
-        <!--    <android.support.design.widget.TextInputLayout
-                android:paddingTop="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp">-->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp">
-
-                <AutoCompleteTextView
-                    android:id="@+id/txtEmail_log"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/cuadro_texto"
-                    android:drawablePadding="8dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:paddingRight="35dp"
-                    android:paddingLeft="8dp"
-                    android:drawableLeft="@drawable/ic_email_24dp"
-                    android:hint="@string/prompt_email"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-                <Button
-                    android:id="@+id/btnHelpEmail"
-                    android:layout_width="27dp"
-                    android:layout_height="27dp"
-                    android:layout_gravity="end|center_vertical"
-                    android:background="@drawable/ic_help_black_24dp"
-                    android:layout_marginEnd="10dp" />
-            </FrameLayout>
-
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp">
-
-                <EditText
-                    android:id="@+id/txtContrasena_log"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/cuadro_texto"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:paddingRight="35dp"
-                    android:paddingLeft="8dp"
-                    android:drawablePadding="8dp"
-                    android:hint="Contraseña"
-                    android:drawableLeft="@drawable/ic_lock_24dp"
-                    android:imeActionId="6"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-                <Button
-                    android:id="@+id/btnHelpContrasena"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_gravity="end|center_vertical"
-                    android:background="@drawable/ic_help_black_24dp"
-                    android:layout_marginEnd="10dp" />
-            </FrameLayout>
-
-           <!-- </android.support.design.widget.TextInputLayout>-->
-
-
-
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:id="@+id/email_login_form"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_gravity="right">
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical">
 
-            <CheckedTextView
-                android:id="@+id/linkRegistrarse_log"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Registrate"
-                android:textColor="@color/icons"
-                android:textSize="16sp"
-                android:layout_marginEnd="42dp"
-                android:textStyle="bold"/>
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    app:srcCompat="@drawable/ic_logocomablanco"/>
 
-
-            <CheckedTextView
-                android:id="@+id/linkOlvidoContraseña_log"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Olvidé mi contraseña"
-                android:textColor="@color/registro_backgrond"
-                android:textSize="16sp"
-                android:layout_gravity="end|center_vertical"
-                android:textStyle="italic"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="40dp">
-
-                <Switch
-                    android:id="@+id/swRecuerdame_log"
+                <TextView
+                    android:id="@+id/mensajebinvenida"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:tooltipText="prueba de tool tip text" />
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Bienvenido"
+                    android:textSize="39sp"
+                    android:textColor="@color/icons"
+                    android:fontFamily="@font/dni_condensed_bold"
+                    />
+
                 <TextView
+                    android:id="@+id/textViewsdffg2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Ingresa tu información"
+                    android:textSize="39sp"
+                    android:textColor="@color/icons"
+                    android:fontFamily="@font/dni_condensed_bold"
+                    />
+
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:checked="false"
-                    android:layout_toRightOf="@+id/swRecuerdame_log"
-                    android:text="Recuerda mi usuario"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/txtEmail_log"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cuadro_texto"
+                        android:drawablePadding="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:paddingRight="35dp"
+                        android:paddingLeft="8dp"
+                        android:drawableLeft="@drawable/ic_email_24dp"
+                        android:hint="@string/prompt_email"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:singleLine="true" />
+                    <Button
+                        android:id="@+id/btnHelpEmail"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:background="@drawable/ic_help_black_24dp"
+                        android:layout_marginEnd="10dp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp">
+
+                    <EditText
+                        android:id="@+id/txtContrasena_log"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cuadro_texto"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:paddingRight="35dp"
+                        android:paddingLeft="8dp"
+                        android:drawablePadding="8dp"
+                        android:hint="Contraseña"
+                        android:drawableLeft="@drawable/ic_lock_24dp"
+                        android:imeActionId="6"
+                        android:imeActionLabel="@string/action_sign_in_short"
+                        android:imeOptions="actionUnspecified"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:singleLine="true" />
+                    <Button
+                        android:id="@+id/btnHelpContrasena"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:background="@drawable/ic_help_black_24dp"
+                        android:layout_marginEnd="10dp" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_gravity="right">
+
+                <CheckedTextView
+                    android:id="@+id/linkRegistrarse_log"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registrate"
                     android:textColor="@color/icons"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:layout_marginEnd="24dp"
+                    android:textStyle="bold"/>
+
+
+                <CheckedTextView
+                    android:id="@+id/linkOlvidoContraseña_log"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Olvidé mi contraseña"
+                    android:textColor="@color/registro_backgrond"
+                    android:textSize="16sp"
+                    android:layout_gravity="end|center_vertical"
+                    android:textStyle="italic"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_margin="16dp">
+
+                    <Switch
+                        android:id="@+id/swRecuerdame_log"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tooltipText="prueba de tool tip text" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:checked="false"
+                        android:layout_toRightOf="@+id/swRecuerdame_log"
+                        android:text="Recuerda mi usuario"
+                        android:textColor="@color/icons"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/email_sign_in_button"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/boton_azul"
+                    android:drawableRight="@drawable/ic_send_24dp"
+                    android:paddingRight="24dp"
+                    android:paddingLeft="24dp"
+                    android:text="Entrar  "
+                    android:textAllCaps="false"
+                    android:textColor="@color/icons"
+                    android:textDirection="inherit"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
-            <Button
-                android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="-35dp"
-                android:background="@drawable/boton_azul"
-                android:drawableRight="@drawable/ic_send_24dp"
-                android:paddingRight="24dp"
-                android:paddingLeft="24dp"
-                android:text="Entrar  "
-                android:textAllCaps="false"
-                android:textColor="@color/icons"
-                android:textDirection="inherit"
-                android:textSize="18sp"
-                android:textStyle="bold" />
 
-        </LinearLayout>
+       <!-- </ScrollView>-->
 
-    <!--</ScrollView>-->
 
- <!--   <CheckedTextView
-        android:id="@+id/linkRegistrarse_log"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:text="Registrate"
-        android:textColor="@color/icons"
-        android:textSize="16sp" />-->
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtComapaAviso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="9dp"
         android:textColor="@color/icons"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:text="@string/comapa_derechos_res" />
-
-
-
-   <!-- <RelativeLayout
-        android:id="@+id/rl_tituloTabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        >
-
-    </RelativeLayout >
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vPagDetUsr"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tabLayDetalle"
-        android:layout_above="@+id/llResumen_det"/>
-
-    <LinearLayout
-        android:id="@+id/llDotIndicator"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical">
-
-    </LinearLayout>-->
 
 </RelativeLayout>
