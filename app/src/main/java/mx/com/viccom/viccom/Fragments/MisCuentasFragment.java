@@ -20,7 +20,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -30,10 +29,8 @@ import java.util.ArrayList;
 
 import mx.com.viccom.viccom.Activities.AgregarReciboActivity;
 import mx.com.viccom.viccom.Activities.DetCuentaActivity;
-import mx.com.viccom.viccom.Activities.MenuActivity;
 import mx.com.viccom.viccom.Activities.RealizarPagoActivity;
 import mx.com.viccom.viccom.Adapters.RecibosRecyclerViewAdapter;
-import mx.com.viccom.viccom.Clases.clsCuentaValida;
 import mx.com.viccom.viccom.Clases.clsParameter;
 import mx.com.viccom.viccom.Clases.clsRecibos;
 import mx.com.viccom.viccom.Clases.clsResultadoWCF;
@@ -97,7 +94,7 @@ public class MisCuentasFragment extends Fragment {
 
         mLayoutManager = new LinearLayoutManager(getContext());
 
-        mAdapter = new RecibosRecyclerViewAdapter(ArListRecibos, R.layout.cuentas_recycler_view_item, new RecibosRecyclerViewAdapter.OnItemClickListener() {
+        mAdapter = new RecibosRecyclerViewAdapter(ArListRecibos, R.layout.recibos_recycler_view_item, new RecibosRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(clsRecibos recibo, int position) {
 

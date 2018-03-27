@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import mx.com.viccom.viccom.Adapters.ViewPagerAdapter;
 import mx.com.viccom.viccom.Clases.clsMetodoPago;
+import mx.com.viccom.viccom.Clases.clsUsuarioApp;
 import mx.com.viccom.viccom.Fragments.AgregarCtaMerPagoFragment;
 import mx.com.viccom.viccom.Fragments.AgregarCtaPayPalFragment;
 import mx.com.viccom.viccom.Fragments.AgregarTarjetaFragment;
@@ -22,6 +23,7 @@ import mx.com.viccom.viccom.R;
 public class RestableceContrasenaActivity extends AppCompatActivity implements onPageChangedLisener {
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
+    private clsUsuarioApp usuarioApp = new clsUsuarioApp();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,11 +73,11 @@ public class RestableceContrasenaActivity extends AppCompatActivity implements o
     }
     private void changeFragment(Fragment fragment) {
 
-   /*     if (fragment != null){
+       if (fragment != null){
             Bundle argumentos = new Bundle();
             argumentos.putParcelable("USUARIOAPP",usuarioApp);
             fragment.setArguments(argumentos);
-        }*/
+        }
 
         getSupportFragmentManager()
                 .beginTransaction()

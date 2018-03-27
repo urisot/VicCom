@@ -34,6 +34,7 @@ public class ResConPideEmailFragment extends Fragment {
 
     onPageChangedLisener Listener;
 
+    //private clsUsuarioApp usuarioApp = new clsUsuarioApp();
     private EditText txt_email_res;
     private Button btnHelpEmail_res,btnEnviar_res;
     private ProgressBar restablece_progress;
@@ -47,6 +48,11 @@ public class ResConPideEmailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+      /*  Bundle bundle = getArguments();
+        if (bundle != null) {
+            usuarioApp = bundle.getParcelable("USUARIOAPP");
+        }*/
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_res_con_pide_email, container, false);
 

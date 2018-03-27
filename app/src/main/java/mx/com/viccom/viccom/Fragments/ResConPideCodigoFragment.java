@@ -29,6 +29,7 @@ public class ResConPideCodigoFragment extends Fragment {
 
     onPageChangedLisener Listener;
 
+    //private clsUsuarioApp usuarioApp = new clsUsuarioApp();
     private EditText txtCodigo_res;
     private Button btnHelpCodigo_res;
     private ProgressBar pbProgresoResCodigo;
@@ -45,6 +46,10 @@ public class ResConPideCodigoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+    /*    Bundle bundle = getArguments();
+        if (bundle != null) {
+            usuarioApp = bundle.getParcelable("USUARIOAPP");
+        }*/
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_res_con_pide_codigo, container, false);
         txtCodigo_res = (EditText) view.findViewById(R.id.txtCodigo_res);

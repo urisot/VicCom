@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/restablece_con_backgrond"
     tools:context="mx.com.viccom.viccom.Fragments.ResConPideEmailFragment">
 
@@ -15,6 +16,15 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginBottom="8dp" />
+    <ImageView
+        android:id="@+id/imgUsuario"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-160dp"
+        app:srcCompat="@drawable/usuario_registro"
+        />
 
     <LinearLayout
         android:id="@+id/llRestablece"

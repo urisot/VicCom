@@ -1,6 +1,7 @@
 package mx.com.viccom.viccom.Fragments;
 
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -40,7 +42,11 @@ public class TabHisRecibosFragment extends Fragment {
     private ArrayList<BarEntry> barEntriesImportes = new ArrayList<>();
     private ArrayList<BarEntry> barEntriesConsumos = new ArrayList<>();
     private BarChart barChartImportes;
+    private BarChart barChartConsumos;
     private ProgressBar pbGraficas;
+
+    private Button btnImportes,btnConsumos;
+
 
     public TabHisRecibosFragment() {
         // Required empty public constructor
@@ -58,6 +64,10 @@ public class TabHisRecibosFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_his_recibos, container, false);
         barChartImportes = (BarChart) view.findViewById(R.id.grafHisImportes);
+        barChartConsumos = (BarChart) view.findViewById(R.id.grafHisConsumos);
+        btnImportes = (Button) view.findViewById(R.id.btnImportes);
+        btnConsumos = (Button) view.findViewById(R.id.btnConsumos);
+
         pbGraficas = (ProgressBar) view.findViewById(R.id.pbGraficas);
         return view;
     }
@@ -65,75 +75,45 @@ public class TabHisRecibosFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //mTfLight = Typeface.createFromAsset( null, "OpenSans-Light.ttf");
-        // barChartImportes.setOnChartValueSelectedListener(this);
-
-        barChartImportes.setDrawBarShadow(false);
+/*        barChartImportes.setDrawBarShadow(false);
         barChartImportes.setDrawValueAboveBar(true);
-
-        //barChartImportes.getDescription().setEnabled(false);
-
-        // if more than 60 entries are displayed in the chart, no values will be
-        // drawn
         barChartImportes.setMaxVisibleValueCount(60);
-
-        // scaling can now only be done on x- and y-axis separately
         barChartImportes.setPinchZoom(false);
 
         barChartImportes.setDrawGridBackground(false);
-        // mChart.setDrawYLabels(false);
-
-        //IAxisValueFormatter xAxisFormatter = new DayAxisValueFormatter(mChart);
-
         XAxis xAxis = barChartImportes.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(R.color.icons);
-        //xAxis.setTypeface(mTfLight);
-        xAxis.setDrawGridLines(false);
-        //xAxis.setGranularity(1f); // only intervals of 1 day
-        //xAxis.setLabelCount(7);
-        //xAxis.setValueFormatter(xAxisFormatter);
+        xAxis.setDrawGridLines(false);*/
 
-
-
-        //IAxisValueFormatter custom = new MyAxisValueFormatter();
-
-      /*  YAxis leftAxis = barChartImportes.getAxisLeft();
-        leftAxis.setTypeface(mTfLight);
-        leftAxis.setLabelCount(8, false);
-        leftAxis.setValueFormatter(custom);
-        leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
-        leftAxis.setSpaceTop(15f);
-        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
-
-        YAxis rightAxis = barChartImportes.getAxisRight();
-        rightAxis.setDrawGridLines(false);
-        rightAxis.setTypeface(mTfLight);
-        rightAxis.setLabelCount(8, false);
-        rightAxis.setValueFormatter(custom);
-        rightAxis.setSpaceTop(15f);
-        rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
-
-        Legend l = barChartImportes.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
-        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-        l.setDrawInside(false);
-        l.setForm(Legend.LegendForm.SQUARE);
-        l.setFormSize(9f);
-        l.setTextSize(11f);
-        l.setXEntrySpace(4f);
-        // l.setExtra(ColorTemplate.VORDIPLOM_COLORS, new String[] { "abc",
-        // "def", "ghj", "ikl", "mno" });
-        // l.setCustom(ColorTemplate.VORDIPLOM_COLORS, new String[] { "abc",
-        // "def", "ghj", "ikl", "mno" });
-
-        XYMarkerView mv = new XYMarkerView(this, xAxisFormatter);
-        mv.setChartView(barChartImportes); // For bounds control
-        barChartImportes.setMarker(mv); // Set the marker to the chart*/
 
         ActualizarDatos();
 
+        btnImportes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                barChartImportes.setVisibility(View.VISIBLE);
+                barChartConsumos.setVisibility(View.INVISIBLE);
+                btnImportes.setTextColor(getResources().getColor(R.color.icons));
+                btnConsumos.setTextColor(getResources().getColor(R.color.colorAccent));
+                barChartImportes.animateY(3000, Easing.EasingOption.EaseOutBack);
+                barChartImportes.invalidate();
+
+            }
+        });
+
+        btnConsumos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                barChartImportes.setVisibility(View.INVISIBLE);
+                barChartConsumos.setVisibility(View.VISIBLE);
+
+                btnImportes.setTextColor(getResources().getColor(R.color.colorAccent));
+                btnConsumos.setTextColor(getResources().getColor(R.color.icons));
+                barChartConsumos.animateY(3000, Easing.EasingOption.EaseOutBack);
+                barChartConsumos.invalidate();
+            }
+        });
 
 
     }
@@ -200,6 +180,7 @@ public class TabHisRecibosFragment extends Fragment {
 
                     alFechas.add(recibo.getCiclo_facturado());
                     barEntriesImportes.add(new BarEntry(recibo.getTotal(),intContador));
+                    barEntriesConsumos.add(new BarEntry(recibo.getConsumo(),intContador));
 
                     //entries.add(new Entry(recibo.getTotal(), intContador));
 
@@ -216,35 +197,22 @@ public class TabHisRecibosFragment extends Fragment {
                 barEntriesConsumos.add(new BarEntry(20,4));
                 BarDataSet barDataSet2 = new BarDataSet(barEntriesConsumos,"Consumos");*/
 
-                BarDataSet barDataSet = new BarDataSet(barEntriesImportes,"Importes facturados");
+                MostrarDatosGrafica(barChartImportes,barEntriesImportes,alFechas,View.VISIBLE,"Importes facturados");
 
+                MostrarDatosGrafica(barChartConsumos,barEntriesConsumos,alFechas,View.INVISIBLE,"M³ facturados");
 
+               /* BarDataSet barDataSet = new BarDataSet(barEntriesImportes,"Importes facturados");
                 BarData barData = new BarData(alFechas,barDataSet);
-
-
                 barDataSet.setColors(new int[] { R.color.icons }, getContext());
                 barDataSet.setValueTextColor(R.color.icons);
-
-
-
                 barChartImportes.setVisibility(View.VISIBLE);
                 barData.setValueTextColor(R.color.icons);
-
                 barChartImportes.setData(barData);
                 barChartImportes.setDescription("");
                 barChartImportes.animateY(3000, Easing.EasingOption.EaseOutBack);
-
-            /*    XAxisRenderer render = barChartImportes.getRendererXAxis();
-
+                barChartImportes.invalidate();*/
 
 
-                XAxis xAxis = barChartImportes.getXAxis();
-                xAxis.setTextSize(10f);
-                xAxis.setTextColor(R.color.icons);*/
-
-
-
-                barChartImportes.invalidate();
 
             }
 
@@ -267,6 +235,32 @@ public class TabHisRecibosFragment extends Fragment {
             super.onCancelled();
         }
     }
+
+    private void MostrarDatosGrafica(BarChart barChart, ArrayList<BarEntry> barEntries, ArrayList<String> alFechasBar, int visible, String titulo) {
+
+        barChart.setDrawBarShadow(false);
+        barChart.setDrawValueAboveBar(true);
+        barChart.setMaxVisibleValueCount(60);
+        barChart.setPinchZoom(false);
+
+        barChart.setDrawGridBackground(false);
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextColor(R.color.icons);
+        xAxis.setDrawGridLines(false);
+
+        BarDataSet barDataSet = new BarDataSet(barEntries,titulo);
+        BarData barData = new BarData(alFechasBar,barDataSet);
+        barDataSet.setColors(new int[] { R.color.icons }, getContext());
+        barDataSet.setValueTextColor(R.color.icons);
+        barChart.setVisibility(visible);
+        barData.setValueTextColor(R.color.icons);
+        barChart.setData(barData);
+        barChart.setDescription("");
+        barChart.animateY(3000, Easing.EasingOption.EaseOutBack);
+        barChart.invalidate();
+    }
+
 
     @Override
     public void onDestroyView() {

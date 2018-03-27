@@ -28,6 +28,7 @@ import mx.com.viccom.viccom.Clases.clsUsuarioApp;
 import mx.com.viccom.viccom.Interfaces.onPageChangedLisener;
 import mx.com.viccom.viccom.R;
 import mx.com.viccom.viccom.Utilities.SendToWCF;
+import mx.com.viccom.viccom.Utilities.StringMD;
 import mx.com.viccom.viccom.Utilities.Util;
 
 
@@ -45,6 +46,12 @@ public class ResConCambioConFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+      /*  Bundle bundle = getArguments();
+        if (bundle != null) {
+            usuarioApp = bundle.getParcelable("USUARIOAPP");
+        }*/
+
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_res_con_cambio_con, container, false);
         txtContrasena_reg = (EditText) view.findViewById(R.id.txtContrasena_reg);
@@ -86,12 +93,20 @@ public class ResConCambioConFragment extends Fragment {
 
     private void RestablecerContrasena(){
 
-        ArrayList<clsParameter> Parametros = new ArrayList<clsParameter>();
-        Parametros.add(new clsParameter("pass", usuarioApp.getKey().toString()));
-        Parametros.add(new clsParameter("cIdUsuarioApp", usuarioApp.getId_usuarioapp().toString()));
-        Parametros.add(new clsParameter("cContrasena", txtContrasena_reg.getText().toString()));
+        if ((usuarioApp.getKey() != null && usuarioApp.getKey() != "") && (usuarioApp.getId_usuarioapp() != null && usuarioApp.getId_usuarioapp() != "") ){
 
-        new RestablecerContrasena().execute(Parametros);
+            String email = usuarioApp.getMail();
+            String password = StringMD.getStringMessageDigest(email + txtContrasena_reg.getText().toString(), StringMD.SHA1).toUpperCase();
+
+            ArrayList<clsParameter> Parametros = new ArrayList<clsParameter>();
+            Parametros.add(new clsParameter("pass", usuarioApp.getKey()));
+            Parametros.add(new clsParameter("cIdUsuarioApp", usuarioApp.getId_usuarioapp()));
+            Parametros.add(new clsParameter("cContrasena", password));
+
+            new RestablecerContrasena().execute(Parametros);
+        }
+
+
     }
 
     private void MostrarEspera(Boolean boolMostrar) {

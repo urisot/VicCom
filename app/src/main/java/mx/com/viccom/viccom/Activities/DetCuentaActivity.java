@@ -77,21 +77,21 @@ public class DetCuentaActivity extends AppCompatActivity {
                         tabLayout.setBackgroundResource(R.color.tab1);
                         imgLogoCom.setImageResource(R.drawable.ic_logocomapaazul);
                        // Picasso.with(DetCuentaActivity.this).load(R.drawable.ic_logocomapaazul).into(imgLogoCom);
-                        // llResumenDet.setVisibility(View.VISIBLE);
+                        llResumenDet.setVisibility(View.VISIBLE);
                         break;
                     case 1:
                         rl_tituloTab.setBackgroundResource(R.color.tab2);
                         tabLayout.setBackgroundResource(R.color.tab2);
                         imgLogoCom.setImageResource(R.drawable.ic_logocomablanco);
                        // Picasso.with(DetCuentaActivity.this).load(R.drawable.ic_logocomablanco).into(imgLogoCom);
-                        //llResumenDet.setVisibility(View.VISIBLE);
+                        llResumenDet.setVisibility(View.VISIBLE);
                         break;
                     case 2:
                         rl_tituloTab.setBackgroundResource(R.color.tab1);
                         tabLayout.setBackgroundResource(R.color.tab1);
                         imgLogoCom.setImageResource(R.drawable.ic_logocomapaazul);
                         //Picasso.with(DetCuentaActivity.this).load(R.drawable.ic_logocomapaazul).into(imgLogoCom);
-                        //llResumenDet.setVisibility(View.GONE);
+                        llResumenDet.setVisibility(View.GONE);
                         break;
                 }
 

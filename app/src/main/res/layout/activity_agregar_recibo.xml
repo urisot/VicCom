@@ -155,8 +155,10 @@
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:background="@drawable/ejemplo_recibo" />
+                android:src="@drawable/ejemplo_recibo1"
+                android:layout_marginTop="-8dp"
+                android:layout_marginBottom="-8dp"
+                />
 
    <!--         <TableLayout
                 android:layout_below="@+id/ll_vencimiento"
