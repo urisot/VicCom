@@ -17,6 +17,16 @@
         android:layout_centerVertical="true"
         android:layout_marginBottom="8dp" />
 
+    <CheckBox
+        android:enabled="false"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/darkFontEnabled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="14dp"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

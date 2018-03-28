@@ -29,7 +29,6 @@ import com.tooltip.Tooltip;
 
 import java.util.ArrayList;
 
-import mx.com.viccom.viccom.Activities.CodigoRegistroActivity;
 import mx.com.viccom.viccom.Activities.MenuActivity;
 import mx.com.viccom.viccom.Clases.clsParameter;
 import mx.com.viccom.viccom.Clases.clsResultadoWCF;

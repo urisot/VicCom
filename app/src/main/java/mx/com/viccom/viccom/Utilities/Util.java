@@ -47,6 +47,21 @@ public class Util{
     public static final int ZXING_CAMERA_PERMISSION = 1;
 
 
+    public static final int SIMPLE_VAULT_REQUEST_CODE = 10;
+    public static final int ADVANCED_VAULT_REQUEST_CODE = 11;
+    public static final int FINAL_VAULT_REQUEST_CODE = 12;
+    public static final int CARD_REQUEST_CODE = 13;
+
+    // * Preferences
+    public static final String DUMMY_PREFERENCE_ID = "243962506-e9464aff-30dd-43e0-a6fa-37e3a54b884c";
+
+    // * Merchant public key
+    public static final String DUMMY_MERCHANT_PUBLIC_KEY = "TEST-407643b7-b8f8-4c66-9404-72430ebfeb0d";
+    public static final String DUMMY_MERCHANT_PUBLIC_KEY_EXAMPLES_SERVICE = "444a9ef5-8a6b-429f-abdf-587639155d88";
+
+
+
+
     public static String getUserMailPrefs(SharedPreferences preferences) {
         return preferences.getString("email", "");
     }

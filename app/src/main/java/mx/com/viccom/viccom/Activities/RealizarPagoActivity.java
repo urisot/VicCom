@@ -8,12 +8,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.utils.Utils;
+import com.mercadopago.core.MercadoPagoCheckout;
+import com.mercadopago.preferences.CheckoutPreference;
+import com.mercadopago.preferences.DecorationPreference;
 import com.paypal.android.sdk.payments.PayPalAuthorization;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalFuturePaymentActivity;
@@ -59,10 +64,19 @@ public class RealizarPagoActivity extends AppCompatActivity {
     private ScrollView scrlResultado,scrlPideCobro;
     private ImageButton btnAtras_mp;
 
+    private Activity mActivity;
+    private String mPublicKey;
+    private String mCheckoutPreferenceId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_realizar_pago);
+        animateErrorScreenLaunch();
+
+        mActivity = this;
+        mPublicKey = Util.DUMMY_MERCHANT_PUBLIC_KEY;
+        mCheckoutPreferenceId = Util.DUMMY_PREFERENCE_ID;
 
         // Activar flecha ir atrás
        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -77,6 +91,8 @@ public class RealizarPagoActivity extends AppCompatActivity {
         Intent intent = new Intent(this,PayPalService.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,configuration);
         startService(intent);
+
+        mDarkFontEnabled = (CheckBox) findViewById(R.id.darkFontEnabled);
 
         scrlResultado = (ScrollView) findViewById(R.id.scrlResultado);
         scrlPideCobro = (ScrollView) findViewById(R.id.scrlPideCobro);
@@ -119,7 +135,9 @@ public class RealizarPagoActivity extends AppCompatActivity {
         btnPagarTarjeta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(RealizarPagoActivity.this,"No disponible por el momento",Toast.LENGTH_SHORT).show();
+
+                startMercadoPagoCheckout();
+               // Toast.makeText(RealizarPagoActivity.this,"No disponible por el momento",Toast.LENGTH_SHORT).show();
 
               //  getApplication().setTheme(android.R.style.Theme_Translucent_NoTitleBar); // Set here
             }
@@ -148,6 +166,46 @@ public class RealizarPagoActivity extends AppCompatActivity {
 
 
     }
+    private void animateErrorScreenLaunch() {
+        overridePendingTransition(com.mercadopago.R.anim.mpsdk_fade_in_seamless, com.mercadopago.R.anim.mpsdk_fade_out_seamless);
+    }
+
+    private void startMercadoPagoCheckout() {
+
+        final MercadoPagoCheckout.Builder builder = new MercadoPagoCheckout.Builder()
+                .setActivity(this)
+                .setPublicKey(mPublicKey)
+                .setCheckoutPreference(getCheckoutPreference())
+                .setDecorationPreference(getCurrentDecorationPreference());
+
+        if (false) {
+           // builder.setCheckoutHooks(new ExampleHooks());
+        }
+
+        builder.startForPayment();
+    }
+    private Integer mSelectedColor;
+    private CheckBox mDarkFontEnabled;
+
+    private DecorationPreference getCurrentDecorationPreference() {
+        DecorationPreference.Builder decorationPreferenceBuilder =
+                new DecorationPreference.Builder();
+        if (mSelectedColor != null) {
+            decorationPreferenceBuilder.setBaseColor(mSelectedColor);
+
+            if (mDarkFontEnabled.isChecked()) {
+                decorationPreferenceBuilder.enableDarkFont();
+            }
+        }
+        return decorationPreferenceBuilder.build();
+    }
+
+
+
+    private CheckoutPreference getCheckoutPreference() {
+        return new CheckoutPreference(mCheckoutPreferenceId);
+    }
+
 
     private String calculaTotal() {
         double douImporte = Double.parseDouble(txtImporte.getText().toString()) + Double.parseDouble(txtComicion.getText().toString());

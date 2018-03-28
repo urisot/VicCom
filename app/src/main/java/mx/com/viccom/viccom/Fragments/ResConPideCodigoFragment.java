@@ -17,11 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-import mx.com.viccom.viccom.Activities.CodigoRegistroActivity;
-import mx.com.viccom.viccom.Clases.clsUsuarioApp;
 import mx.com.viccom.viccom.Interfaces.onPageChangedLisener;
 import mx.com.viccom.viccom.R;
-import mx.com.viccom.viccom.Utilities.StringMD;
 import mx.com.viccom.viccom.Utilities.Util;
 
 
