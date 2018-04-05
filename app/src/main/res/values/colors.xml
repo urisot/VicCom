@@ -20,6 +20,7 @@
 
     <color name="boton_azul">#003466</color>
     <color name="transparent">#00000000</color>
+    <color name="recibo_vencido">#FF5722</color>
 
 
     <color name="login_backgrond">#77BC1F</color>

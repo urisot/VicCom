@@ -4,13 +4,14 @@
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="220dp"
-    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="16dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
     android:focusable="true"
     card_view:cardBackgroundColor="#FAFAFA"
     card_view:cardCornerRadius="15dp"
     android:foreground="?attr/selectableItemBackground"
-    android:stateListAnimator="@anim/card_view_animation"
-    android:elevation="@dimen/activity_horizontal_margin"
+    android:elevation="8dp"
     android:clickable="true">
 
 
@@ -24,12 +25,41 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp">
 
+      <!--  <ImageButton
+            android:id="@+id/btnlogoComapa_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            card_view:srcCompat="@drawable/logo_comapa_difuminado" />-->
+
+        <TextView
+            android:id="@+id/isRecVencido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:text="Vencido"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingTop="8sp"
+            android:paddingBottom="8sp"
+            android:paddingLeft="96sp"
+            android:paddingRight="96sp"
+            android:layout_marginRight="-84dp"
+            android:layout_marginEnd="-84dp"
+            android:textColor="@color/icons"
+            android:background="@color/recibo_vencido"
+            android:layout_marginTop="16dp"
+            android:rotation="45"
+            android:visibility="invisible"
+            />
         <ImageButton
             android:id="@+id/btnEliminar_us"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginEnd="-8dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:background="@android:color/transparent"
             android:src="@android:drawable/ic_delete" />
 
@@ -37,8 +67,8 @@
             android:id="@+id/txt_Nombre_US"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/btnEliminar_us"
-            android:layout_marginLeft="8dp"
+            android:layout_toStartOf="@+id/btnEliminar_us"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Lopez Perez Jose Angel"
             android:textSize="16sp"
@@ -107,8 +137,8 @@
             android:layout_below="@+id/ll_importe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="8dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
             android:foregroundGravity="right"
             android:orientation="horizontal">
 
@@ -148,11 +178,12 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="+ Detalle"
+                android:textStyle="bold"
+                android:textSize="16sp"
                 android:textAllCaps="false"
                 android:textColor="@color/icons"  />
             <Button
                 android:id="@+id/btnPagar_us"
-
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -160,6 +191,8 @@
                 android:background="@drawable/boton_verde"
                 android:textAlignment="center"
                 android:text="Pagar"
+                android:textStyle="bold"
+                android:textSize="16sp"
                 android:textAllCaps="false"
                 android:textColor="@color/icons" />
         </LinearLayout>
