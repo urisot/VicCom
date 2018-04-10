@@ -1,7 +1,9 @@
 package mx.com.viccom.viccom.Activities;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -22,10 +24,12 @@ import mx.com.viccom.viccom.Fragments.MiPerfilFragment;
 import mx.com.viccom.viccom.Fragments.MisCuentasFragment;
 import mx.com.viccom.viccom.Fragments.MisTarjetasFragment;
 import mx.com.viccom.viccom.R;
+import mx.com.viccom.viccom.Utilities.Util;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private SharedPreferences prefs;
     private NavigationView navigationView;
     private Toolbar toolbar;
     private DrawerLayout dragLayMenuLateral;
@@ -42,6 +46,7 @@ public class MenuActivity extends AppCompatActivity
 
         //getSupportActionBar().setDisplayShowTitleEnabled(false);
         usuarioApp = clsUsuarioApp.getUsrApp();
+        prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         dragLayMenuLateral = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -133,6 +138,8 @@ public class MenuActivity extends AppCompatActivity
             });
             alertDialog.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
+
+                    Util.removePasswordSharedPreferences(prefs);
                     irALogIn();
 
                 }

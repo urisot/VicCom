@@ -69,7 +69,14 @@ public class Util{
     public static String getUserPassPrefs(SharedPreferences preferences) {
         return preferences.getString("pass", "");
     }
-
+/*    public static String getUserLogedPrefs(SharedPreferences preferences) {
+        return preferences.getString("loged", "");
+    }*/
+    public static void removePasswordSharedPreferences(SharedPreferences preferences) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove("pass");
+        editor.apply();
+    }
     public static void removeSharedPreferences(SharedPreferences preferences) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.remove("email");

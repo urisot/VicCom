@@ -45,4 +45,6 @@ public class SplashActivity extends AppCompatActivity {
         };
         timer.start();
     }
+
+
 }

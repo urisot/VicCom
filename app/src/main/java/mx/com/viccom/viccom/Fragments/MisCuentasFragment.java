@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
@@ -52,6 +54,8 @@ public class MisCuentasFragment extends Fragment {
     private EliminaCuenta eliminaCuenta;
     private ImageView imgLogo,imgCiudadViva;
     private Animation animEntrar,animSalir;
+    private CardView cvNuevoRecibo;
+    private ImageButton btnAddReciboNuevo;
 
 
     //Contenedor de datos
@@ -80,6 +84,9 @@ public class MisCuentasFragment extends Fragment {
         refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefresh);
         imgLogo = (ImageView) view.findViewById(R.id.imgLogo);
         imgCiudadViva = (ImageView) view.findViewById(R.id.imgCiudad);
+        cvNuevoRecibo = (CardView) view.findViewById(R.id.cvNuevoRecibo);
+        btnAddReciboNuevo = (ImageButton) view.findViewById(R.id.btnAddReciboNuevo);
+
         animEntrar = AnimationUtils.loadAnimation(getContext(),R.anim.entrar);
         animSalir = AnimationUtils.loadAnimation(getContext(),R.anim.salir);
 
@@ -191,6 +198,16 @@ public class MisCuentasFragment extends Fragment {
             }
         });
 
+        btnAddReciboNuevo.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Intent intento = new Intent(getActivity(),AgregarReciboActivity.class);
+                intento.putExtra("USUARIOAPP",usuarioApp);
+                startActivityForResult(intento, Util.SOLICITUD_AGREGAR_RECIBOS);
+            }
+        });
 
 
 
@@ -346,8 +363,21 @@ public class MisCuentasFragment extends Fragment {
         protected void onPostExecute(ArrayList<clsRecibos> ListRecibos) {
             super.onPostExecute(ListRecibos);
             if (!(o_resultadoWCF.getError_number()>0)){
-                mAdapter.updateData(ListRecibos);
                 refreshLayout.setRefreshing(false);
+
+                if (ListRecibos.size() > 0){
+                    cvNuevoRecibo.setVisibility(View.GONE);
+                    refreshLayout.setVisibility(View.VISIBLE);
+                   // fabAgregarCuentas.setVisibility(View.VISIBLE);
+
+                    mAdapter.updateData(ListRecibos);
+                }else{
+                    cvNuevoRecibo.setVisibility(View.VISIBLE);
+                    refreshLayout.setVisibility(View.GONE);
+                   // fabAgregarCuentas.setVisibility(View.GONE);
+                }
+
+
             }else{
                 refreshLayout.setRefreshing(false);
                 Util.customSnackBar(o_resultadoWCF.getError_menssage(),fabAgregarCuentas,getContext());

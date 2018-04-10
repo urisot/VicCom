@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity  {
 
     private EditText txtEmail;
     private EditText txtPassword;
-    private Switch switchRemember;
+    //private Switch switchRemember;
     private Button btnLogin,btnHelpMail,btnHelpContrasena;
     private CheckedTextView linkRegiste;
     private CheckedTextView linkResetContrasena;
@@ -92,14 +92,7 @@ public class LoginActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
 
-                String email = txtEmail.getText().toString();
-                String password = StringMD.getStringMessageDigest(txtEmail.getText().toString() + txtPassword.getText().toString(), StringMD.SHA1).toUpperCase();
-//                String password = editTextPassword.getText().toString();
-
-                ArrayList<String> listToSend = new ArrayList<String>();
-                listToSend.add(email);
-                listToSend.add(password);
-                new ValidarUsrAppHttp().execute(listToSend);
+                LogIn();
 
             }
         });
@@ -138,6 +131,17 @@ public class LoginActivity extends AppCompatActivity  {
 
     }
 
+    private void LogIn(){
+        String email = txtEmail.getText().toString();
+        String password = StringMD.getStringMessageDigest(txtEmail.getText().toString() + txtPassword.getText().toString(), StringMD.SHA1).toUpperCase();
+//                String password = editTextPassword.getText().toString();
+
+        ArrayList<String> listToSend = new ArrayList<String>();
+        listToSend.add(email);
+        listToSend.add(password);
+        new ValidarUsrAppHttp().execute(listToSend);
+    }
+
     private void MuestraTooltip(View view, int gravity, String mensaje) {
         Button btn = (Button) view;
         Tooltip tooltip = new Tooltip.Builder(btn)
@@ -167,7 +171,7 @@ public class LoginActivity extends AppCompatActivity  {
     private void bindUI() {
         txtEmail = (EditText) findViewById(R.id.txtEmail_log);
         txtPassword = (EditText) findViewById(R.id.txtContrasena_log);
-        switchRemember = (Switch) findViewById(R.id.swRecuerdame_log);
+        //switchRemember = (Switch) findViewById(R.id.swRecuerdame_log);
         btnLogin = (Button) findViewById(R.id.email_sign_in_button);
         linkRegiste = (CheckedTextView) findViewById(R.id.linkRegistrarse_log);
         linkResetContrasena = (CheckedTextView) findViewById(R.id.linkOlvidoContraseña_log);
@@ -184,14 +188,24 @@ public class LoginActivity extends AppCompatActivity  {
     private void setCredentialsIfExist() {
         String email = Util.getUserMailPrefs(prefs);
         String password = Util.getUserPassPrefs(prefs);
-        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+        if (!TextUtils.isEmpty(email)){
             txtEmail.setText(email);
+        }
+
+        if (!TextUtils.isEmpty(password)){
             txtPassword.setText(password);
-            switchRemember.setChecked(true);
+        }
+
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+         /*   txtEmail.setText(email);
+            txtPassword.setText(password);*/
+            LogIn();
+
+            //switchRemember.setChecked(true);
         }
     }
 
-    private boolean login(String email, String password) {
+    private boolean ValidaLogin(String email, String password) {
         if (!Util.isValidEmail(email)) {
 
             txtEmail.setError("¡ERROR!: Email invalido.");
@@ -207,12 +221,16 @@ public class LoginActivity extends AppCompatActivity  {
     }
 
     private void saveOnPreferences(String email, String password) {
-        if (switchRemember.isChecked()) {
+
+       // if (switchRemember.isChecked()) {
+
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("email", email);
             editor.putString("pass", password);
+            //editor.putString("loged", "1");
             editor.apply();
-        }
+
+        //}
     }
 
     public class ValidarUsrAppHttp extends AsyncTask<ArrayList<String>,Integer,clsUsuarioApp> {
