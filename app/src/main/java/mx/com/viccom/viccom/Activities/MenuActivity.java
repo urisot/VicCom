@@ -1,5 +1,6 @@
 package mx.com.viccom.viccom.Activities;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,6 +25,7 @@ import mx.com.viccom.viccom.Fragments.MiPerfilFragment;
 import mx.com.viccom.viccom.Fragments.MisCuentasFragment;
 import mx.com.viccom.viccom.Fragments.MisTarjetasFragment;
 import mx.com.viccom.viccom.R;
+import mx.com.viccom.viccom.Services.Notificaciones;
 import mx.com.viccom.viccom.Utilities.Util;
 
 public class MenuActivity extends AppCompatActivity
@@ -71,7 +73,36 @@ public class MenuActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         setFragmentByDefault();
+
+
+        IniciaServicoNotificaciones();
     }
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void IniciaServicoNotificaciones(){
+        if (!isMyServiceRunning(Notificaciones.class)){
+            Intent intentService = new Intent(MenuActivity.this, Notificaciones.class);
+            intentService.putExtra("USUARIOAPP",usuarioApp);
+            startService(intentService);
+        }
+    }
+    private void DetenerServicoNotificaciones(){
+        if (isMyServiceRunning(Notificaciones.class)){
+            Intent intentService = new Intent(MenuActivity.this, Notificaciones.class);
+            intentService.putExtra("USUARIOAPP",usuarioApp);
+            stopService(intentService);
+        }
+    }
+
     private void irALogIn() {
         Intent intent = new Intent(this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -126,6 +157,8 @@ public class MenuActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.mnuCerrarSesion) {
 
+          //  startService(new Intent(MenuActivity.this, Notificaciones.class));
+
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(MenuActivity.this,R.style.AppCompatAlertDialogStyle);
             alertDialog.setMessage("¿Deseas salir de la aplicación?");
             alertDialog.setTitle("Cerrar sesion");
@@ -139,6 +172,7 @@ public class MenuActivity extends AppCompatActivity
             alertDialog.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
 
+                    DetenerServicoNotificaciones();
                     Util.removePasswordSharedPreferences(prefs);
                     irALogIn();
 

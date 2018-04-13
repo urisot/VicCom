@@ -1,6 +1,7 @@
 package mx.com.viccom.viccom.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,6 +76,7 @@ public class RecibosRecyclerViewAdapter  extends RecyclerView.Adapter<RecibosRec
         public TextView txtCuenta;
         public TextView txtImporte;
         public TextView txtVencimiento;
+        public TextView isRecVencido;
         public Button btnPagar;
         public ImageButton btnEliminar;
 
@@ -87,6 +89,7 @@ public class RecibosRecyclerViewAdapter  extends RecyclerView.Adapter<RecibosRec
             txtCuenta = (TextView) itemView.findViewById(R.id.txt_Cuenta_US);
             txtImporte = (TextView) itemView.findViewById(R.id.txt_Importe_US);
             txtVencimiento = (TextView) itemView.findViewById(R.id.txt_Vencimiento_US);
+            isRecVencido = (TextView) itemView.findViewById(R.id.isRecVencido);
             btnPagar = (Button) itemView.findViewById(R.id.btnPagar_us);
             btnEliminar = (ImageButton) itemView.findViewById(R.id.btnEliminar_us);
 
@@ -100,9 +103,14 @@ public class RecibosRecyclerViewAdapter  extends RecyclerView.Adapter<RecibosRec
                 txtImporte.setText("$ "+ Math.round(recibo.getTotal()) +".");
                 txtVencimiento.setText(recibo.getFecha_vencimiento());
 
-            /*    if (!(Math.round(recibo.getTotal())>0)){
+                /*if (!(Math.round(recibo.getTotal())>0)){
                     btnPagar.setVisibility(View.INVISIBLE);
                 }*/
+
+                if (!(recibo.getVencido() == 0)){
+                    isRecVencido.setVisibility(View.VISIBLE);
+                    txtVencimiento.setTextColor(Color.RED);
+                }
 
 
 //            Picasso.with(context).load(movie.getId()).fit().into(imageViewPoster);

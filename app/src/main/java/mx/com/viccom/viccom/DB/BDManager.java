@@ -44,7 +44,9 @@ public class BDManager  extends SQLiteOpenHelper {
             "fecha_vencimiento text null,"+
             "ciclo_facturado text null,"+
             "periodo text null," +
-            "total REAL NULL);";
+            "total REAL NULL," +
+            "pago_requerido REAL NULL," +
+            "vencido int NULL);";
 
     public static String sqlCreaDetRecibos = "CREATE TABLE IF NOT EXISTS Opr_DetRecibos ("+
             "id integer primary key,"+// primary key

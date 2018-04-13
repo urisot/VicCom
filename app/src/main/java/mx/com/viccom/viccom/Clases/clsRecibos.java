@@ -43,12 +43,14 @@ public class clsRecibos  implements Parcelable{
     private String ciclo_facturado="";
     private String periodo="";
     private float total=0;
+    private float pago_requerido=0;
+    private int vencido=0;
 
     public clsRecibos() {
 
     }
 
-    public clsRecibos(int id, String id_recibo, int id_padron, int id_cuenta, String razon_social, String direccion, String colonia, String poblacion, String localizacion, String tipocalculo, String servicio, String tarifa, String clsusuario, String anomalia, String id_medidor, String estatus, int meses_rezago, int promedio_act, int consumo_act, String fecha_factura_act, String fecha_vencimiento, String ciclo_facturado, String periodo, float total) {
+    public clsRecibos(int id, String id_recibo, int id_padron, int id_cuenta, String razon_social, String direccion, String colonia, String poblacion, String localizacion, String tipocalculo, String servicio, String tarifa, String clsusuario, String anomalia, String id_medidor, String estatus, int meses_rezago, int promedio_act, int consumo_act, String fecha_factura_act, String fecha_vencimiento, String ciclo_facturado, String periodo, float total, float pago_requerido, int vencido) {
         this.id = id;
         this.id_recibo = id_recibo;
         this.id_padron = id_padron;
@@ -73,6 +75,8 @@ public class clsRecibos  implements Parcelable{
         this.ciclo_facturado = ciclo_facturado;
         this.periodo = periodo;
         this.total = total;
+        this.pago_requerido = pago_requerido;
+        this.vencido = vencido;
     }
 
     protected clsRecibos(Parcel in) {
@@ -100,6 +104,8 @@ public class clsRecibos  implements Parcelable{
         ciclo_facturado = in.readString();
         periodo = in.readString();
         total = in.readFloat();
+        pago_requerido = in.readFloat();
+        vencido = in.readInt();
     }
 
     public static final Parcelable.Creator<clsRecibos> CREATOR = new Parcelable.Creator<clsRecibos>() {
@@ -307,6 +313,26 @@ public class clsRecibos  implements Parcelable{
         this.total = total;
     }
 
+    public float getPago_requerido() {
+        return pago_requerido;
+    }
+
+    public void setPago_requerido(float pago_requerido) {
+        this.pago_requerido = pago_requerido;
+    }
+
+    public int getVencido() {
+        return vencido;
+    }
+
+    public void setVencido(int vencido) {
+        this.vencido = vencido;
+    }
+
+    public static Creator<clsRecibos> getCREATOR() {
+        return CREATOR;
+    }
+
     public static ArrayList<clsRecibos> CargarListaRecibosPorCuenta(int intIdCuenta){
         ArrayList<clsRecibos> listRecibos = new ArrayList<clsRecibos>();
         BDManager manejador = new BDManager(App.getContext(), "DBPagos", null, 1);
@@ -342,7 +368,9 @@ public class clsRecibos  implements Parcelable{
                             ,cursor.getString(cursor.getColumnIndex("fecha_vencimiento"))
                             ,cursor.getString(cursor.getColumnIndex("ciclo_facturado"))
                             ,cursor.getString(cursor.getColumnIndex("periodo"))
-                            ,cursor.getFloat(cursor.getColumnIndex("total"))));
+                            ,cursor.getFloat(cursor.getColumnIndex("total"))
+                            ,cursor.getFloat(cursor.getColumnIndex("pago_requerido"))
+                            ,cursor.getInt(cursor.getColumnIndex("vencido"))));
                     cursor.moveToNext();
                 }
             }
@@ -391,7 +419,9 @@ public class clsRecibos  implements Parcelable{
                             ,cursor.getString(cursor.getColumnIndex("fecha_vencimiento"))
                             ,cursor.getString(cursor.getColumnIndex("ciclo_facturado"))
                             ,cursor.getString(cursor.getColumnIndex("periodo"))
-                            ,cursor.getFloat(cursor.getColumnIndex("total"))));
+                            ,cursor.getFloat(cursor.getColumnIndex("total"))
+                            ,cursor.getFloat(cursor.getColumnIndex("pago_requerido"))
+                            ,cursor.getInt(cursor.getColumnIndex("vencido"))));
                     cursor.moveToNext();
                 }
             }
@@ -447,7 +477,9 @@ public class clsRecibos  implements Parcelable{
                             ,cursor.getString(cursor.getColumnIndex("fecha_vencimiento"))
                             ,cursor.getString(cursor.getColumnIndex("ciclo_facturado"))
                             ,cursor.getString(cursor.getColumnIndex("periodo"))
-                            ,cursor.getFloat(cursor.getColumnIndex("total"))));
+                            ,cursor.getFloat(cursor.getColumnIndex("total"))
+                            ,cursor.getFloat(cursor.getColumnIndex("pago_requerido"))
+                            ,cursor.getInt(cursor.getColumnIndex("vencido"))));
 
       /*              clsRecibos recibo = new clsRecibos(id,"",0,cuenta,nombre,""
                             ,"","","","","","",""
@@ -506,6 +538,8 @@ public class clsRecibos  implements Parcelable{
             nuevoRegistro.put("ciclo_facturado", o_recibo.getCiclo_facturado());
             nuevoRegistro.put("periodo", o_recibo.getPeriodo());
             nuevoRegistro.put("total", o_recibo.getTotal()+"");
+            nuevoRegistro.put("pago_requerido", o_recibo.getPago_requerido()+"");
+            nuevoRegistro.put("vencido", o_recibo.getVencido()+"");
 
             //Insertamos el registro en la base de datos
             db.insert("Opr_Recibos", null, nuevoRegistro);
@@ -548,6 +582,8 @@ public class clsRecibos  implements Parcelable{
         parcel.writeString(ciclo_facturado);
         parcel.writeString(periodo);
         parcel.writeFloat(total);
+        parcel.writeFloat(pago_requerido);
+        parcel.writeFloat(vencido);
     }
 }
 

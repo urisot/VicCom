@@ -136,6 +136,7 @@ public class SendToWCF {
             urlConnection.setUseCaches(false);
             urlConnection.setRequestProperty("Content-Type", "application/json");
             urlConnection.setRequestProperty("Host","android.schoolportal.gr");
+            //urlConnection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
             urlConnection.connect();
 
             JSONObject jsonParam = new JSONObject();

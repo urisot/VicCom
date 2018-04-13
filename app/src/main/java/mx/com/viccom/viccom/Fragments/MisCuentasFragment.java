@@ -316,13 +316,13 @@ public class MisCuentasFragment extends Fragment {
                     //String jSonResult =HttpResult.getParameter_name().substring(24,HttpResult.getParameter_name().length()-1);
                     listRecibosReturn = gson.fromJson(HttpResult.getParameter_name(), new TypeToken<ArrayList<clsRecibos>>(){}.getType());
 
-                    o_resultadoWCF.setId(0);
+         /*           o_resultadoWCF.setId(0);
                     o_resultadoWCF.setComando("getReciboUsrApp");
                     o_resultadoWCF.setOperacion("Obtener el listado de cuentas ligadas a este usuario, Con exito");
                     o_resultadoWCF.setError_number(0);
                     o_resultadoWCF.setError_menssage("");
                     o_resultadoWCF.setFolio_registro("");
-                    o_resultadoWCF.setFecha(Util.getFechaActual());
+                    o_resultadoWCF.setFecha(Util.getFechaActual());*/
 
                 }
                 else {
@@ -404,7 +404,8 @@ public class MisCuentasFragment extends Fragment {
             refreshLayout.setRefreshing(false);
         }
     }
-
+    
+/*
     public class ActualizaListRecibos extends AsyncTask<Void,Integer,ArrayList<clsRecibos>>{
         static final int DURACION = 3 * 1000; // 3 segundos de carga
         @Override
@@ -437,6 +438,8 @@ public class MisCuentasFragment extends Fragment {
             super.onPostExecute(clsRecibos);
         }
     }
+*/
+
 
     @Override
     public void onDestroy() {

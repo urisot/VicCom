@@ -81,6 +81,8 @@
         <activity android:name=".Activities.RestableceContrasenaActivity"
             android:screenOrientation="portrait"
             android:theme="@style/RestablecerCon"></activity>
+
+        <service android:name=".Services.Notificaciones" />
     </application>
 
 </manifest>
