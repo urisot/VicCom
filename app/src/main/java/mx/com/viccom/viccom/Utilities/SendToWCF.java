@@ -196,7 +196,7 @@ public class SendToWCF {
         catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            Resultado = "ErroJSON";
+            Resultado = "ErrorJSON";
             return Resultado;
         }catch (IOException e) {
 
@@ -210,5 +210,85 @@ public class SendToWCF {
 
     }
 
+    public static String Send_Post_Banwire(ArrayList<clsParameter> clsParameters){
+        //Log.e("Debug",Url);
+        URL url;
+        String Resultado = "";
+
+        StringBuilder sb = new StringBuilder();
+        HttpURLConnection urlConnection=null;
+
+        try {
+            url = new URL("https://test.banwire.com/api/1/payment/direct");
+            urlConnection = (HttpURLConnection)url.openConnection();
+            urlConnection.setDoInput(true);
+            urlConnection.setDoOutput(true);
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setUseCaches(false);
+            urlConnection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+            //urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("Host","android.schoolportal.gr");
+            urlConnection.connect();
+
+            JSONObject jsonParam = new JSONObject();
+
+            for(int i = 0; i< clsParameters.size(); i++ ){
+
+                jsonParam.put(clsParameters.get(i).parameter_name.replaceAll(" ", "+"), clsParameters.get(i).parameter_value.replaceAll(" ", "+"));
+
+            }
+
+            DataOutputStream printout = new DataOutputStream(urlConnection.getOutputStream());
+            String str = jsonParam.toString();
+            Log.e("ObjetoEnviado ",str);
+            byte[] data=str.getBytes("UTF-8");
+            //printout.writeChars(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
+            printout.write(data);
+            printout.flush ();
+            printout.close ();
+
+            int HttpResult =urlConnection.getResponseCode();
+
+            if(HttpResult == HttpURLConnection.HTTP_OK){
+                BufferedReader br = new BufferedReader(new InputStreamReader(
+                        urlConnection.getInputStream(),"UTF-8"));
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+                br.close();
+
+                //System.out.println(""+sb.toString());
+                return ""+sb.toString();
+
+            }else{
+                //ystem.out.println(urlConnection.getResponseMessage());
+                Resultado = "ErrorConexion";
+                return Resultado;
+
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+
+            Resultado = "ErrorURL";
+            return Resultado;
+
+        }
+        catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            Resultado = "ErrorJSON";
+            return Resultado;
+        }catch (IOException e) {
+
+            e.printStackTrace();
+            return "ErrorConexion";
+
+        }finally{
+            if(urlConnection!=null)
+                urlConnection.disconnect();
+        }
+
+    }
 }
 

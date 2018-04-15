@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import mx.com.viccom.viccom.Activities.AgregarReciboActivity;
 import mx.com.viccom.viccom.Activities.DetCuentaActivity;
 import mx.com.viccom.viccom.Activities.RealizarPagoActivity;
+import mx.com.viccom.viccom.Activities.TabPagosActivity;
 import mx.com.viccom.viccom.Adapters.RecibosRecyclerViewAdapter;
 import mx.com.viccom.viccom.Clases.clsParameter;
 import mx.com.viccom.viccom.Clases.clsRecibos;
@@ -226,7 +227,8 @@ public class MisCuentasFragment extends Fragment {
     }
 
     private void PagarRecibo( clsRecibos o_recibo) {
-        Intent intent = new Intent(getContext(), RealizarPagoActivity.class);
+        //Intent intent = new Intent(getContext(), RealizarPagoActivity.class);
+        Intent intent = new Intent(getContext(), TabPagosActivity.class);
         intent.putExtra("RECIBO", o_recibo);
         startActivity(intent);
     }

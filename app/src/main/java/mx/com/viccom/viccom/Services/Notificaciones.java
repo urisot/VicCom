@@ -105,14 +105,17 @@ public class Notificaciones extends Service {
        @Override
        protected void onPreExecute() {
            super.onPreExecute();
-           for (int i = 0; i < 5; i++) {
-               DuermePor5Segundos();
-           }
+
 
        }
 
         @Override
         protected ArrayList<clsRecibos> doInBackground(ArrayList<clsParameter>[] Parametros) {
+
+            for (int i = 0; i < 5; i++) {
+                DuermePor5Segundos();
+            }
+
             ArrayList<clsRecibos> listRecibosReturn = new ArrayList<clsRecibos>();
             clsParameter HttpResult = new clsParameter();
 
