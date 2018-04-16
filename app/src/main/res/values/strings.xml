@@ -39,7 +39,7 @@
 
     <string name="pref_title_social_recommendations">Enable social recommendations</string>
     <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
+        based on your message history lkjsalkj  dskjds fl flk fdglkfdjfd  fdlkjfd glg fdlkj ghfdlgfdlhgfdl gfdlkgfdjfhdgñl gfhdlfdñkjdf kbj gfdhgfdhlkdf hj fdhlk hgfdljhfd  gh glkjgfdh l gfd jkh fdgjh fgd  fd gkjhfdkjh kgfdjhfd dfkghkdfj hfdkjg hdfkg hfdkjg hdflk ghfdlkj ghfdlkg hfd ghfdk jghrek jfdghdfkg jh
     </string>
 
     <string name="pref_title_display_name">Display name</string>
@@ -103,4 +103,12 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_tab_pagos">TabPagosActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="mnu_pago_tarjeta">Tarjeta</string>
+    <string name="mnu_pago_paypal">PayPal</string>
+
 </resources>

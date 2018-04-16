@@ -76,13 +76,19 @@
         <activity
             android:name=".Activities.RealizarPagoActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/RealizarPago"></activity>
-
-        <activity android:name=".Activities.RestableceContrasenaActivity"
+            android:theme="@style/RealizarPago" />
+        <activity
+            android:name=".Activities.RestableceContrasenaActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/RestablecerCon"></activity>
+            android:theme="@style/RestablecerCon" />
 
         <service android:name=".Services.Notificaciones" />
+
+        <activity
+            android:name=".Activities.TabPagosActivity"
+            android:label="@string/title_activity_tab_pagos"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

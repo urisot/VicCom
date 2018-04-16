@@ -196,7 +196,7 @@ public class RegistroPideCodigoFragment extends Fragment {
                 String Resultado = SendToWCF.Send_Post(Url, Parametros);
 
                 //Pudo establecer conexion
-                if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErroJSON")) {
+                if (!Resultado.equals("ErrorConexion") && !Resultado.equals("ErrorURL") && !Resultado.equals("ErrorJSON")) {
 
                     Gson gson = new GsonBuilder().create();
                     Resultado = Resultado.replace("\\/","/").replace("\n","");

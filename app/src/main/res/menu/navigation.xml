@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mnu_p_tarjeta"
+        android:icon="@drawable/ic_credit_card_black_24dp"
+        android:title="@string/mnu_pago_tarjeta" />
+
+    <item
+        android:id="@+id/mnu_p_paypal"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/mnu_pago_paypal" />
+
+<!--    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_notifications" />-->
+
+</menu>
