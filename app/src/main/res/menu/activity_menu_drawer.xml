@@ -30,6 +30,12 @@
             android:id="@+id/opt_Configuracion"
             android:icon="@drawable/ic_configuracion_24dp"
             android:title="@string/menu_item_configuracion" />
+        <!--<item xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/switch_in_nav_options"
+            android:title="Option"
+            app:actionLayout="@layout/switch_nav_options" />-->
+
+
     </group>
 
     <!--<item android:title="Mas opciones">

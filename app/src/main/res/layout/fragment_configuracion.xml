@@ -5,46 +5,13 @@
     android:orientation="vertical"
     tools:context="mx.com.viccom.viccom.Fragments.ConfiguracionFragment">
 
-  <!-- <EditText
-       android:id="@+id/txtTextoencriptar"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_marginLeft="16dp"
-       android:layout_marginRight="16dp"
-       android:hint="encriptar"/>
-    <TextView
-        android:id="@+id/txtResultado"
-        android:layout_below="@+id/txtTextoencriptar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="resultado"/>
 
-    <Button
-        android:id="@+id/btnEncriptar"
-        android:layout_below="@+id/txtResultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="encriptar"/>
-
-    <Button
-        android:id="@+id/btndesencriptar"
-        android:layout_below="@+id/btnEncriptar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="encriptar"/>
-    <TextView
-        android:id="@+id/txtTextoOriginal"
-        android:layout_below="@+id/btndesencriptar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="resultado"/>-->
-
+  <Switch
+      android:id="@+id/swNotificaciones"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentTop="true"
+      android:text="Mostrar Notificaciones"
+      />
 </RelativeLayout>
